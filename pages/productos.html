@@ -58,109 +58,21 @@
             </div>
         </header>
         <main class="main-productos">
-            <!-- Informacion secundaria: Categorias de productos, ira del lado izquierdo -->
-            <aside class="sidebar">
-                <h2>Categorías</h2>
-                <ul class="listado-categorias">
-                    <li>Aromas</li>
-                        <ul>
-                            <li class="subcat">Almohadillas</li>
-                            <li class="subcat">Difusores</li>
-                        </ul>
-
-                    <li>Defumación</li>
-                        <ul>
-                            <li class="subcat">Portasahumerios</li>
-                            <li class="subcat">Sahumerios</li>
-                            <li class="subcat">Sahumos</li>
-                        </ul>
-                    <li>Manifestación</li>
-                        <ul>
-                            <li class="subcat">Aguas de florida</li>
-                            <li class="subcat">Rocíos áuricos</li>
-                        </ul>
-                </ul>
-            </aside>
-            <!-- Boton desplegable como el del navbar para version mobile -->
-            <div class="boton-categorias">
-                <div class="container-fluid"></div>
-                    <img src="../img/filtro.png" alt="Icono de filto" width="25px" height="25px">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#categorias" aria-controls="categorias" aria-expanded="false" aria-label="Toggle navegation">
-                    <span class="navbar-toggler-icon">Categorías</span>
-                    </button> 
-                    <div class="collapse categorias-collapse" id="categorias">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="">Aromas</a>
-                                <ul>
-                                    <a class="nav-link" aria-current="page" href="">Almohadillas</a>
-                                    <a class="nav-link" aria-current="page" href="">Difusores</a>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Defumación</a> 
-                                    <ul>
-                                        <a class="nav-link" aria-current="page" href="">Portasahumerios</a>
-                                        <a class="nav-link" aria-current="page" href="">Sahumerio</a>
-                                        <a class="nav-link" aria-current="page" href="">Sahumos</a>
-                                    </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Manifestación</a>
-                                <ul>
-                                    <a class="nav-link" aria-current="page" href="">Aguas de florida</a>
-                                    <a class="nav-link" aria-current="page" href="">Rocíos áuricos</a>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <!-- Seccion para las publicaciones de los productos: 2 fila de 4 columnas -->
             <section class="section-product">
                 <h1 class="titulo-productos">Productos</h1>
+                <section class="section-categorias">
+                    <button id="cat-adorno" class="boton-categoria">Adorno</button>
+                    <button  id="cat-aromas" class="boton-categoria">Aromas</button>
+                    <button id="cat-colgantes" class="boton-categoria">Colgantes</button>
+                    <button id="cat-defumacion" class="boton-categoria">Defumación</button>
+                    <button id="cat-manifestacion" class="boton-categoria">Manifestación</button>
+                    <button id="cat-portasahumerio" class="boton-categoria">Portasahumerios</button>
+                    <button id="cat-portavela" class="boton-categoria">Portavelas</button>
+                    <button id="cat-velas" class="boton-categoria">Velas</button>
+                </section>
                 <section class="section-cardproduct">
-                    <!--<article class="cardproduct">
-                        <h2 class="nombre-producto">Rocíos áuricos artesanales</h2> 
-                        <img src="../img/rocios_auricos.webp" alt="Rocios áuricos artesanales" class="imagen-producto"> 
-                        <p class="precio-producto">$7000</p>
-                    </article>
-                    <article class="cardproduct">
-                        <img src="../img/difusores.webp" alt="Difusores artesanales" class="imagen-producto">
-                        <h2 class="nombre-producto">Difusores artesanales</h2> 
-                        <p class="precio-producto">$6000</p>
-                    </article>
-                    <article class="cardproduct">
-                        <img src="../img/aguas de florida.webp" alt="Aguas de florida artesanales" class="imagen-producto">
-                        <h2 class="nombre-producto">Aguas de florida artesanales</h2> 
-                        <p class="precio-producto">$8000</p>
-                    </article>
-                    <article class="cardproduct">    
-                        <img src="../img/sahumerios.webp" alt="Sahumerios importados" class="imagen-producto">
-                        <h2 class="nombre-producto">Sahumerios importados</h2> 
-                        <p class="precio-producto">$2500</p>
-                    </article> 
-                    <article class="cardproduct">
-                        <img src="../img/portasahumerios-namaste.webp" alt="Portasahumerio de yeso Namaste 14.5cm" class="imagen-producto"> 
-                        <h2 class="nombre-producto">Portasahumerio Namaste</h2> 
-                        <p class="precio-producto">$4000</p>
-                    </article> 
-                    <article class="cardproduct">
-                        <img src="../img/portsahumerios-ganesha.webp" alt="Portasahumerio de yeso Ganesha 10cm" class="imagen-producto"> 
-                        <h2 class="nombre-producto">Portasahumerio Ganesha</h2>
-                        <p class="precio-producto">$3500</p>
-                    </article> 
-                    <article class="cardproduct">
-                        <img src="../img/sahumos.webp" alt="Sahumos naturales de diferentes plantas" class="imagen-producto"> 
-                        <h2 class="nombre-producto">Sahumos naturales (5u)</h2> 
-                        <p class="precio-producto">$3000</p>
-                    </article> 
-                    <article class="cardproduct">
-                        <img src="../img/Almohadillas.webp" alt="Almohadillas de lavanda<" class="imagen-producto"> 
-                        <h2 class="nombre-producto">Almohadillas de lavanda</h2> 
-                        <p class="precio-producto">$6000</p>
-                    </article> --> 
-                    <!--<button class="boton-vermas">Ver más</button> --> 
+                     
                 </section>   
             </section>
         </main> 

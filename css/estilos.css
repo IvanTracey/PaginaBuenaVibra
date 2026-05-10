@@ -1,3 +1,7 @@
+h2 {
+  font-size: 20px;
+}
+
 .card, .main-productos .section-cardproduct article {
   justify-items: center;
   align-items: center;
@@ -112,7 +116,7 @@ footer .social-icon:hover {
   align-items: center;
   gap: 10px;
   margin: 10px;
-  font-size: 24px;
+  font-size: 20px;
 }
 .main-inicio .productos-destacados .contenido-PD {
   display: flex;
@@ -137,7 +141,7 @@ footer .social-icon:hover {
   text-decoration: none;
 }
 .main-inicio .publicaciones-recientes .header-PR {
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -166,28 +170,6 @@ footer .social-icon:hover {
 
 .main-productos {
   background-color: rgb(62, 210, 190);
-  display: grid;
-  grid-template-columns: 13% 87%;
-  grid-template-rows: 1;
-}
-.main-productos .boton-categorias {
-  display: none;
-}
-.main-productos .sidebar {
-  grid-column: 1;
-  font-size: 14px;
-  height: auto;
-  background-color: rgb(32, 186, 130);
-}
-.main-productos .sidebar .listado-categorias {
-  list-style: none;
-  margin: 0px -25px;
-}
-.main-productos .sidebar .listado-categorias .subcat {
-  list-style: none;
-}
-.main-productos .sidebar ul li:hover {
-  text-decoration: underline;
 }
 .main-productos .titulo-productos {
   font-size: 28px;
@@ -195,8 +177,24 @@ footer .social-icon:hover {
   display: block;
   justify-self: center;
 }
+.main-productos .section-categorias {
+  display: flex;
+}
+.main-productos .section-categorias .boton-categoria {
+  display: block;
+  justify-content: center;
+  width: auto;
+  margin: 15px 8px;
+  background-color: rgb(32, 186, 130);
+  border: 1px black solid;
+  transition: transform 0.4s ease;
+  padding: 0px 2px;
+  justify-self: center;
+}
+.main-productos .section-categorias .boton-categoria:hover {
+  transform: scale(1.05);
+}
 .main-productos .section-cardproduct {
-  grid-column: 2;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;

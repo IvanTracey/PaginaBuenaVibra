@@ -1,3 +1,5 @@
+// Seccion de 
+
 // Array de objeto con los productos
 // img es relativa al HTML
 const productos=[
@@ -97,14 +99,13 @@ const productos=[
     categoria: "Velas",
     variedades: ["Jazmin", "Lavanda", "Vainilla"]
     },
-    
 ];
 
 // CREACION DE CARD
 function crearCard (producto){
     const cardProduct = document.createElement("article");
     cardProduct.className="cardProduct";
-    const nameProduct = document.createElement("h3"); 
+    const nameProduct = document.createElement("h2"); 
     nameProduct.innerText=producto.name;
     const imgProduct = document.createElement("img"); 
     imgProduct.src = producto.img;

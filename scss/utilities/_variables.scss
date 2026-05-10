@@ -4,9 +4,12 @@ $color-bg-card: whitesmoke;
 $color-tipografia:#052b20;
 
 $tamano-titulo:44px;
-$tamano-subtitulo:24px;
+$tamano-subtitulo:20px;
 $tamano-piefoto: 20px;
 
+h2{
+    font-size: $tamano-subtitulo;
+}
 // Creo la estetica de las tarjetas para mis cardproducts
 .card{
     justify-items: center;
