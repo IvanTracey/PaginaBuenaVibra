@@ -1,5 +1,24 @@
+h1 {
+  font-size: 44px;
+  justify-self: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
 h2 {
   font-size: 30px;
+  justify-self: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .card, .main-productos .section-product .section-cardproduct article {
@@ -11,9 +30,6 @@ h2 {
   background-color: whitesmoke;
   transition: transform 0.4s ease;
 }
-.card h3, .main-productos .section-product .section-cardproduct article h3 {
-  font-size: 20px;
-}
 
 .card-carrito {
   margin: 5px 2px;
@@ -22,12 +38,19 @@ h2 {
   border-radius: 5px;
   background-color: rgb(129, 200, 208);
 }
-.card-carrito h4 {
-  font-size: 18px;
-  font-weight: bold;
-}
 .card-carrito p {
-  font-size: 15px;
+  font-size: 16px;
+}
+
+.card-carrito-info {
+  margin: 5px 2px;
+  padding: 8px 2px;
+  border: 4px whitesmoke solid;
+  border-radius: 5px;
+  background-color: rgb(129, 200, 208);
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
 }
 
 * {
@@ -184,7 +207,7 @@ footer .social-icon:hover {
 .main-productos {
   background-color: rgb(62, 210, 190);
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 83% 16%;
   grid-template-rows: 1;
 }
 .main-productos .section-product {
@@ -210,6 +233,7 @@ footer .social-icon:hover {
   transition: transform 0.4s ease;
   padding: 0px 2px;
   justify-self: center;
+  font-size: 22px;
 }
 .main-productos .section-product .section-categorias .boton-categoria:hover {
   transform: scale(1.05);

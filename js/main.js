@@ -1,8 +1,10 @@
-// Seccion de categorias
+// Las variables van en castellano expecto CARD
+// Las secciones es section-<correspondiente>
 
 // Array de objeto con los productos
 // img es relativa al HTML
 const productos=[
+    // todo en castellano expecto id e img
     {
     id:1,
     nombre:"Agua de florida",
@@ -106,35 +108,35 @@ const productos=[
 
 function crearCard (producto){
     // Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
-    const cardProduct = document.createElement("article");
-    cardProduct.className="cardProduct";
-    const nameProduct = document.createElement("h3"); 
-    nameProduct.innerText=producto.nombre;
-    const imgProduct = document.createElement("img"); 
-    imgProduct.src = producto.img;
-    imgProduct.alt = "NOIMG";
-    imgProduct.className = "imagen-producto";
-    const descProduct = document.createElement("p");
-    descProduct.innerText=producto.descricion;
-    const precioProduct = document.createElement("p"); 
-    precioProduct.innerText=`$${producto.precio}`;
-    const btnCarrito = document.createElement("button"); 
-    btnCarrito.innerText="Agregar";
-    btnCarrito.className="boton-agregarCarrito"; //modificar css y crear una clase
+    const cardProducto = document.createElement("article");
+    cardProducto.className="cardProduct";
+    const nombreProducto = document.createElement("h3"); 
+    nombreProducto.innerText=producto.nombre;
+    const imgProducto = document.createElement("img"); 
+    imgProducto.src = producto.img;
+    imgProducto.alt = "NOIMG";
+    imgProducto.className = "imagen-producto";
+    const descProducto = document.createElement("p");
+    descProducto.innerText=producto.descricion;
+    const precioProducto = document.createElement("p"); 
+    precioProducto.innerText=`$${producto.precio}`;
+    const botonCarrito = document.createElement("button"); 
+    botonCarrito.innerText="Agregar";
+    botonCarrito.className="boton-agregarCarrito"; //modificar css y crear una clase
 
     //distingo la seccion donde ubicar los cards, a partir de la clase
     const seccionCardProductos=document.querySelector('.section-cardproduct');
     // declaro que los cards son hijos de esa seccion
-    seccionCardProductos.appendChild(cardProduct);
+    seccionCardProductos.appendChild(cardProducto);
     // declaro los hijos del article que es la card
-    cardProduct.appendChild(nameProduct);
-    cardProduct.appendChild(imgProduct);
-    cardProduct.appendChild(descProduct);
-    cardProduct.appendChild(precioProduct);
-    cardProduct.appendChild(btnCarrito);
+    cardProducto.appendChild(nombreProducto);
+    cardProducto.appendChild(imgProducto);
+    cardProducto.appendChild(descProducto);
+    cardProducto.appendChild(precioProducto);
+    cardProducto.appendChild(botonCarrito);
     
     // Se declara aca para q cada boton tenga la funcion y porque existe producto.id. Asi adquiero el id del producto elegido 
-    btnCarrito.onclick=()=>agregarCarrito(producto.id);
+    botonCarrito.onclick=()=>agregarCarrito(producto.id);
 };
 // ---------------------- CREACION DE TODAS LAS CARDS ----------------------
 //con cada objeto del array, creo una card
@@ -181,6 +183,13 @@ function agregarCarrito(idElegido){
     };
 }
 // ---------------------- CREO ESPACIO PARA CARRITO ----------------------
+// ---------------------- TOTAL CARRITO ----------------------
+let totalCarrito=0;
+const infoCarrito=document.createElement("article");
+infoCarrito.className="card-carrito-info";
+infoCarrito.innerText=`TOTAL: $${totalCarrito}`;
+const seccionCarrito=document.querySelector('.section-carrito');
+seccionCarrito.appendChild(infoCarrito);
 
 const pru=[{
     id:12,

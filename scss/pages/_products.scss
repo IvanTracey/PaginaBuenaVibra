@@ -7,7 +7,7 @@
 .main-productos{
     background-color: $color-bg-principal;
     display: grid;
-    @include grid(80% 20%, 1); 
+    @include grid(83% 16%, 1); 
     .section-product{
         grid-column: 1;
         // Zona productos (section): Declaro que es la segunda columna y le doy layout propio
@@ -23,6 +23,7 @@
                 @include boton(auto, 15px 8px);
                 padding: 0px 2px;
                 justify-self: center;
+                font-size: 22px;
                 &:hover{
                     transform: scale(1.05);
                 }
