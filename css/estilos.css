@@ -1,8 +1,8 @@
 h2 {
-  font-size: 20px;
+  font-size: 30px;
 }
 
-.card, .main-productos .section-cardproduct article {
+.card, .main-productos .section-product .section-cardproduct article {
   justify-items: center;
   align-items: center;
   padding: 5px 5px;
@@ -10,6 +10,24 @@ h2 {
   border-radius: 15px;
   background-color: whitesmoke;
   transition: transform 0.4s ease;
+}
+.card h3, .main-productos .section-product .section-cardproduct article h3 {
+  font-size: 20px;
+}
+
+.card-carrito {
+  margin: 5px 2px;
+  padding: 5px 2px;
+  border: 4px whitesmoke solid;
+  border-radius: 5px;
+  background-color: rgb(129, 200, 208);
+}
+.card-carrito h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+.card-carrito p {
+  font-size: 15px;
 }
 
 * {
@@ -102,6 +120,7 @@ footer .social-icon:hover {
   margin: 5px;
   background-color: rgb(32, 186, 130);
   border: 1px black solid;
+  border-radius: 5px;
   transition: transform 0.4s ease;
   display: block;
 }
@@ -116,7 +135,7 @@ footer .social-icon:hover {
   align-items: center;
   gap: 10px;
   margin: 10px;
-  font-size: 20px;
+  font-size: 30px;
 }
 .main-inicio .productos-destacados .contenido-PD {
   display: flex;
@@ -134,14 +153,11 @@ footer .social-icon:hover {
 .main-inicio .productos-destacados .contenido-PD article:hover {
   transform: scale(1.02);
 }
-.main-inicio .productos-destacados h2 {
-  font-size: 20px;
-}
 .main-inicio .publicaciones-recientes .link {
   text-decoration: none;
 }
 .main-inicio .publicaciones-recientes .header-PR {
-  font-size: 20px;
+  font-size: 30px;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -164,59 +180,78 @@ footer .social-icon:hover {
 .main-inicio .publicaciones-recientes .contenido-PR article:hover {
   transform: scale(1.02);
 }
-.main-inicio .publicaciones-recientes .contenido-PR h2 {
-  font-size: 20px;
-}
 
 .main-productos {
   background-color: rgb(62, 210, 190);
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 1;
 }
-.main-productos .titulo-productos {
+.main-productos .section-product {
+  grid-column: 1;
+}
+.main-productos .section-product .titulo-productos {
   font-size: 28px;
   padding-top: 5px;
   display: block;
   justify-self: center;
 }
-.main-productos .section-categorias {
+.main-productos .section-product .section-categorias {
   display: flex;
 }
-.main-productos .section-categorias .boton-categoria {
+.main-productos .section-product .section-categorias .boton-categoria {
   display: block;
   justify-content: center;
   width: auto;
   margin: 15px 8px;
   background-color: rgb(32, 186, 130);
   border: 1px black solid;
+  border-radius: 5px;
   transition: transform 0.4s ease;
   padding: 0px 2px;
   justify-self: center;
 }
-.main-productos .section-categorias .boton-categoria:hover {
+.main-productos .section-product .section-categorias .boton-categoria:hover {
   transform: scale(1.05);
 }
-.main-productos .section-cardproduct {
+.main-productos .section-product .section-cardproduct {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   margin: 10px;
 }
-.main-productos .section-cardproduct article .imagen-producto {
+.main-productos .section-product .section-cardproduct article .imagen-producto {
   width: 100%;
   height: auto;
   padding: 2px;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
-.main-productos .section-cardproduct article .nombre-producto {
+.main-productos .section-product .section-cardproduct article .nombre-producto {
   font-size: 1rem;
 }
-.main-productos .section-cardproduct article .precio-producto {
+.main-productos .section-product .section-cardproduct article .precio-producto {
   font-size: 2rem;
 }
-.main-productos .section-cardproduct article:hover {
+.main-productos .section-product .section-cardproduct article:hover {
   transform: scale(1.05);
 }
-.main-productos .section-cardproduct .boton-vermas {
+.main-productos .section-product .section-cardproduct article .boton-agregarCarrito {
+  display: block;
+  justify-content: center;
+  width: 50%;
+  margin: 15px 8px;
+  background-color: rgb(32, 186, 130);
+  border: 1px black solid;
+  border-radius: 5px;
+  transition: transform 0.4s ease;
+  padding: 0px 2px;
+  justify-self: center;
+}
+.main-productos .section-product .section-cardproduct article .boton-agregarCarrito:hover {
+  transform: scale(1.05);
+}
+.main-productos .section-product .boton-vermas {
   grid-column: 1/-1;
   display: block;
   justify-content: center;
@@ -224,11 +259,16 @@ footer .social-icon:hover {
   margin: 15px 8px;
   background-color: rgb(32, 186, 130);
   border: 1px black solid;
+  border-radius: 5px;
   transition: transform 0.4s ease;
   justify-self: center;
 }
-.main-productos .section-cardproduct .boton-vermas:hover {
+.main-productos .section-product .boton-vermas:hover {
   transform: scale(1.05);
+}
+.main-productos .section-carrito {
+  grid-column: 2;
+  margin: 5px 0px;
 }
 
 .main-contacto {
@@ -284,6 +324,7 @@ footer .social-icon:hover {
   margin: 5px;
   background-color: rgb(32, 186, 130);
   border: 1px black solid;
+  border-radius: 5px;
   transition: transform 0.4s ease;
 }
 .main-contacto .section-mapa {
@@ -341,6 +382,7 @@ footer .social-icon:hover {
     margin: 2px;
     background-color: rgb(32, 186, 130);
     border: 1px black solid;
+    border-radius: 5px;
     transition: transform 0.4s ease;
   }
   .main-contacto .section-mapa .mapa {
@@ -367,6 +409,7 @@ footer .social-icon:hover {
     margin: 5px;
     background-color: rgb(32, 186, 130);
     border: 1px black solid;
+    border-radius: 5px;
     transition: transform 0.4s ease;
   }
   .main-inicio .contenido-PD {
@@ -414,6 +457,7 @@ footer .social-icon:hover {
     margin: 5px;
     background-color: rgb(32, 186, 130);
     border: 1px black solid;
+    border-radius: 5px;
     transition: transform 0.4s ease;
   }
   .main-productos .section-product .section-cardproduct {
@@ -427,6 +471,7 @@ footer .social-icon:hover {
     margin: 10px 2px;
     background-color: rgb(32, 186, 130);
     border: 1px black solid;
+    border-radius: 5px;
     transition: transform 0.4s ease;
   }
   .main-contacto form {
@@ -441,6 +486,7 @@ footer .social-icon:hover {
     margin: 2px;
     background-color: rgb(32, 186, 130);
     border: 1px black solid;
+    border-radius: 5px;
     transition: transform 0.4s ease;
   }
   .main-contacto .section-mapa .mapa {

@@ -6,45 +6,58 @@
 // -----------Pagina Productos
 .main-productos{
     background-color: $color-bg-principal;
-    // Zona productos (section): Declaro que es la segunda columna y le doy layout propio
-    .titulo-productos{
-        font-size: 28px;
-        padding-top: 5px;
-        display: block;
-        justify-self: center; 
-        }
-    .section-categorias{
-        display: flex;
-        .boton-categoria{
-            @include boton(auto, 15px 8px);
-            padding: 0px 2px;
-            justify-self: center;
-            &:hover{
-                transform: scale(1.05);
+    display: grid;
+    @include grid(80% 20%, 1); 
+    .section-product{
+        grid-column: 1;
+        // Zona productos (section): Declaro que es la segunda columna y le doy layout propio
+        .titulo-productos{
+            font-size: 28px;
+            padding-top: 5px;
+            display: block;
+            justify-self: center; 
+            }
+        .section-categorias{
+            display: flex;
+            .boton-categoria{
+                @include boton(auto, 15px 8px);
+                padding: 0px 2px;
+                justify-self: center;
+                &:hover{
+                    transform: scale(1.05);
+                }
             }
         }
-    }
-    .section-cardproduct{
-        display: grid;
-        @include grid(repeat(4, 1fr), auto); 
-        margin: 10px;
-        article{
-            @extend .card;
-            .imagen-producto{
-                @include dimensionar(100%, auto, 2px);
-                aspect-ratio:1/1; // Relacion de 1:1 en la imagen
-                object-fit: cover;
+        .section-cardproduct{
+            display: grid;
+            @include grid(repeat(4, 1fr), auto); 
+            margin: 10px;
+            article{
+                @extend .card;
+                .imagen-producto{
+                    @include dimensionar(100%, auto, 2px);
+                    aspect-ratio:1/1; // Relacion de 1:1 en la imagen
+                    object-fit: cover;
+                }
+                .nombre-producto{
+                    font-size: 1rem;
+                }
+                .precio-producto{
+                    font-size: 2rem;
+                }
+                &:hover{
+                    transform: scale(1.05);
+                }
+                .boton-agregarCarrito{
+                    @include boton(50%, 15px 8px);
+                    padding: 0px 2px;
+                    justify-self: center;
+                    &:hover{
+                        transform: scale(1.05);
+                    }
+                };
             }
-            .nombre-producto{
-                font-size: 1rem;
-            }
-            .precio-producto{
-                font-size: 2rem;
-            }
-            &:hover{
-                transform: scale(1.05);
-            }
-        }
+        } 
         .boton-vermas{
             // significa que ocupo toda una fila, independientemente el nº de columnas
             grid-column: 1 / -1;
@@ -54,5 +67,9 @@
                 transform: scale(1.05);
             }
         }
+    }
+    .section-carrito{
+        grid-column: 2;
+        margin: 5px 0px;
     }
 }

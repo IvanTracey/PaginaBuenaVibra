@@ -8,6 +8,7 @@
     margin: $margin;
     background-color: $color-bg-secundario;
     border: 1px black solid;
+    border-radius: 5px;
     // Transicion suave en sus movimientos
     transition: transform 0.4s ease;
 }

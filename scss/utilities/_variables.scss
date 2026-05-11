@@ -1,11 +1,13 @@
 $color-bg-principal: rgb(62, 210, 190);
 $color-bg-secundario: rgb(32, 186, 130);
+$color-bg-terceario: rgb(129, 200, 208);
 $color-bg-card: whitesmoke;
 $color-tipografia:#052b20;
 
 $tamano-titulo:44px;
-$tamano-subtitulo:20px;
-$tamano-piefoto: 20px;
+$tamano-subtitulo:30px;
+$tamano-nombre:20px;
+$tamano-nombre-carrito: 18px;
 
 h2{
     font-size: $tamano-subtitulo;
@@ -20,4 +22,22 @@ h2{
     background-color: $color-bg-card;
     // Transicion suave en sus movimientos
     transition: transform 0.4s ease;
+    h3{
+        font-size: $tamano-nombre;
+    }
+}
+// Creo la estetica de los productos en el carrito
+.card-carrito{
+    margin: 5px 2px;
+    padding: 5px 2px;
+    border: 4px whitesmoke solid;
+    border-radius: 5px;
+    background-color: $color-bg-terceario;    
+    h4{
+        font-size: $tamano-nombre-carrito;
+        font-weight: bold;
+    }
+    p{
+        font-size: 15px;
+    }
 }
