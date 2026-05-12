@@ -1,23 +1,22 @@
 h1 {
-  font-size: 44px;
+  font-size: 50px;
   justify-self: center;
   font-weight: bold;
   padding: 10px;
 }
 
 h2 {
-  font-size: 30px;
-  justify-self: center;
+  font-size: 36px;
   font-weight: bold;
-  padding: 10px;
+  padding: 25px 0px;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 32px;
 }
 
 h4 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -32,7 +31,7 @@ h4 {
 }
 
 .card-carrito {
-  margin: 5px 2px;
+  margin: 10px 2px;
   padding: 5px 2px;
   border: 4px whitesmoke solid;
   border-radius: 5px;
@@ -51,6 +50,17 @@ h4 {
   font-size: 20px;
   font-weight: bold;
   width: 100%;
+}
+
+.card-carrito-mensaje {
+  margin: 4px 2px 6px 2px;
+  padding: 10px 10px;
+  border: 4px whitesmoke solid;
+  border-radius: 5px;
+  background-color: rgb(129, 200, 208);
+  font-size: 20px;
+  font-weight: bold;
+  justify-self: center;
 }
 
 * {
@@ -79,7 +89,7 @@ header .header-titulo .logo-colibri {
   padding: 0px 15px 7px 15px;
 }
 header .header-titulo .titulo {
-  font-size: 44px;
+  font-size: 50px;
   text-decoration: none;
   padding-top: 7px;
 }
@@ -158,7 +168,7 @@ footer .social-icon:hover {
   align-items: center;
   gap: 10px;
   margin: 10px;
-  font-size: 30px;
+  font-size: 36px;
 }
 .main-inicio .productos-destacados .contenido-PD {
   display: flex;
@@ -180,7 +190,7 @@ footer .social-icon:hover {
   text-decoration: none;
 }
 .main-inicio .publicaciones-recientes .header-PR {
-  font-size: 30px;
+  font-size: 36px;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -213,14 +223,14 @@ footer .social-icon:hover {
 .main-productos .section-product {
   grid-column: 1;
 }
-.main-productos .section-product .titulo-productos {
-  font-size: 28px;
-  padding-top: 5px;
-  display: block;
-  justify-self: center;
-}
 .main-productos .section-product .section-categorias {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.main-productos .section-product .section-categorias p {
+  margin: 5px;
+  font-size: 18px;
 }
 .main-productos .section-product .section-categorias .boton-categoria {
   display: block;
@@ -233,7 +243,7 @@ footer .social-icon:hover {
   transition: transform 0.4s ease;
   padding: 0px 2px;
   justify-self: center;
-  font-size: 22px;
+  font-size: 18px;
 }
 .main-productos .section-product .section-categorias .boton-categoria:hover {
   transform: scale(1.05);
@@ -251,7 +261,7 @@ footer .social-icon:hover {
   aspect-ratio: 1/1;
   object-fit: cover;
 }
-.main-productos .section-product .section-cardproduct article .nombre-producto {
+.main-productos .section-product .section-cardproduct article .descripcion-producto {
   font-size: 1rem;
 }
 .main-productos .section-product .section-cardproduct article .precio-producto {
@@ -275,24 +285,30 @@ footer .social-icon:hover {
 .main-productos .section-product .section-cardproduct article .boton-agregarCarrito:hover {
   transform: scale(1.05);
 }
-.main-productos .section-product .boton-vermas {
-  grid-column: 1/-1;
+.main-productos .section-carrito {
+  grid-column: 2;
+  padding: 2px 0px;
+}
+.main-productos .section-carrito .header-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-productos .section-carrito .header-carrito .boton-borrar {
   display: block;
   justify-content: center;
-  width: 90%;
-  margin: 15px 8px;
+  width: auto;
+  margin: 2px 8px;
   background-color: rgb(32, 186, 130);
   border: 1px black solid;
   border-radius: 5px;
   transition: transform 0.4s ease;
-  justify-self: center;
+  padding: 5px 8px;
 }
-.main-productos .section-product .boton-vermas:hover {
-  transform: scale(1.05);
-}
-.main-productos .section-carrito {
-  grid-column: 2;
-  margin: 5px 0px;
+.main-productos .section-carrito .body-carrito .card-carrito .p-carrito {
+  margin: 4px 2px;
+  padding: 0px;
+  font-size: 18px;
 }
 
 .main-contacto {

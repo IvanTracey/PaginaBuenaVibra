@@ -1,10 +1,12 @@
 // Las variables van en castellano expecto CARD
-// Las secciones es section-<correspondiente>
+// Las secciones es section-<correspondiente> y cuando es la variable es sectionCorrespondiente
 
-// Array de objeto con los productos
-// img es relativa al HTML
-const productos=[
-    // todo en castellano expecto id e img
+// ACTUALIZO EL CARRITO
+//actualizarCarrito();
+
+// VALOR A PRODUCTOS (base de datos) ----------------------
+const productos = [
+    // todo en castellano expecto id e img. img es relativa al HTML
     {
     id:1,
     nombre:"Agua de florida",
@@ -103,138 +105,179 @@ const productos=[
     },
 ];
 
-// ---------------------- CREACION PLANTILLA CARD ----------------------
-// El parametro del parentesis es la manera de escribirlo en la funcion
+// Variables globales del DOM
+const seccionCardProductos = document.querySelector('.section-cardproduct');
+const seccionBodyCarrito = document.querySelector('.body-carrito');
+const seccionFooterCarrito = document.querySelector('.footer-carrito');
 
+
+// CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
-    // Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
+// Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
     const cardProducto = document.createElement("article");
-    cardProducto.className="cardProduct";
-    const nombreProducto = document.createElement("h3"); 
-    nombreProducto.innerText=producto.nombre;
+    cardProducto.className = "cardProduct";
+
+    const nombreProducto = document.createElement("h3");
+    nombreProducto.innerText = producto.nombre;
+
     const imgProducto = document.createElement("img"); 
+    imgProducto.className = "imagen-producto";
     imgProducto.src = producto.img;
     imgProducto.alt = "NOIMG";
-    imgProducto.className = "imagen-producto";
-    const descProducto = document.createElement("p");
-    descProducto.innerText=producto.descricion;
-    const precioProducto = document.createElement("p"); 
-    precioProducto.innerText=`$${producto.precio}`;
-    const botonCarrito = document.createElement("button"); 
-    botonCarrito.innerText="Agregar";
-    botonCarrito.className="boton-agregarCarrito"; //modificar css y crear una clase
 
-    //distingo la seccion donde ubicar los cards, a partir de la clase
-    const seccionCardProductos=document.querySelector('.section-cardproduct');
-    // declaro que los cards son hijos de esa seccion
+    const descProducto = document.createElement("p"); 
+    nombreProducto.className = "descripcion-producto";
+    descProducto.innerText = producto.descricion;
+
+    const precioProducto = document.createElement("p"); 
+    precioProducto.className = "precio-producto"
+    precioProducto.innerText = `$${producto.precio}`;
+
+    const botonCarrito = document.createElement("button"); 
+    botonCarrito.innerText = "Agregar";
+    botonCarrito.className = "boton-agregarCarrito"; 
+
+// Conexion de la card con el padre
     seccionCardProductos.appendChild(cardProducto);
-    // declaro los hijos del article que es la card
+// Conexion de la card (article) con sus hijos
     cardProducto.appendChild(nombreProducto);
     cardProducto.appendChild(imgProducto);
     cardProducto.appendChild(descProducto);
     cardProducto.appendChild(precioProducto);
     cardProducto.appendChild(botonCarrito);
     
-    // Se declara aca para q cada boton tenga la funcion y porque existe producto.id. Asi adquiero el id del producto elegido 
-    botonCarrito.onclick=()=>agregarCarrito(producto.id);
+// Se crea evento del boton aqui (card individual, se creara en todas), se vincula con el id 
+// del producto elegido 
+    botonCarrito.onclick = () => agregarCarrito(producto.id);
 };
-// ---------------------- CREACION DE TODAS LAS CARDS ----------------------
 //con cada objeto del array, creo una card
-    productos.forEach(e=> crearCard(e));
+productos.forEach(e => crearCard(e));
 
-// ---------------------- BOTON VER MAS ----------------------
-const seccionProductos=document.querySelector('.section-product');
-const btnVerMas = document.createElement("button"); 
-btnVerMas.innerText="Ver mas";
-btnVerMas.className="boton-vermas";
-seccionProductos.appendChild(btnVerMas);
 
-// ---------------------- ARMADO DE CARRITO ----------------------
-
-// Adquiero el carrito del storage
-let carrito=JSON.parse(localStorage.getItem("carrito"));
+// VALOR A CARRITO ----------------------
+let carrito = [];
+// Adquiero el carrito del storage o lo inicio vacio si no esta. Mientras que si existe algun problema CATCH tamb me lo da vacio
+try{
+    carrito=JSON.parse(localStorage.getItem("carrito"));
 // Si no existe en storage, lo inicio vacio
-if(!carrito){
-    carrito=[];
+    if(!carrito){
+        carrito = [];
+    };
+} catch(e){
+    carrito = [];
+}// de esta manera existe carrito en todo el codigo
+
+// ACTUALIZACIO DE CARRITO ----------------------
+
+function actualizarCarrito(){
+// Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
+    // Limpio lo que habia del carrito
+    seccionBodyCarrito.innerHTML= "";
+    // Cargo nuevamente el carrito
+    carrito.forEach(e => mostrarCarrito(e));
+    const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
+    totalCarrito.innerText = `TOTAL: $${total}`;
+
+    // Muestro solo un mensaje. Va aca para que ese actualizado
+    if (total === 0){
+        carritoVacio.style.display = 'block';
+        totalCarrito.style.display = 'none';
+    }else {
+        carritoVacio.style.display = 'none';
+        totalCarrito.style.display = 'block';
+    }
 };
 
-// FUNCION DE AGREGAR PRODUCTO AL CARRITO
-function agregarCarrito(idElegido){
-// identifico el producto al que aprete el boton
-    let productoElegido=productos.find(e => e.id===idElegido);
-// verifico si el producto ya esta en el carrito (.some da true si el elemento que pasaste existe al menos una vez)
-    if(carrito.some(e => e.id===productoElegido.id)){
-// El producto ESTA, uso MAPS para recorrer el carrito
-        carrito=carrito.map(e => {
-            if (e.id===productoElegido.id){
-// lo que hago en el elemento que coincide, sumo 1
-                return{
-                    ...e,
-                    cantidad: e.cantidad+1,
-                };
-            }else{
-// lo que hago en los elemento que no coincide, sin cambios
-                return e;    
-            }
-        });     
-    }else{
-//NO ESTA, agrego el objeto producto elegido + cantidad:1
-        carrito.push({...productoElegido, cantidad: 1});
-    };
+// VACIAR CARRITO ----------------------
+const botonBorrar = document.querySelector('.boton-borrar');
+botonBorrar.onclick = () => {
+    // Borro el storage y tamb la variable
+    localStorage.setItem("carrito", JSON.stringify([]));
+    carrito = [];
+    actualizarCarrito();
 }
-// ---------------------- CREO ESPACIO PARA CARRITO ----------------------
-// ---------------------- TOTAL CARRITO ----------------------
-let totalCarrito=0;
-const infoCarrito=document.createElement("article");
-infoCarrito.className="card-carrito-info";
-infoCarrito.innerText=`TOTAL: $${totalCarrito}`;
-const seccionCarrito=document.querySelector('.section-carrito');
-seccionCarrito.appendChild(infoCarrito);
 
-const pru=[{
-    id:12,
-    nombre:"Velas aromaticas",
-    img: "../img/velas.webp",
-    descricion: "Lata de mandala 6.5cm",
-    precio: 11200,
-    categoria: "Velas",
-    variedades: ["Jazmin", "Lavanda", "Vainilla"],
-    cantidad: 1
-    },{
-    id:12,
-    nombre:"Velas 7",
-    img: "../img/velas.webp",
-    descricion: "Lata de mandala 6.5cm",
-    precio: 5,
-    categoria: "Velas",
-    variedades: ["Jazmin", "Lavanda", "Vainilla"],
-    cantidad: 3
+// ARMADO DE CARRITO ----------------------
+
+// AGREGAR AL CARRITO - CARGO EN STORAGE 
+function agregarCarrito(idElegido){    
+// identifico el producto al que aprete el boton
+    let productoElegido = productos.find(e => e.id === idElegido);
+// if necesario para que todo ocurra cuando se preciona un boton
+    if(productoElegido){
+// verifico si el producto ya esta en el carrito (.some da true si el elemento que pasaste existe al menos una vez)
+        if(carrito.some(e => e.id === productoElegido.id)){
+// El producto ESTA, uso MAPS para recorrer el carrito
+            carrito=carrito.map(e => {
+                if (e.id === productoElegido.id){
+// lo que hago en el elemento que coincide, sumo 1
+                    return{
+                        ...e,
+                        cantidad: e.cantidad+1,
+                    };
+                }else{
+// lo que hago en los elemento que no coincide, sin cambios
+                    return e;    
+                }
+            });     
+        }else{
+//NO ESTA, agrego el objeto producto elegido + cantidad:1
+            carrito.push({...productoElegido, cantidad: 1});
+        };
     }
-];
+    console.log(carrito);
+// Guardo en el storage como string
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+// Actualizo el carrito
+    actualizarCarrito();
+}
 
-// Creacion del card y su contenido
+// MOSTRAR CARRITO ----------------------
 function mostrarCarrito(e){
-    const cardCarrito=document.createElement("article");
-    cardCarrito.className="card-carrito";
+// Creacion del card y su contenido, luego lo asigno a un padre
+    const cardCarrito = document.createElement("article");
+    cardCarrito.className = "card-carrito";
+
     const nameProductoCarrito = document.createElement("h4");
-    nameProductoCarrito.innerText=e.nombre;
+    nameProductoCarrito.innerText = e.nombre;
+
     const precioProductoCarrito = document.createElement("p"); 
-    precioProductoCarrito.innerText=`Precio unitario: $${e.precio}`;
+    precioProductoCarrito.className = "p-carrito";
+    precioProductoCarrito.innerText = `Precio unitario: $${e.precio}`;
+    
     const cantProductoCarrito = document.createElement("p"); 
-    cantProductoCarrito.innerText=`Cantidad: ${e.cantidad}`;const sumaProductoCarrito = document.createElement("p"); 
-    sumaProductoCarrito.innerText=`Suma: $${e.precio*e.cantidad}`;
+    cantProductoCarrito.className = "p-carrito";
+    cantProductoCarrito.innerText =` Cantidad: ${e.cantidad}`;
+    
+    const sumaProductoCarrito = document.createElement("p"); 
+    sumaProductoCarrito.className = "p-carrito";
+    sumaProductoCarrito.innerText  =`Suma parcial: $${e.precio*e.cantidad}`;
 
+    seccionBodyCarrito.appendChild(cardCarrito);
 
-    //Tomo la seccion donde ira ubicado el carrito y la declaro padre
-    const seccionCarrito=document.querySelector('.section-carrito');
-    seccionCarrito.appendChild(cardCarrito);
     cardCarrito.appendChild(nameProductoCarrito);
     cardCarrito.appendChild(precioProductoCarrito);
-    cardCarrito.appendChild(cantProductoCarrito);    cardCarrito.appendChild(sumaProductoCarrito);
-    
+    cardCarrito.appendChild(cantProductoCarrito);    
+    cardCarrito.appendChild(sumaProductoCarrito);
 }
-pru.forEach(e=> mostrarCarrito(e));
+carrito.forEach(e => mostrarCarrito(e));
 
-// ---------------------- MOSTRAR CARRITO ----------------------
 
-// ---------------------- VACIAR CARRITO ----------------------
+// FOOTER CARRITO ----------------------
+// Total del carrito
+const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
+const totalCarrito = document.createElement("article");
+totalCarrito.className = "card-carrito-mensaje";
+totalCarrito.innerText = `TOTAL: $${total}`;
+
+// Mensaje de carrito vacio ----------------------
+const carritoVacio = document.createElement("article");
+carritoVacio.className = "card-carrito-mensaje";
+carritoVacio.innerText = "Carrito vacío";
+
+// Le asigno el padre a los dos
+seccionFooterCarrito.appendChild(carritoVacio);
+seccionFooterCarrito.appendChild(totalCarrito);
+
+
+

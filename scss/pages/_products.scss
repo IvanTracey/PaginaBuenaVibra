@@ -3,27 +3,26 @@
 @use "../utilities/mixin" as *;
 
 
-// -----------Pagina Productos
+// ----------- Pagina Productos
 .main-productos{
     background-color: $color-bg-principal;
     display: grid;
     @include grid(83% 16%, 1); 
     .section-product{
         grid-column: 1;
-        // Zona productos (section): Declaro que es la segunda columna y le doy layout propio
-        .titulo-productos{
-            font-size: 28px;
-            padding-top: 5px;
-            display: block;
-            justify-self: center; 
-            }
         .section-categorias{
             display: flex;
+            flex-wrap: wrap;
+            align-items: center; 
+            p{
+                margin: 5px;
+                font-size: 18px;
+            }
             .boton-categoria{
                 @include boton(auto, 15px 8px);
                 padding: 0px 2px;
                 justify-self: center;
-                font-size: 22px;
+                font-size: 18px;
                 &:hover{
                     transform: scale(1.05);
                 }
@@ -40,7 +39,7 @@
                     aspect-ratio:1/1; // Relacion de 1:1 en la imagen
                     object-fit: cover;
                 }
-                .nombre-producto{
+                .descripcion-producto{
                     font-size: 1rem;
                 }
                 .precio-producto{
@@ -59,18 +58,27 @@
                 };
             }
         } 
-        .boton-vermas{
-            // significa que ocupo toda una fila, independientemente el nº de columnas
-            grid-column: 1 / -1;
-            @include boton(90%, 15px 8px);
-            justify-self: center;
-            &:hover{
-                transform: scale(1.05);
-            }
-        }
     }
     .section-carrito{
         grid-column: 2;
-        margin: 5px 0px;
+        padding: 2px 0px;
+        .header-carrito{
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            .boton-borrar{
+                @include boton(auto, 2px 8px); 
+                padding: 5px 8px;  
+            }
+        }
+        .body-carrito{
+            .card-carrito{
+                    .p-carrito{
+                    margin: 4px 2px;
+                    padding: 0px;
+                    font-size: $tamano-info-carrito;
+                }
+            }
+        }
     }
 }
