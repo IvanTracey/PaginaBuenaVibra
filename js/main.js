@@ -1,8 +1,7 @@
 // Las variables van en castellano expecto CARD
 // Las secciones es section-<correspondiente> y cuando es la variable es sectionCorrespondiente
 
-// ACTUALIZO EL CARRITO
-//actualizarCarrito();
+
 
 // VALOR A PRODUCTOS (base de datos) ----------------------
 const productos = [
@@ -110,7 +109,6 @@ const seccionCardProductos = document.querySelector('.section-cardproduct');
 const seccionBodyCarrito = document.querySelector('.body-carrito');
 const seccionFooterCarrito = document.querySelector('.footer-carrito');
 
-
 // CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
 // Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
@@ -167,8 +165,24 @@ try{
     carrito = [];
 }// de esta manera existe carrito en todo el codigo
 
-// ACTUALIZACIO DE CARRITO ----------------------
+// Variables necesarias para la actualizacion de la pagina
 
+// Total del carrito ----------------------
+const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
+const totalCarrito = document.createElement("article");
+totalCarrito.className = "card-carrito-mensaje";
+totalCarrito.innerText = `TOTAL: $${total}`;
+
+// Mensaje de carrito vacio ----------------------
+const carritoVacio = document.createElement("article");
+carritoVacio.className = "card-carrito-mensaje";
+carritoVacio.innerText = "Carrito vacío";
+
+// Le asigno el padre a los dos
+seccionFooterCarrito.appendChild(carritoVacio);
+seccionFooterCarrito.appendChild(totalCarrito);
+
+// ACTUALIZACION DE CARRITO ----------------------
 function actualizarCarrito(){
 // Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
     // Limpio lo que habia del carrito
@@ -187,17 +201,6 @@ function actualizarCarrito(){
         totalCarrito.style.display = 'block';
     }
 };
-
-// VACIAR CARRITO ----------------------
-const botonBorrar = document.querySelector('.boton-borrar');
-botonBorrar.onclick = () => {
-    // Borro el storage y tamb la variable
-    localStorage.setItem("carrito", JSON.stringify([]));
-    carrito = [];
-    actualizarCarrito();
-}
-
-// ARMADO DE CARRITO ----------------------
 
 // AGREGAR AL CARRITO - CARGO EN STORAGE 
 function agregarCarrito(idElegido){    
@@ -260,24 +263,19 @@ function mostrarCarrito(e){
     cardCarrito.appendChild(cantProductoCarrito);    
     cardCarrito.appendChild(sumaProductoCarrito);
 }
-carrito.forEach(e => mostrarCarrito(e));
 
+// VACIAR CARRITO ----------------------
+const botonBorrar = document.querySelector('.boton-borrar');
+botonBorrar.onclick = () => {
+    // Borro el storage y tamb la variable
+    localStorage.setItem("carrito", JSON.stringify([]));
+    carrito = [];
+    actualizarCarrito();
+}
 
-// FOOTER CARRITO ----------------------
-// Total del carrito
-const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
-const totalCarrito = document.createElement("article");
-totalCarrito.className = "card-carrito-mensaje";
-totalCarrito.innerText = `TOTAL: $${total}`;
+// Actualizacion de pagina
+actualizarCarrito()
 
-// Mensaje de carrito vacio ----------------------
-const carritoVacio = document.createElement("article");
-carritoVacio.className = "card-carrito-mensaje";
-carritoVacio.innerText = "Carrito vacío";
-
-// Le asigno el padre a los dos
-seccionFooterCarrito.appendChild(carritoVacio);
-seccionFooterCarrito.appendChild(totalCarrito);
 
 
 
