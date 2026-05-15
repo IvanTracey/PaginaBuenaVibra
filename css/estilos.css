@@ -310,6 +310,20 @@ footer .social-icon:hover {
   padding: 0px;
   font-size: 18px;
 }
+.main-productos .section-carrito .footer-carrito {
+  justify-items: center;
+}
+.main-productos .section-carrito .footer-carrito .boton-comprar {
+  display: block;
+  justify-content: center;
+  width: auto;
+  margin: 2px 8px;
+  background-color: rgb(32, 186, 130);
+  border: 1px black solid;
+  border-radius: 5px;
+  transition: transform 0.4s ease;
+  padding: 5px 8px;
+}
 
 .main-contacto {
   background-color: rgb(62, 210, 190);

@@ -105,7 +105,9 @@ const productos = [
 ];
 
 // Variables globales del DOM
+
 const seccionCardProductos = document.querySelector('.section-cardproduct');
+const seccionHeaderCarrito = document.querySelector('.header-carrito');
 const seccionBodyCarrito = document.querySelector('.body-carrito');
 const seccionFooterCarrito = document.querySelector('.footer-carrito');
 
@@ -182,6 +184,12 @@ carritoVacio.innerText = "Carrito vacío";
 seccionFooterCarrito.appendChild(carritoVacio);
 seccionFooterCarrito.appendChild(totalCarrito);
 
+// Boton de compras
+botonComprar = document.createElement("button");
+botonComprar.innerText = "Comprar";
+botonComprar.className = "boton-comprar";
+seccionFooterCarrito.appendChild(botonComprar);
+
 // ACTUALIZACION DE CARRITO ----------------------
 function actualizarCarrito(){
 // Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
@@ -196,9 +204,11 @@ function actualizarCarrito(){
     if (total === 0){
         carritoVacio.style.display = 'block';
         totalCarrito.style.display = 'none';
+        botonComprar.style.display = 'none';
     }else {
         carritoVacio.style.display = 'none';
         totalCarrito.style.display = 'block';
+        botonComprar.style.display = 'block';
     }
 };
 
@@ -250,11 +260,13 @@ function mostrarCarrito(e){
     
     const cantProductoCarrito = document.createElement("p"); 
     cantProductoCarrito.className = "p-carrito";
-    cantProductoCarrito.innerText =` Cantidad: ${e.cantidad}`;
+    cantProductoCarrito.innerText = `Cantidad: ${e.cantidad}`;
     
     const sumaProductoCarrito = document.createElement("p"); 
     sumaProductoCarrito.className = "p-carrito";
     sumaProductoCarrito.innerText  =`Suma parcial: $${e.precio*e.cantidad}`;
+
+    //const botonComprar = document.createElement("button");
 
     seccionBodyCarrito.appendChild(cardCarrito);
 
@@ -265,8 +277,11 @@ function mostrarCarrito(e){
 }
 
 // VACIAR CARRITO ----------------------
-const botonBorrar = document.querySelector('.boton-borrar');
-botonBorrar.onclick = () => {
+borrarCarrito = document.createElement("button");
+borrarCarrito.innerText = "Borrar";
+borrarCarrito.className = "boton-borrar";
+seccionHeaderCarrito.appendChild(borrarCarrito);
+borrarCarrito.onclick = () => {
     // Borro el storage y tamb la variable
     localStorage.setItem("carrito", JSON.stringify([]));
     carrito = [];
@@ -275,6 +290,7 @@ botonBorrar.onclick = () => {
 
 // Actualizacion de pagina
 actualizarCarrito()
+
 
 
 

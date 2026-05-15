@@ -80,5 +80,13 @@
                 }
             }
         }
+        .footer-carrito{
+            justify-items: center;
+            .boton-comprar{
+                @include boton(auto, 2px 8px); 
+                padding: 5px 8px; 
+
+            }
+        }
     }
 }
