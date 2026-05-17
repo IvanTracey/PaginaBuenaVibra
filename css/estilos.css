@@ -21,12 +21,11 @@ h2 {
 }
 
 h3 {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 24px;
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -35,47 +34,43 @@ h4 {
   align-items: center;
   margin: 0.6rem;
   padding: 1rem;
-  border: 4px #bbd9b6 solid;
+  background-color: #bbd9b6;
   border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  background-color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.4s ease;
 }
 
 .card-carrito {
   margin: 10px 2px;
   padding: 5px 2px;
-  border: 4px #A8B8A5 solid;
   border-radius: 5px;
   background-color: #bbd9b6;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 .card-carrito p {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .card-carrito-info {
   margin: 5px 2px;
   padding: 8px 2px;
-  border: 4px #A8B8A5 solid;
   border-radius: 5px;
   background-color: #bbd9b6;
   font-size: 20px;
   font-weight: bold;
   width: 100%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .card-carrito-mensaje {
   margin: 4px 2px 6px 2px;
   padding: 10px 10px;
-  border: 4px #A8B8A5 solid;
   border-radius: 5px;
   background-color: #bbd9b6;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   justify-self: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -167,8 +162,9 @@ footer .social-icon:hover {
   width: 20%;
   margin: 5px;
   background-color: #A8B8A5;
-  border: 1px black solid;
+  border: none;
   border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease;
   display: block;
 }
@@ -249,11 +245,11 @@ footer .social-icon:hover {
   width: auto;
   margin: 15px 8px;
   background-color: #A8B8A5;
-  border: 1px black solid;
+  border: none;
   border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease;
-  margin-right: 30px;
-  padding: 0px 5px;
+  padding: 2px 10px;
   font-size: 22px;
 }
 .main-productos .section-product .section-categorias .boton-categoria:hover {
@@ -272,7 +268,14 @@ footer .social-icon:hover {
   object-fit: cover;
 }
 .main-productos .section-product .section-cardproduct article .descripcion-producto {
-  font-size: 18px;
+  font-size: 16px;
+}
+.main-productos .section-product .section-cardproduct article .variedad-producto {
+  width: 100%;
+  margin: 10px auto;
+  display: block;
+  font-size: 20px;
+  background-color: #A8B8A5;
 }
 .main-productos .section-product .section-cardproduct article .precio-producto {
   font-size: 2rem;
@@ -286,11 +289,11 @@ footer .social-icon:hover {
   width: 50%;
   margin: 15px 8px;
   background-color: #A8B8A5;
-  border: 1px black solid;
+  border: none;
   border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease;
   padding: 0px 2px;
-  justify-self: center;
 }
 .main-productos .section-product .section-cardproduct article .boton-agregarCarrito:hover {
   transform: scale(1.05);
@@ -298,7 +301,7 @@ footer .social-icon:hover {
 .main-productos .section-carrito {
   grid-column: 2;
   padding: 8px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 .main-productos .section-carrito .header-carrito {
   display: flex;
@@ -311,30 +314,37 @@ footer .social-icon:hover {
   width: auto;
   margin: 2px 8px;
   background-color: #A8B8A5;
-  border: 1px black solid;
+  border: none;
   border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease;
   padding: 5px 8px;
+}
+.main-productos .section-carrito .header-carrito .boton-borrar:hover {
+  transform: translateY(-2px);
 }
 .main-productos .section-carrito .body-carrito .card-carrito .p-carrito {
   margin: 4px 2px;
   padding: 0px;
-  font-size: 18px;
+  font-size: 14px;
 }
 .main-productos .section-carrito .footer-carrito {
   justify-items: center;
 }
-.main-productos .section-carrito .footer-carrito .boton-comprar {
+.main-productos .section-carrito .footer-carrito .boton-enviar {
   display: block;
   justify-content: center;
   width: auto;
-  margin: 2px 8px;
+  margin: 10px 8px;
   background-color: #A8B8A5;
-  border: 1px black solid;
+  border: none;
   border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease;
   padding: 5px 8px;
-  margin: 10px;
+}
+.main-productos .section-carrito .footer-carrito .boton-enviar:hover {
+  transform: translateY(-2px);
 }
 
 .main-contacto {
@@ -389,8 +399,9 @@ footer .social-icon:hover {
   width: 50%;
   margin: 5px;
   background-color: #A8B8A5;
-  border: 1px black solid;
+  border: none;
   border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease;
 }
 .main-contacto .section-mapa {
@@ -447,8 +458,9 @@ footer .social-icon:hover {
     width: 80%;
     margin: 2px;
     background-color: #A8B8A5;
-    border: 1px black solid;
+    border: none;
     border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
   }
   .main-contacto .section-mapa .mapa {
@@ -474,8 +486,9 @@ footer .social-icon:hover {
     width: 60%;
     margin: 5px;
     background-color: #A8B8A5;
-    border: 1px black solid;
+    border: none;
     border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
   }
   .main-inicio .contenido-PD {
@@ -522,8 +535,9 @@ footer .social-icon:hover {
     width: 50%;
     margin: 5px;
     background-color: #A8B8A5;
-    border: 1px black solid;
+    border: none;
     border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
   }
   .main-productos .section-product .section-cardproduct {
@@ -536,8 +550,9 @@ footer .social-icon:hover {
     width: 98%;
     margin: 10px 2px;
     background-color: #A8B8A5;
-    border: 1px black solid;
+    border: none;
     border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
   }
   .main-contacto form {
@@ -551,8 +566,9 @@ footer .social-icon:hover {
     width: 80%;
     margin: 2px;
     background-color: #A8B8A5;
-    border: 1px black solid;
+    border: none;
     border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
   }
   .main-contacto .section-mapa .mapa {
@@ -560,5 +576,10 @@ footer .social-icon:hover {
     height: auto;
   }
 }
+/*
+*{
+  outline:1px solid red;
+}
+*/
 
 /*# sourceMappingURL=estilos.css.map */

@@ -27,7 +27,7 @@ const productos = [
     descricion: "Producto artesanal cordobes",
     precio: 6000,
     categoria: "Aromas",
-    variedades: ["Mirra", "Sandalo"]
+    variedades: [{nombre: "Mirra", cant: 2}, {nombre: "Sandalo", cant: 1},]
     },
     {
     id:5,
@@ -37,7 +37,7 @@ const productos = [
     descricion: "20cm de largo, 10 unidades",
     precio: 2000,
     categoria: "Defumacion",
-    variedad: ["Almizcle y benjui", "Citrus", "Lavanda", "Melisa", "Mirra", "Nag champa", "Romero", "Sandalo", "Vainilla y coco", "Verbena", "Verbena y melisa"]
+    variedades: [{nombre: "Almizcle y benjui", cant: 2}, {nombre: "Citrus", cant: 1},{nombre: "Lavanda", cant: 2}, {nombre: "Melisa", cant: 1},{nombre: "Mirra", cant: 2}, {nombre: "Nag champa", cant: 1},{nombre: "Romero", cant: 2}, {nombre: "Sandalo", cant: 1}, {nombre: "Vainilla y coco", cant: 1},{nombre: "Verbena", cant: 2}, {nombre: "Verbena y melisa", cant: 1},]
     },
     {
     id:6,
@@ -46,7 +46,7 @@ const productos = [
     descricion: "30cm de largo, 15 unidades",
     precio:3000,
     categoria: "Defumacion",
-    variedad: ["Atrae clientes", "Atrae dinero", "Black ice", "Citronella", "Cool water", "Fresa", "Lavanda", "Lick me all over", "Limpia hogar", "Manzana canela", "Meditacion", "Om", "Palo santo", "Rosa roja", "Rosa vainilla","Sandalo"]
+    variedades: [{nombre: "Atrae clientes", cant: 2}, {nombre: "Atrae dinero", cant: 1},{nombre: "Black ice", cant: 2}, {nombre: "Citronella", cant: 1},{nombre: "Cool water", cant: 2}, {nombre: "Fresa", cant: 1},{nombre: "Lavanda", cant: 2}, {nombre: "Lick me all over", cant: 1}, {nombre: "Limpia hogar", cant: 1},{nombre: "Manzana canela", cant: 2}, {nombre: "Meditacion", cant: 1},{nombre: "Om", cant: 2}, {nombre: "Palo santo", cant: 1}, {nombre: "Rosa roja", cant: 1},{nombre: "Rosa vainilla", cant: 2}, {nombre: "Sandalo", cant: 1}]
     },
     {
     id:7,
@@ -55,7 +55,7 @@ const productos = [
     descricion: "50cm de largo, 10 unidades",
     precio: 6500,
     categoria: "Defumacion",
-    variedad: ["Almizcle", "Atrae dinero", "Black ice", "Canela", "Citronella", "Coco", "Fresa", "Jazmin", "Lavanda", "Limpia hogar", "Meditacion", "Mirra", "Om", "Palo santo", "Sandalo"]
+     variedades: [{nombre: "Almizcle", cant: 2}, {nombre: "Atrae dinero", cant: 1},{nombre: "Black ice", cant: 2}, {nombre: "Canela", cant: 1},{nombre: "Citronella", cant: 2}, {nombre: "Coco", cant: 1},{nombre: "Fresa", cant: 2}, {nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Limpia hogar", cant: 2}, {nombre: "Meditacion", cant: 1}, {nombre: "Mirra", cant: 2}, {nombre: "Om", cant: 2}, {nombre: "Palo santo", cant: 1}, {nombre: "Sandalo", cant: 1}]
     },
     {
     id:8,
@@ -64,7 +64,7 @@ const productos = [
     descricion: "Hecho con hierbas naturales, Xgr",
     precio: 500,
     categoria: "Defumacion",
-    variedades: ["Cedron", "Laurel", "Lavanda", "Pino alimonado y mandarina", "Pino alimonado y naranja", "Romero", "Salvia"]
+    variedades: [{nombre: "Cedron", cant: 1},{nombre: "Laurel", cant: 2}, {nombre: "Lavanda", cant: 1}, {nombre: "Pino alimonado y mandarina", cant: 2}, {nombre: "Pino alimonado y naranja", cant: 2}, {nombre: "Romero", cant: 1}, {nombre: "Salvia", cant: 1}]
     },
     {
     id:9,
@@ -89,7 +89,7 @@ const productos = [
     descricion: "Lata de mandala 4.5cm",
     precio: 6900,
     categoria: "Velas",
-    variedades: ["Jazmin", "Lavanda", "Vainilla"]
+    variedades: [{nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Vainilla africana", cant: 1}]
     },
     {
     id:12,
@@ -98,7 +98,7 @@ const productos = [
     descricion: "Lata de mandala 6.5cm",
     precio: 11200,
     categoria: "Velas",
-    variedades: ["Jazmin", "Lavanda", "Vainilla"]
+    variedades: [{nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Vainilla africana", cant: 1}]
     },
 ];
 
@@ -107,78 +107,75 @@ const productos = [
       -> section-carrito -> (section- header/body/footer -carrito)
 */
 const main = document.querySelector('.main-productos');
-const seccionProductos = document.createElement("section");
-seccionProductos.className = "section-product";
-main.appendChild(seccionProductos);
-const titulo = document.createElement("h1");
-titulo.innerText = "Productos";
-seccionProductos.appendChild(titulo);
+    const seccionProductos = document.createElement("section");
+    seccionProductos.className = "section-product";
+    main.appendChild(seccionProductos);
+        const titulo = document.createElement("h1");
+        titulo.innerText = "Productos";
+        seccionProductos.appendChild(titulo);
+    const seccionCategorias = document.createElement("section");
+    seccionCategorias.className = "section-categorias";
+    seccionProductos.appendChild(seccionCategorias);
+        // Botones de categorias
+        const botonAdorno = document.createElement("button");
+        botonAdorno.className = "boton-categoria";
+        botonAdorno.id = "cat-adorno";
+        botonAdorno.innerText = "Adorno";
+        seccionCategorias.appendChild(botonAdorno);
+        const botonAromas = document.createElement("button");
+        botonAromas.className = "boton-categoria";
+        botonAromas.id = "cat-aromas";
+        botonAromas.innerText = "Aromas";
+        seccionCategorias.appendChild(botonAromas);
+        const botonColgantes = document.createElement("button");
+        botonColgantes.className = "boton-categoria";
+        botonColgantes.id = "cat-colgantes";
+        botonColgantes.innerText = "Colgantes";
+        seccionCategorias.appendChild(botonColgantes);
+        const botonDefumacion = document.createElement("button");
+        botonDefumacion.className = "boton-categoria";
+        botonDefumacion.id = "cat-defumacion";
+        botonDefumacion.innerText = "Defumacion";
+        seccionCategorias.appendChild(botonDefumacion);
+        const botonManifestacion = document.createElement("button");
+        botonManifestacion.className = "boton-categoria";
+        botonManifestacion.id = "cat-manifestacion";
+        botonManifestacion.innerText = "Manifestacion";
+        seccionCategorias.appendChild(botonManifestacion);
+        const botonPortasahumerios = document.createElement("button");
+        botonPortasahumerios.className = "boton-categoria";
+        botonPortasahumerios.id = "cat-portasahumerios";
+        botonPortasahumerios.innerText = "Portasahumerios";
+        seccionCategorias.appendChild(botonPortasahumerios);
+        const botonPortavelas = document.createElement("button");
+        botonPortavelas.className = "boton-categoria";
+        botonPortavelas.id = "cat-portavelas";
+        botonPortavelas.innerText = "Portavelas";
+        seccionCategorias.appendChild(botonPortavelas);
+        const botonVelas = document.createElement("button");
+        botonVelas.className = "boton-categoria";
+        botonVelas.id = "cat-velas";
+        botonVelas.innerText = "Velas";
+        seccionCategorias.appendChild(botonVelas);
+    const seccionCardProductos = document.createElement("section");
+    seccionCardProductos.className = "section-cardproduct";
+    seccionProductos.appendChild(seccionCardProductos);
 
-const seccionCategorias = document.createElement("section");
-seccionCategorias.className = "section-categorias";
-seccionProductos.appendChild(seccionCategorias);
-// Botones de categorias
-const botonAdorno = document.createElement("button");
-botonAdorno.className = "boton-categoria";
-botonAdorno.id = "cat-adorno";
-botonAdorno.innerText = "Adorno";
-seccionCategorias.appendChild(botonAdorno);
-const botonAromas = document.createElement("button");
-botonAromas.className = "boton-categoria";
-botonAromas.id = "cat-aromas";
-botonAromas.innerText = "Aromas";
-seccionCategorias.appendChild(botonAromas);
-const botonColgantes = document.createElement("button");
-botonColgantes.className = "boton-categoria";
-botonColgantes.id = "cat-colgantes";
-botonColgantes.innerText = "Colgantes";
-seccionCategorias.appendChild(botonColgantes);
-const botonDefumacion = document.createElement("button");
-botonDefumacion.className = "boton-categoria";
-botonDefumacion.id = "cat-defumacion";
-botonDefumacion.innerText = "Defumacion";
-seccionCategorias.appendChild(botonDefumacion);
-const botonManifestacion = document.createElement("button");
-botonManifestacion.className = "boton-categoria";
-botonManifestacion.id = "cat-manifestacion";
-botonManifestacion.innerText = "Manifestacion";
-seccionCategorias.appendChild(botonManifestacion);
-const botonPortasahumerios = document.createElement("button");
-botonPortasahumerios.className = "boton-categoria";
-botonPortasahumerios.id = "cat-portasahumerios";
-botonPortasahumerios.innerText = "Portasahumerios";
-seccionCategorias.appendChild(botonPortasahumerios);
-const botonPortavelas = document.createElement("button");
-botonPortavelas.className = "boton-categoria";
-botonPortavelas.id = "cat-portavelas";
-botonPortavelas.innerText = "Portavelas";
-seccionCategorias.appendChild(botonPortavelas);
-const botonVelas = document.createElement("button");
-botonVelas.className = "boton-categoria";
-botonVelas.id = "cat-velas";
-botonVelas.innerText = "Velas";
-seccionCategorias.appendChild(botonVelas);
-
-
-const seccionCardProductos = document.createElement("section");
-seccionCardProductos.className = "section-cardproduct";
-seccionProductos.appendChild(seccionCardProductos);
-
-const seccionCarrito = document.createElement("section");
-seccionCarrito.className = "section-carrito";
-main.appendChild(seccionCarrito);
-const seccionHeaderCarrito = document.createElement("section");
-seccionHeaderCarrito.className = "header-carrito";
-seccionCarrito.appendChild(seccionHeaderCarrito);
-const tituloCarrito = document.createElement("h2");
-tituloCarrito.innerText = "Carrito";
-seccionHeaderCarrito.appendChild(tituloCarrito);
-const seccionBodyCarrito = document.createElement("section");
-seccionBodyCarrito.className = "body-carrito";
-seccionCarrito.appendChild(seccionBodyCarrito);
-const seccionFooterCarrito = document.createElement("section");
-seccionFooterCarrito.className = "footer-carrito";
-seccionCarrito.appendChild(seccionFooterCarrito);
+    const seccionCarrito = document.createElement("section");
+    seccionCarrito.className = "section-carrito";
+    main.appendChild(seccionCarrito);
+        const seccionHeaderCarrito = document.createElement("section");
+        seccionHeaderCarrito.className = "header-carrito";
+        seccionCarrito.appendChild(seccionHeaderCarrito);
+            const tituloCarrito = document.createElement("h2");
+            tituloCarrito.innerText = "Carrito";
+            seccionHeaderCarrito.appendChild(tituloCarrito);
+        const seccionBodyCarrito = document.createElement("section");
+        seccionBodyCarrito.className = "body-carrito";
+        seccionCarrito.appendChild(seccionBodyCarrito);
+        const seccionFooterCarrito = document.createElement("section");
+        seccionFooterCarrito.className = "footer-carrito";
+        seccionCarrito.appendChild(seccionFooterCarrito);
 
 // CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
@@ -212,16 +209,35 @@ function crearCard (producto){
     cardProducto.appendChild(nombreProducto);
     cardProducto.appendChild(imgProducto);
     cardProducto.appendChild(descProducto);
+// SELECT para las variedades de productos - aqui para que aparezca en el orden que quiero
+    let selectVariedades = null;    // La inicio fuera para que sea variable global
+// Solo si el producto tiene variedades
+    if(producto.variedades) {
+        selectVariedades = document.createElement("select");
+        selectVariedades.className = "variedad-producto";
+        selectVariedades.name = "variedades";
+        producto.variedades.forEach(variedad => {
+            const option = document.createElement("option");
+            if (variedad.cant) {
+                option.value = variedad.nombre;
+                option.innerText = variedad.nombre;
+                selectVariedades.appendChild(option);}
+        });
+        cardProducto.appendChild(selectVariedades);
+    }
     cardProducto.appendChild(precioProducto);
     cardProducto.appendChild(botonCarrito);
     
 // Se crea evento del boton aqui (card individual, se creara en todas), se vincula con el id 
 // del producto elegido 
-    botonCarrito.onclick = () => agregarCarrito(producto.id);
+    botonCarrito.onclick = () => {
+//si select existe, dame su valor; si no, dame null - así cubrís todos los productos
+        const variedadElegida = selectVariedades ? selectVariedades.value : null;
+        agregarCarrito(producto.id, variedadElegida);
+    }
 };
 //con cada objeto del array, creo una card
 productos.forEach(e => crearCard(e));
-
 
 // VALOR A CARRITO ----------------------
 let carrito = [];
@@ -253,11 +269,11 @@ carritoVacio.innerText = "Carrito vacío";
 seccionFooterCarrito.appendChild(carritoVacio);
 seccionFooterCarrito.appendChild(totalCarrito);
 
-// Boton de compras
-botonComprar = document.createElement("button");
-botonComprar.innerText = "Comprar";
-botonComprar.className = "boton-comprar";
-seccionFooterCarrito.appendChild(botonComprar);
+// Boton de envio de pedido
+botonEnviar = document.createElement("button");
+botonEnviar.innerText = "Enviar formulario";
+botonEnviar.className = "boton-enviar";
+seccionFooterCarrito.appendChild(botonEnviar);
 
 // ACTUALIZACION DE CARRITO ----------------------
 function actualizarCarrito(){
@@ -273,25 +289,30 @@ function actualizarCarrito(){
     if (total === 0){
         carritoVacio.style.display = 'block';
         totalCarrito.style.display = 'none';
-        botonComprar.style.display = 'none';
+        botonEnviar.style.display = 'none';
     }else {
         carritoVacio.style.display = 'none';
         totalCarrito.style.display = 'block';
-        botonComprar.style.display = 'block';
+        botonEnviar.style.display = 'block';
     }
 };
 
 // AGREGAR AL CARRITO - CARGO EN STORAGE 
-function agregarCarrito(idElegido){    
+function agregarCarrito(idElegido, varElegida){    
 // identifico el producto al que aprete el boton
     let productoElegido = productos.find(e => e.id === idElegido);
 // if necesario para que todo ocurra cuando se preciona un boton
     if(productoElegido){
-// verifico si el producto ya esta en el carrito (.some da true si el elemento que pasaste existe al menos una vez)
-        if(carrito.some(e => e.id === productoElegido.id)){
+// le incluyo el campo de la eleccion realizada
+        const productoConVariedad = {
+            ...productoElegido,
+            eleccion: varElegida,
+        }
+// verifico si el producto ya esta en el carrito (.some da true si el elemento que pasaste existe al menos una vez) - tanto con el id como con la variedad
+        if(carrito.some(e => e.id === productoConVariedad.id && e.eleccion === productoConVariedad.eleccion)){
 // El producto ESTA, uso MAPS para recorrer el carrito
             carrito=carrito.map(e => {
-                if (e.id === productoElegido.id){
+                if (e.id === productoConVariedad.id && e.eleccion === productoConVariedad.eleccion){
 // lo que hago en el elemento que coincide, sumo 1
                     return{
                         ...e,
@@ -304,7 +325,7 @@ function agregarCarrito(idElegido){
             });     
         }else{
 //NO ESTA, agrego el objeto producto elegido + cantidad:1
-            carrito.push({...productoElegido, cantidad: 1});
+            carrito.push({...productoConVariedad, cantidad: 1});
         };
     }
     console.log(carrito);
@@ -323,6 +344,12 @@ function mostrarCarrito(e){
     const nameProductoCarrito = document.createElement("h4");
     nameProductoCarrito.innerText = e.nombre;
 
+    const variedadProductoCarrito = document.createElement("p"); 
+    if (e.eleccion){
+        variedadProductoCarrito.className = "p-carrito";
+        variedadProductoCarrito.innerText = `Eleccion: ${e.eleccion}`;
+    }
+
     const precioProductoCarrito = document.createElement("p"); 
     precioProductoCarrito.className = "p-carrito";
     precioProductoCarrito.innerText = `Precio unitario: $${e.precio}`;
@@ -340,6 +367,9 @@ function mostrarCarrito(e){
     seccionBodyCarrito.appendChild(cardCarrito);
 
     cardCarrito.appendChild(nameProductoCarrito);
+    if (e.eleccion){
+        cardCarrito.appendChild(variedadProductoCarrito);
+    }
     cardCarrito.appendChild(precioProductoCarrito);
     cardCarrito.appendChild(cantProductoCarrito);    
     cardCarrito.appendChild(sumaProductoCarrito);
