@@ -1,8 +1,17 @@
+@charset "UTF-8";
+/*
+Verde salvia: #A8B8A5
+Arena: #D9CDBF
+Marrón suave: #A38A75
+Crema: #F3EDE4
+Texto oscuro: #2B2B2B
+
+*/
 h1 {
   font-size: 50px;
   justify-self: center;
   font-weight: bold;
-  padding: 10px;
+  padding-top: 10px;
 }
 
 h2 {
@@ -12,7 +21,8 @@ h2 {
 }
 
 h3 {
-  font-size: 32px;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 h4 {
@@ -23,19 +33,22 @@ h4 {
 .card, .main-productos .section-product .section-cardproduct article {
   justify-items: center;
   align-items: center;
-  padding: 5px 5px;
-  border: 4px rgb(32, 186, 130) solid;
-  border-radius: 15px;
-  background-color: whitesmoke;
+  margin: 0.6rem;
+  padding: 1rem;
+  border: 4px #bbd9b6 solid;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
   transition: transform 0.4s ease;
 }
 
 .card-carrito {
   margin: 10px 2px;
   padding: 5px 2px;
-  border: 4px whitesmoke solid;
+  border: 4px #A8B8A5 solid;
   border-radius: 5px;
-  background-color: rgb(129, 200, 208);
+  background-color: #bbd9b6;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 .card-carrito p {
   font-size: 16px;
@@ -44,23 +57,25 @@ h4 {
 .card-carrito-info {
   margin: 5px 2px;
   padding: 8px 2px;
-  border: 4px whitesmoke solid;
+  border: 4px #A8B8A5 solid;
   border-radius: 5px;
-  background-color: rgb(129, 200, 208);
+  background-color: #bbd9b6;
   font-size: 20px;
   font-weight: bold;
   width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-carrito-mensaje {
   margin: 4px 2px 6px 2px;
   padding: 10px 10px;
-  border: 4px whitesmoke solid;
+  border: 4px #A8B8A5 solid;
   border-radius: 5px;
-  background-color: rgb(129, 200, 208);
+  background-color: #bbd9b6;
   font-size: 20px;
   font-weight: bold;
   justify-self: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -73,7 +88,7 @@ h4 {
 }
 
 header {
-  background-color: rgb(32, 186, 130);
+  background-color: #bbd9b6;
   display: flex;
   padding: 2px;
   justify-content: space-between;
@@ -103,7 +118,7 @@ header .nav-link:hover {
 }
 
 footer {
-  background-color: rgb(32, 186, 130);
+  background-color: #bbd9b6;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -130,7 +145,7 @@ footer .social-icon:hover {
 }
 
 .main-inicio {
-  background-color: rgb(62, 210, 190);
+  background-color: #D9CDBF;
 }
 .main-inicio .section-bienvenida {
   display: block;
@@ -151,7 +166,7 @@ footer .social-icon:hover {
   justify-content: center;
   width: 20%;
   margin: 5px;
-  background-color: rgb(32, 186, 130);
+  background-color: #A8B8A5;
   border: 1px black solid;
   border-radius: 5px;
   transition: transform 0.4s ease;
@@ -215,9 +230,9 @@ footer .social-icon:hover {
 }
 
 .main-productos {
-  background-color: rgb(62, 210, 190);
+  background-color: #D9CDBF;
   display: grid;
-  grid-template-columns: 83% 16%;
+  grid-template-columns: 84% 16%;
   grid-template-rows: 1;
 }
 .main-productos .section-product {
@@ -226,24 +241,20 @@ footer .social-icon:hover {
 .main-productos .section-product .section-categorias {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-}
-.main-productos .section-product .section-categorias p {
-  margin: 5px;
-  font-size: 18px;
+  justify-content: center;
 }
 .main-productos .section-product .section-categorias .boton-categoria {
   display: block;
   justify-content: center;
   width: auto;
   margin: 15px 8px;
-  background-color: rgb(32, 186, 130);
+  background-color: #A8B8A5;
   border: 1px black solid;
   border-radius: 5px;
   transition: transform 0.4s ease;
-  padding: 0px 2px;
-  justify-self: center;
-  font-size: 18px;
+  margin-right: 30px;
+  padding: 0px 5px;
+  font-size: 22px;
 }
 .main-productos .section-product .section-categorias .boton-categoria:hover {
   transform: scale(1.05);
@@ -252,7 +263,6 @@ footer .social-icon:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
-  margin: 10px;
 }
 .main-productos .section-product .section-cardproduct article .imagen-producto {
   width: 100%;
@@ -262,7 +272,7 @@ footer .social-icon:hover {
   object-fit: cover;
 }
 .main-productos .section-product .section-cardproduct article .descripcion-producto {
-  font-size: 1rem;
+  font-size: 18px;
 }
 .main-productos .section-product .section-cardproduct article .precio-producto {
   font-size: 2rem;
@@ -275,7 +285,7 @@ footer .social-icon:hover {
   justify-content: center;
   width: 50%;
   margin: 15px 8px;
-  background-color: rgb(32, 186, 130);
+  background-color: #A8B8A5;
   border: 1px black solid;
   border-radius: 5px;
   transition: transform 0.4s ease;
@@ -287,7 +297,8 @@ footer .social-icon:hover {
 }
 .main-productos .section-carrito {
   grid-column: 2;
-  padding: 2px 0px;
+  padding: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 .main-productos .section-carrito .header-carrito {
   display: flex;
@@ -299,7 +310,7 @@ footer .social-icon:hover {
   justify-content: center;
   width: auto;
   margin: 2px 8px;
-  background-color: rgb(32, 186, 130);
+  background-color: #A8B8A5;
   border: 1px black solid;
   border-radius: 5px;
   transition: transform 0.4s ease;
@@ -318,15 +329,16 @@ footer .social-icon:hover {
   justify-content: center;
   width: auto;
   margin: 2px 8px;
-  background-color: rgb(32, 186, 130);
+  background-color: #A8B8A5;
   border: 1px black solid;
   border-radius: 5px;
   transition: transform 0.4s ease;
   padding: 5px 8px;
+  margin: 10px;
 }
 
 .main-contacto {
-  background-color: rgb(62, 210, 190);
+  background-color: #D9CDBF;
   height: 100%;
 }
 .main-contacto .section-contact {
@@ -376,7 +388,7 @@ footer .social-icon:hover {
   justify-content: center;
   width: 50%;
   margin: 5px;
-  background-color: rgb(32, 186, 130);
+  background-color: #A8B8A5;
   border: 1px black solid;
   border-radius: 5px;
   transition: transform 0.4s ease;
@@ -434,7 +446,7 @@ footer .social-icon:hover {
     justify-content: center;
     width: 80%;
     margin: 2px;
-    background-color: rgb(32, 186, 130);
+    background-color: #A8B8A5;
     border: 1px black solid;
     border-radius: 5px;
     transition: transform 0.4s ease;
@@ -461,7 +473,7 @@ footer .social-icon:hover {
     justify-content: center;
     width: 60%;
     margin: 5px;
-    background-color: rgb(32, 186, 130);
+    background-color: #A8B8A5;
     border: 1px black solid;
     border-radius: 5px;
     transition: transform 0.4s ease;
@@ -509,7 +521,7 @@ footer .social-icon:hover {
     justify-content: center;
     width: 50%;
     margin: 5px;
-    background-color: rgb(32, 186, 130);
+    background-color: #A8B8A5;
     border: 1px black solid;
     border-radius: 5px;
     transition: transform 0.4s ease;
@@ -523,7 +535,7 @@ footer .social-icon:hover {
     justify-content: center;
     width: 98%;
     margin: 10px 2px;
-    background-color: rgb(32, 186, 130);
+    background-color: #A8B8A5;
     border: 1px black solid;
     border-radius: 5px;
     transition: transform 0.4s ease;
@@ -538,7 +550,7 @@ footer .social-icon:hover {
     justify-content: center;
     width: 80%;
     margin: 2px;
-    background-color: rgb(32, 186, 130);
+    background-color: #A8B8A5;
     border: 1px black solid;
     border-radius: 5px;
     transition: transform 0.4s ease;

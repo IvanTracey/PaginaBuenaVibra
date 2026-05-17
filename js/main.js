@@ -1,8 +1,6 @@
 // Las variables van en castellano expecto CARD
 // Las secciones es section-<correspondiente> y cuando es la variable es sectionCorrespondiente
 
-
-
 // VALOR A PRODUCTOS (base de datos) ----------------------
 const productos = [
     // todo en castellano expecto id e img. img es relativa al HTML
@@ -104,12 +102,83 @@ const productos = [
     },
 ];
 
-// Variables globales del DOM
+/* Variables globales del DOM y conexion de nodos
+ main -> section-product -> (section-categorias y section-cardproduct)
+      -> section-carrito -> (section- header/body/footer -carrito)
+*/
+const main = document.querySelector('.main-productos');
+const seccionProductos = document.createElement("section");
+seccionProductos.className = "section-product";
+main.appendChild(seccionProductos);
+const titulo = document.createElement("h1");
+titulo.innerText = "Productos";
+seccionProductos.appendChild(titulo);
 
-const seccionCardProductos = document.querySelector('.section-cardproduct');
-const seccionHeaderCarrito = document.querySelector('.header-carrito');
-const seccionBodyCarrito = document.querySelector('.body-carrito');
-const seccionFooterCarrito = document.querySelector('.footer-carrito');
+const seccionCategorias = document.createElement("section");
+seccionCategorias.className = "section-categorias";
+seccionProductos.appendChild(seccionCategorias);
+// Botones de categorias
+const botonAdorno = document.createElement("button");
+botonAdorno.className = "boton-categoria";
+botonAdorno.id = "cat-adorno";
+botonAdorno.innerText = "Adorno";
+seccionCategorias.appendChild(botonAdorno);
+const botonAromas = document.createElement("button");
+botonAromas.className = "boton-categoria";
+botonAromas.id = "cat-aromas";
+botonAromas.innerText = "Aromas";
+seccionCategorias.appendChild(botonAromas);
+const botonColgantes = document.createElement("button");
+botonColgantes.className = "boton-categoria";
+botonColgantes.id = "cat-colgantes";
+botonColgantes.innerText = "Colgantes";
+seccionCategorias.appendChild(botonColgantes);
+const botonDefumacion = document.createElement("button");
+botonDefumacion.className = "boton-categoria";
+botonDefumacion.id = "cat-defumacion";
+botonDefumacion.innerText = "Defumacion";
+seccionCategorias.appendChild(botonDefumacion);
+const botonManifestacion = document.createElement("button");
+botonManifestacion.className = "boton-categoria";
+botonManifestacion.id = "cat-manifestacion";
+botonManifestacion.innerText = "Manifestacion";
+seccionCategorias.appendChild(botonManifestacion);
+const botonPortasahumerios = document.createElement("button");
+botonPortasahumerios.className = "boton-categoria";
+botonPortasahumerios.id = "cat-portasahumerios";
+botonPortasahumerios.innerText = "Portasahumerios";
+seccionCategorias.appendChild(botonPortasahumerios);
+const botonPortavelas = document.createElement("button");
+botonPortavelas.className = "boton-categoria";
+botonPortavelas.id = "cat-portavelas";
+botonPortavelas.innerText = "Portavelas";
+seccionCategorias.appendChild(botonPortavelas);
+const botonVelas = document.createElement("button");
+botonVelas.className = "boton-categoria";
+botonVelas.id = "cat-velas";
+botonVelas.innerText = "Velas";
+seccionCategorias.appendChild(botonVelas);
+
+
+const seccionCardProductos = document.createElement("section");
+seccionCardProductos.className = "section-cardproduct";
+seccionProductos.appendChild(seccionCardProductos);
+
+const seccionCarrito = document.createElement("section");
+seccionCarrito.className = "section-carrito";
+main.appendChild(seccionCarrito);
+const seccionHeaderCarrito = document.createElement("section");
+seccionHeaderCarrito.className = "header-carrito";
+seccionCarrito.appendChild(seccionHeaderCarrito);
+const tituloCarrito = document.createElement("h2");
+tituloCarrito.innerText = "Carrito";
+seccionHeaderCarrito.appendChild(tituloCarrito);
+const seccionBodyCarrito = document.createElement("section");
+seccionBodyCarrito.className = "body-carrito";
+seccionCarrito.appendChild(seccionBodyCarrito);
+const seccionFooterCarrito = document.createElement("section");
+seccionFooterCarrito.className = "footer-carrito";
+seccionCarrito.appendChild(seccionFooterCarrito);
 
 // CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
@@ -126,7 +195,7 @@ function crearCard (producto){
     imgProducto.alt = "NOIMG";
 
     const descProducto = document.createElement("p"); 
-    nombreProducto.className = "descripcion-producto";
+    descProducto.className = "descripcion-producto";
     descProducto.innerText = producto.descricion;
 
     const precioProducto = document.createElement("p"); 
