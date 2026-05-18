@@ -8,6 +8,7 @@
     background-color: $color-bg-principal;
     display: grid;
     @include grid(84% 16%, 1); 
+    min-height: 100vh;  /* mínimo toda la pantalla */
     .section-product{
         grid-column: 1;
         .section-categorias{
@@ -15,9 +16,9 @@
             flex-wrap: wrap;
             justify-content:center;
             .boton-categoria{
-                @include boton(auto, 15px 8px);
+                @include boton(auto, 4px 8px);
                 padding: 2px 10px;
-                font-size: 22px;
+                font-size: 20px;
                 &:hover{
                     transform: scale(1.05);
                 }
@@ -26,6 +27,13 @@
         .section-cardproduct{
             display: grid;
             @include grid(repeat(4, 1fr), auto); 
+            .mensaje-noProductos{
+                grid-column: 1/-1;
+                margin-top: 40vh;
+                justify-self: center;
+                align-items: center;
+                font-size: 25px;
+            }
             article{
                 @extend .card;
                 .imagen-producto{

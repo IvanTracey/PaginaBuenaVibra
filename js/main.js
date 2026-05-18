@@ -10,7 +10,7 @@ const productos = [
     img: "../img/aguas de florida.webp",
     descricion: "De 60ml, producto artesanal",
     precio: 5000,
-    categoria: "Manifestacion",
+    categoria: ["Aromas", "Manifestacion"],
     },
     {
     id:2,
@@ -18,7 +18,7 @@ const productos = [
     img: "../img/aguas de florida.webp",
     descricion: "De 100ml, producto artesanal",
     precio: 8000,
-    categoria: "Manifestacion"
+    categoria: ["Aromas", "Manifestacion"]
     },
     {
     id:3,
@@ -36,7 +36,7 @@ const productos = [
     img: "../img/sahumerios_artesanales.webp",
     descricion: "20cm de largo, 10 unidades",
     precio: 2000,
-    categoria: "Defumacion",
+    categoria: ["Aromas","Defumacion"],
     variedades: [{nombre: "Almizcle y benjui", cant: 2}, {nombre: "Citrus", cant: 1},{nombre: "Lavanda", cant: 2}, {nombre: "Melisa", cant: 1},{nombre: "Mirra", cant: 2}, {nombre: "Nag champa", cant: 1},{nombre: "Romero", cant: 2}, {nombre: "Sandalo", cant: 1}, {nombre: "Vainilla y coco", cant: 1},{nombre: "Verbena", cant: 2}, {nombre: "Verbena y melisa", cant: 1},]
     },
     {
@@ -45,7 +45,7 @@ const productos = [
     img: "../img/sahumerios_importados.webp",
     descricion: "30cm de largo, 15 unidades",
     precio:3000,
-    categoria: "Defumacion",
+    categoria: ["Aromas","Defumacion"],
     variedades: [{nombre: "Atrae clientes", cant: 2}, {nombre: "Atrae dinero", cant: 1},{nombre: "Black ice", cant: 2}, {nombre: "Citronella", cant: 1},{nombre: "Cool water", cant: 2}, {nombre: "Fresa", cant: 1},{nombre: "Lavanda", cant: 2}, {nombre: "Lick me all over", cant: 1}, {nombre: "Limpia hogar", cant: 1},{nombre: "Manzana canela", cant: 2}, {nombre: "Meditacion", cant: 1},{nombre: "Om", cant: 2}, {nombre: "Palo santo", cant: 1}, {nombre: "Rosa roja", cant: 1},{nombre: "Rosa vainilla", cant: 2}, {nombre: "Sandalo", cant: 1}]
     },
     {
@@ -54,7 +54,7 @@ const productos = [
     img: "../img/sahumerios_importados.webp",
     descricion: "50cm de largo, 10 unidades",
     precio: 6500,
-    categoria: "Defumacion",
+    categoria: ["Aromas","Defumacion"],
      variedades: [{nombre: "Almizcle", cant: 2}, {nombre: "Atrae dinero", cant: 1},{nombre: "Black ice", cant: 2}, {nombre: "Canela", cant: 1},{nombre: "Citronella", cant: 2}, {nombre: "Coco", cant: 1},{nombre: "Fresa", cant: 2}, {nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Limpia hogar", cant: 2}, {nombre: "Meditacion", cant: 1}, {nombre: "Mirra", cant: 2}, {nombre: "Om", cant: 2}, {nombre: "Palo santo", cant: 1}, {nombre: "Sandalo", cant: 1}]
     },
     {
@@ -80,7 +80,7 @@ const productos = [
     img: "../img/velas.webp",
     descricion: "Velas de hornillo aromaticas ",
     precio: 4500,
-    categoria: "Velas",
+    categoria: ["Aromas","Velas"],
     },
     {
     id:11,
@@ -88,7 +88,7 @@ const productos = [
     img: "../img/velas.webp",
     descricion: "Lata de mandala 4.5cm",
     precio: 6900,
-    categoria: "Velas",
+    categoria: ["Aromas","Velas"],
     variedades: [{nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Vainilla africana", cant: 1}]
     },
     {
@@ -97,10 +97,12 @@ const productos = [
     img: "../img/velas.webp",
     descricion: "Lata de mandala 6.5cm",
     precio: 11200,
-    categoria: "Velas",
+    categoria: ["Aromas","Velas"],
     variedades: [{nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Vainilla africana", cant: 1}]
     },
 ];
+// Iniciacion del array
+let productosAMostrar = productos;
 
 /* Variables globales del DOM y conexion de nodos
  main -> section-product -> (section-categorias y section-cardproduct)
@@ -117,11 +119,16 @@ const main = document.querySelector('.main-productos');
     seccionCategorias.className = "section-categorias";
     seccionProductos.appendChild(seccionCategorias);
         // Botones de categorias
-        const botonAdorno = document.createElement("button");
-        botonAdorno.className = "boton-categoria";
-        botonAdorno.id = "cat-adorno";
-        botonAdorno.innerText = "Adorno";
-        seccionCategorias.appendChild(botonAdorno);
+        const botonTodos= document.createElement("button");
+        botonTodos.className = "boton-categoria";
+        botonTodos.id = "cat-adornos";
+        botonTodos.innerText = "Todos";
+        seccionCategorias.appendChild(botonTodos);
+        const botonAdornos= document.createElement("button");
+        botonAdornos.className = "boton-categoria";
+        botonAdornos.id = "cat-adornos";
+        botonAdornos.innerText = "Adornos";
+        seccionCategorias.appendChild(botonAdornos);
         const botonAromas = document.createElement("button");
         botonAromas.className = "boton-categoria";
         botonAromas.id = "cat-aromas";
@@ -237,8 +244,20 @@ function crearCard (producto){
     }
 };
 //con cada objeto del array, creo una card
-productos.forEach(e => crearCard(e));
+productosAMostrar.forEach(e => crearCard(e));
 
+// actualizar section de productos segun el filtrado
+function actualizarProductos(prod){
+    seccionCardProductos.innerHTML = "";
+    if(productosAMostrar.length > 0){
+        prod.forEach(e => crearCard(e));
+    }else{
+        mensajeNoProductos = document.createElement("p");
+        mensajeNoProductos.className = "mensaje-noProductos";
+        mensajeNoProductos.innerText = "** No hay productos de esa categoría **"
+        seccionCardProductos.appendChild(mensajeNoProductos);
+    };
+}
 // VALOR A CARRITO ----------------------
 let carrito = [];
 // Adquiero el carrito del storage o lo inicio vacio si no esta. Mientras que si existe algun problema CATCH tamb me lo da vacio
@@ -271,30 +290,68 @@ seccionFooterCarrito.appendChild(totalCarrito);
 
 // Boton de envio de pedido
 botonEnviar = document.createElement("button");
-botonEnviar.innerText = "Enviar formulario";
+botonEnviar.innerText = "Enviar pedido";
 botonEnviar.className = "boton-enviar";
 seccionFooterCarrito.appendChild(botonEnviar);
 
-// ACTUALIZACION DE CARRITO ----------------------
-function actualizarCarrito(){
-// Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
-    // Limpio lo que habia del carrito
-    seccionBodyCarrito.innerHTML= "";
-    // Cargo nuevamente el carrito
-    carrito.forEach(e => mostrarCarrito(e));
-    const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
-    totalCarrito.innerText = `TOTAL: $${total}`;
+// VACIAR CARRITO ----------------------
+borrarCarrito = document.createElement("button");
+borrarCarrito.innerText = "Borrar";
+borrarCarrito.className = "boton-borrar";
+seccionHeaderCarrito.appendChild(borrarCarrito);
+borrarCarrito.onclick = () => {
+    // Borro el storage y tamb la variable
+    localStorage.setItem("carrito", JSON.stringify([]));
+    carrito = [];
+    actualizarCarrito();
+}
 
-    // Muestro solo un mensaje. Va aca para que ese actualizado
-    if (total === 0){
-        carritoVacio.style.display = 'block';
-        totalCarrito.style.display = 'none';
-        botonEnviar.style.display = 'none';
-    }else {
-        carritoVacio.style.display = 'none';
-        totalCarrito.style.display = 'block';
-        botonEnviar.style.display = 'block';
-    }
+// Filtrado de categoria por botones
+console.log("Productos: ", productos);
+botonTodos.onclick = () => {
+    productosAMostrar = productos;
+    console.log("Todos: ", productosAMostrar);
+    actualizarProductos(productosAMostrar);
+};
+botonAdornos.onclick = () => {
+    productosAMostrar = productos.filter(e => e.categoria.includes("Adornos"));
+    console.log("Adornos: ", productosAMostrar);
+    actualizarProductos(productosAMostrar);
+};
+botonAromas.onclick = () => {
+    productosAMostrar = productos.filter(e => e.categoria.includes("Aromas"));
+    console.log("Aromas: ", productosAMostrar);
+    actualizarProductos(productosAMostrar);
+};
+botonColgantes.onclick = () => {
+    productosAMostrar = productos.filter(e => e.categoria.includes("Colgantes"));
+    console.log("Colgantes: ", productosAMostrar);
+    actualizarProductos(productosAMostrar);
+};
+botonDefumacion.onclick = () => {
+    productosAMostrar = productos.filter(e => e.categoria.includes("Defumacion"));
+    console.log("Defumacion: ", productosAMostrar);
+    actualizarProductos(productosAMostrar);
+};
+botonManifestacion.onclick = () => {
+    productosAMostrar = productos.filter(e => e.categoria.includes("Manifestacion"));
+    console.log("Manifestacion: ", productosAMostrar);
+    actualizarProductos(productosAMostrar);
+};
+botonPortasahumerios.onclick = () => {
+    productosAMostrar = productos.filter(e => e.categoria.includes("Portasahumerios"));
+    console.log("Portasahumerios: ", productosAMostrar);
+    actualizarProductos(productosAMostrar);
+};
+botonPortavelas.onclick = () => {
+    productosAMostrar = productos.filter(e => e.categoria.includes("Portavelas"));
+    console.log("Portavelas: ", productosAMostrar);
+    actualizarProductos(productosAMostrar);
+};
+botonVelas.onclick = () => {
+    productosAMostrar = productos.filter(e => e.categoria.includes("Velas"));
+    console.log("Velas: ", productosAMostrar);
+    actualizarProductos(productosAMostrar);
 };
 
 // AGREGAR AL CARRITO - CARGO EN STORAGE 
@@ -374,23 +431,32 @@ function mostrarCarrito(e){
     cardCarrito.appendChild(cantProductoCarrito);    
     cardCarrito.appendChild(sumaProductoCarrito);
 }
+// ACTUALIZACION DE CARRITO ----------------------
+function actualizarCarrito(){
+// Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
+    // Limpio lo que habia del carrito
+    seccionBodyCarrito.innerHTML= "";
+    // Cargo nuevamente el carrito
+    carrito.forEach(e => mostrarCarrito(e));
+    const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
+    totalCarrito.innerText = `TOTAL: $${total}`;
 
-// VACIAR CARRITO ----------------------
-borrarCarrito = document.createElement("button");
-borrarCarrito.innerText = "Borrar";
-borrarCarrito.className = "boton-borrar";
-seccionHeaderCarrito.appendChild(borrarCarrito);
-borrarCarrito.onclick = () => {
-    // Borro el storage y tamb la variable
-    localStorage.setItem("carrito", JSON.stringify([]));
-    carrito = [];
-    actualizarCarrito();
-}
+    // Muestro solo un mensaje. Va aca para que ese actualizado
+    if (total === 0){
+        carritoVacio.style.display = 'block';
+        totalCarrito.style.display = 'none';
+        botonEnviar.style.display = 'none';
+    }else {
+        carritoVacio.style.display = 'none';
+        totalCarrito.style.display = 'block';
+        botonEnviar.style.display = 'block';
+    }
+};
+
 
 // Actualizacion de pagina
 actualizarCarrito()
-
-
+actualizarProductos(productosAMostrar);
 
 
 
