@@ -22,6 +22,10 @@
                 &:hover{
                     transform: scale(1.05);
                 }
+                &.activo {
+                background-color: #A38A75;
+                font-weight: bold;
+                }
             }
         }
         .section-cardproduct{

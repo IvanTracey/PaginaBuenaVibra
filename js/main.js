@@ -104,6 +104,20 @@ const productos = [
 // Iniciacion del array
 let productosAMostrar = productos;
 
+// VALOR A CARRITO ----------------------
+let carrito = [];
+// Adquiero el carrito del storage o lo inicio vacio si no esta. Mientras que si existe algun problema CATCH tamb me lo da vacio
+try{
+    carrito=JSON.parse(localStorage.getItem("carrito"));
+// Si no existe en storage, lo inicio vacio
+    if(!carrito){
+        carrito = [];
+    };
+} catch(e){
+    carrito = [];
+}// de esta manera existe carrito en todo el codigo
+
+
 /* Variables globales del DOM y conexion de nodos
  main -> section-product -> (section-categorias y section-cardproduct)
       -> section-carrito -> (section- header/body/footer -carrito)
@@ -118,52 +132,7 @@ const main = document.querySelector('.main-productos');
     const seccionCategorias = document.createElement("section");
     seccionCategorias.className = "section-categorias";
     seccionProductos.appendChild(seccionCategorias);
-        // Botones de categorias
-        const botonTodos= document.createElement("button");
-        botonTodos.className = "boton-categoria";
-        botonTodos.id = "cat-adornos";
-        botonTodos.innerText = "Todos";
-        seccionCategorias.appendChild(botonTodos);
-        const botonAdornos= document.createElement("button");
-        botonAdornos.className = "boton-categoria";
-        botonAdornos.id = "cat-adornos";
-        botonAdornos.innerText = "Adornos";
-        seccionCategorias.appendChild(botonAdornos);
-        const botonAromas = document.createElement("button");
-        botonAromas.className = "boton-categoria";
-        botonAromas.id = "cat-aromas";
-        botonAromas.innerText = "Aromas";
-        seccionCategorias.appendChild(botonAromas);
-        const botonColgantes = document.createElement("button");
-        botonColgantes.className = "boton-categoria";
-        botonColgantes.id = "cat-colgantes";
-        botonColgantes.innerText = "Colgantes";
-        seccionCategorias.appendChild(botonColgantes);
-        const botonDefumacion = document.createElement("button");
-        botonDefumacion.className = "boton-categoria";
-        botonDefumacion.id = "cat-defumacion";
-        botonDefumacion.innerText = "Defumacion";
-        seccionCategorias.appendChild(botonDefumacion);
-        const botonManifestacion = document.createElement("button");
-        botonManifestacion.className = "boton-categoria";
-        botonManifestacion.id = "cat-manifestacion";
-        botonManifestacion.innerText = "Manifestacion";
-        seccionCategorias.appendChild(botonManifestacion);
-        const botonPortasahumerios = document.createElement("button");
-        botonPortasahumerios.className = "boton-categoria";
-        botonPortasahumerios.id = "cat-portasahumerios";
-        botonPortasahumerios.innerText = "Portasahumerios";
-        seccionCategorias.appendChild(botonPortasahumerios);
-        const botonPortavelas = document.createElement("button");
-        botonPortavelas.className = "boton-categoria";
-        botonPortavelas.id = "cat-portavelas";
-        botonPortavelas.innerText = "Portavelas";
-        seccionCategorias.appendChild(botonPortavelas);
-        const botonVelas = document.createElement("button");
-        botonVelas.className = "boton-categoria";
-        botonVelas.id = "cat-velas";
-        botonVelas.innerText = "Velas";
-        seccionCategorias.appendChild(botonVelas);
+       
     const seccionCardProductos = document.createElement("section");
     seccionCardProductos.className = "section-cardproduct";
     seccionProductos.appendChild(seccionCardProductos);
@@ -184,6 +153,39 @@ const main = document.querySelector('.main-productos');
         seccionFooterCarrito.className = "footer-carrito";
         seccionCarrito.appendChild(seccionFooterCarrito);
 
+// van acá porque actualizarCarrito() los necesita declarados
+// Total del carrito ----------------------
+const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
+const totalCarrito = document.createElement("article");
+totalCarrito.className = "card-carrito-mensaje";
+totalCarrito.innerText = `TOTAL: $${total}`;
+
+// Mensaje de carrito vacio ----------------------
+const carritoVacio = document.createElement("article");
+carritoVacio.className = "card-carrito-mensaje";
+carritoVacio.innerText = "Carrito vacío";
+
+// Le asigno el padre a los dos
+seccionFooterCarrito.appendChild(carritoVacio);
+seccionFooterCarrito.appendChild(totalCarrito);
+
+// Boton de envio de pedido
+botonEnviar = document.createElement("button");
+botonEnviar.innerText = "Enviar pedido";
+botonEnviar.className = "boton-enviar";
+seccionFooterCarrito.appendChild(botonEnviar);
+
+// VACIAR CARRITO ----------------------
+borrarCarrito = document.createElement("button");
+borrarCarrito.innerText = "Borrar";
+borrarCarrito.className = "boton-borrar";
+seccionHeaderCarrito.appendChild(borrarCarrito);
+borrarCarrito.onclick = () => {
+    // Borro el storage y tamb la variable
+    localStorage.setItem("carrito", JSON.stringify([]));
+    carrito = [];
+    actualizarCarrito();
+}
 // CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
 // Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
@@ -249,7 +251,7 @@ productosAMostrar.forEach(e => crearCard(e));
 // actualizar section de productos segun el filtrado
 function actualizarProductos(prod){
     seccionCardProductos.innerHTML = "";
-    if(productosAMostrar.length > 0){
+    if(prod.length > 0){
         prod.forEach(e => crearCard(e));
     }else{
         mensajeNoProductos = document.createElement("p");
@@ -258,101 +260,35 @@ function actualizarProductos(prod){
         seccionCardProductos.appendChild(mensajeNoProductos);
     };
 }
-// VALOR A CARRITO ----------------------
-let carrito = [];
-// Adquiero el carrito del storage o lo inicio vacio si no esta. Mientras que si existe algun problema CATCH tamb me lo da vacio
-try{
-    carrito=JSON.parse(localStorage.getItem("carrito"));
-// Si no existe en storage, lo inicio vacio
-    if(!carrito){
-        carrito = [];
+// Seccion categorias
+const categorias = ["Todos", "Adornos", "Aromas", "Colgantes", "Defumacion", "Manifestacion", "Portasahumerios", "Portavelas", "Velas"];
+categorias.forEach(categoria => {
+    // Creo el boton para cada categoria
+    const boton = document.createElement("button");
+    boton.className = "boton-categoria";
+    boton.innerText = categoria;
+    seccionCategorias.appendChild(boton);
+
+    boton.onclick = () => {
+        // Saco el activo de todos
+        document.querySelectorAll('.boton-categoria')
+            .forEach(b => b.classList.remove("activo"));
+        // Activo el clickeado
+        boton.classList.add("activo");
+        // Si es todos, devuelve productos, sino hago el filtro (operador ternario: condicion ? valorSiTrue : valorSiFalse)
+        productosAMostrar = categoria === "Todos" 
+            ? productos 
+            : productos.filter(e => {
+                // cubre tanto string como array
+                if (Array.isArray(e.categoria)){
+                    return e.categoria.includes(categoria);
+                } else {
+                    return e.categoria === categoria;
+                }
+            });
+        actualizarProductos(productosAMostrar);
     };
-} catch(e){
-    carrito = [];
-}// de esta manera existe carrito en todo el codigo
-
-// Variables necesarias para la actualizacion de la pagina
-
-// Total del carrito ----------------------
-const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
-const totalCarrito = document.createElement("article");
-totalCarrito.className = "card-carrito-mensaje";
-totalCarrito.innerText = `TOTAL: $${total}`;
-
-// Mensaje de carrito vacio ----------------------
-const carritoVacio = document.createElement("article");
-carritoVacio.className = "card-carrito-mensaje";
-carritoVacio.innerText = "Carrito vacío";
-
-// Le asigno el padre a los dos
-seccionFooterCarrito.appendChild(carritoVacio);
-seccionFooterCarrito.appendChild(totalCarrito);
-
-// Boton de envio de pedido
-botonEnviar = document.createElement("button");
-botonEnviar.innerText = "Enviar pedido";
-botonEnviar.className = "boton-enviar";
-seccionFooterCarrito.appendChild(botonEnviar);
-
-// VACIAR CARRITO ----------------------
-borrarCarrito = document.createElement("button");
-borrarCarrito.innerText = "Borrar";
-borrarCarrito.className = "boton-borrar";
-seccionHeaderCarrito.appendChild(borrarCarrito);
-borrarCarrito.onclick = () => {
-    // Borro el storage y tamb la variable
-    localStorage.setItem("carrito", JSON.stringify([]));
-    carrito = [];
-    actualizarCarrito();
-}
-
-// Filtrado de categoria por botones
-console.log("Productos: ", productos);
-botonTodos.onclick = () => {
-    productosAMostrar = productos;
-    console.log("Todos: ", productosAMostrar);
-    actualizarProductos(productosAMostrar);
-};
-botonAdornos.onclick = () => {
-    productosAMostrar = productos.filter(e => e.categoria.includes("Adornos"));
-    console.log("Adornos: ", productosAMostrar);
-    actualizarProductos(productosAMostrar);
-};
-botonAromas.onclick = () => {
-    productosAMostrar = productos.filter(e => e.categoria.includes("Aromas"));
-    console.log("Aromas: ", productosAMostrar);
-    actualizarProductos(productosAMostrar);
-};
-botonColgantes.onclick = () => {
-    productosAMostrar = productos.filter(e => e.categoria.includes("Colgantes"));
-    console.log("Colgantes: ", productosAMostrar);
-    actualizarProductos(productosAMostrar);
-};
-botonDefumacion.onclick = () => {
-    productosAMostrar = productos.filter(e => e.categoria.includes("Defumacion"));
-    console.log("Defumacion: ", productosAMostrar);
-    actualizarProductos(productosAMostrar);
-};
-botonManifestacion.onclick = () => {
-    productosAMostrar = productos.filter(e => e.categoria.includes("Manifestacion"));
-    console.log("Manifestacion: ", productosAMostrar);
-    actualizarProductos(productosAMostrar);
-};
-botonPortasahumerios.onclick = () => {
-    productosAMostrar = productos.filter(e => e.categoria.includes("Portasahumerios"));
-    console.log("Portasahumerios: ", productosAMostrar);
-    actualizarProductos(productosAMostrar);
-};
-botonPortavelas.onclick = () => {
-    productosAMostrar = productos.filter(e => e.categoria.includes("Portavelas"));
-    console.log("Portavelas: ", productosAMostrar);
-    actualizarProductos(productosAMostrar);
-};
-botonVelas.onclick = () => {
-    productosAMostrar = productos.filter(e => e.categoria.includes("Velas"));
-    console.log("Velas: ", productosAMostrar);
-    actualizarProductos(productosAMostrar);
-};
+});
 
 // AGREGAR AL CARRITO - CARGO EN STORAGE 
 function agregarCarrito(idElegido, varElegida){    

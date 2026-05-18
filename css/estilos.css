@@ -257,6 +257,10 @@ footer .social-icon:hover {
 .main-productos .section-product .section-categorias .boton-categoria:hover {
   transform: scale(1.05);
 }
+.main-productos .section-product .section-categorias .boton-categoria.activo {
+  background-color: #A38A75;
+  font-weight: bold;
+}
 .main-productos .section-product .section-cardproduct {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
