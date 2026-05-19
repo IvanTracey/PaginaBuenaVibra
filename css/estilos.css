@@ -252,7 +252,7 @@ footer .social-icon:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.4s ease;
   padding: 2px 10px;
-  font-size: 20px;
+  font-size: 18px;
 }
 .main-productos .section-product .section-categorias .boton-categoria:hover {
   transform: scale(1.05);

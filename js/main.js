@@ -1,7 +1,7 @@
 // Las variables van en castellano expecto CARD
 // Las secciones es section-<correspondiente> y cuando es la variable es sectionCorrespondiente
 
-// VALOR A PRODUCTOS (base de datos) ----------------------
+// Sector de variables --------------------------------
 const productos = [
     // todo en castellano expecto id e img. img es relativa al HTML
     {
@@ -30,6 +30,14 @@ const productos = [
     variedades: [{nombre: "Mirra", cant: 2}, {nombre: "Sandalo", cant: 1},]
     },
     {
+    id:4,
+    nombre:"Colgante de flor de loto",
+    img: "../img/colgantes.webp",
+    descricion: "Disco para colgar, 16cm diametro",
+    precio: 4200,
+    categoria: ["Adorno"]
+    },
+    {
     id:5,
     nombre:"Sahumerios artesanales",
     //relativa al HTML
@@ -50,7 +58,7 @@ const productos = [
     },
     {
     id:7,
-    nombre:"Sahumerios importados",
+    nombre:"Sahumerios importados grandes",
     img: "../img/sahumerios_importados.webp",
     descricion: "50cm de largo, 10 unidades",
     precio: 6500,
@@ -69,7 +77,7 @@ const productos = [
     {
     id:9,
     nombre:"Sahumo grande",
-    img: "../img/sahumos.webp",
+    img: "../img/sahumo_romero.webp",
     descricion: "Hecho con Romero natural, Xgr",
     precio: 1000,
     categoria: "Defumacion",
@@ -85,7 +93,7 @@ const productos = [
     {
     id:11,
     nombre:"Velas aromaticas",
-    img: "../img/velas.webp",
+    img: "../img/vela_lata.webp",
     descricion: "Lata de mandala 4.5cm",
     precio: 6900,
     categoria: ["Aromas","Velas"],
@@ -95,14 +103,119 @@ const productos = [
     id:12,
     nombre:"Velas aromaticas",
     img: "../img/velas.webp",
-    descricion: "Lata de mandala 6.5cm",
-    precio: 11200,
+    descricion: "Lata de mandala 4.5cm",
+    precio: 9900,
     categoria: ["Aromas","Velas"],
     variedades: [{nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Vainilla africana", cant: 1}]
     },
+    {
+    id:13,
+    nombre:"Portavela flor",
+    img: "../img/portavela_flor.webp",
+    descricion: "Flor de yeso para vela de hornillo",
+    precio: 3000,
+    categoria: ["Adorno","Velas"],
+    },
+    {
+    id:14,
+    nombre:"Portavela mano de fatima",
+    img: "../img/portavela_mano.webp",
+    descricion: "Mano de fatima de yeso",
+    precio: 3500,
+    categoria: ["Adorno","Velas"],
+    },
+    {
+    id:15,
+    nombre:"Portasahumerios mano de fatima",
+    img: "../img/portasahumerio_mano.webp",
+    descricion: "Mano de fatima de yeso",
+    precio: 3500,
+    categoria: ["Adorno","Velas"],
+    
+    },
+    {
+    id:16,
+    nombre:"Rosario sagrado",
+    img: "../img/rosario_sagrado.webp",
+    descricion: "Rosario hindú para manifestar los códigos sagrados de Agesta",
+    precio: 3500,
+    categoria: ["Manifestacion"],
+    },
+    {
+    id:17,
+    nombre:"Portavelas para cuatro",
+    img: "../img/portavela_para4.webp",
+    descricion: "Portavela de yeso, variedad de colores",
+    precio: 4500,
+    categoria: ["Adorno", "Velas"],
+    },
+    {
+    id:18,
+    nombre:"Portavelas para dos",
+    img: "../img/portavela_para2.webp",
+    descricion: "Portavela de yeso, variedad de colores",
+    precio: 4000,
+    categoria: ["Adorno", "Velas"],
+    },
+    {
+    id:19,
+    nombre:"Bolsas aromaticas",
+    img: "../img/bolsas_aromaticas.webp",
+    descricion: "Bolsitas de lavanda, 2 unidades",
+    precio: 800,
+    categoria: ["Adorno", "Aromas"],
+    },
+    {
+    id:20,
+    nombre:"Piedras 7 arcangeles",
+    img: "../img/piedras_7arcangeles.webp",
+    descricion: "Lapislazuli, citrino, calcita, cuarzo cristal, aventurita, cornalita, amatista",
+    precio: 7000,
+    categoria: ["Manifestacion", "Piedras"],
+    },
+    {
+    id:21,
+    nombre:"Kit piedras autoestima",
+    img: "../img/piedras_autoestima.webp",
+    descricion: "Cuarzo rosa, cuarzo cristal, cornalita",
+    precio: 4500,
+    categoria: ["Manifestacion", "Piedras"],
+    },
+    {
+    id:22,
+    nombre:"Kit piedras salud",
+    img: "../img/piedras_salud.webp",
+    descricion: "Cuarzo verde, cuarzo cristal, cuarzo ahumado",
+    precio: 4500,
+    categoria: ["Manifestacion", "Piedras"],
+    },
+    {
+    id:23,
+    nombre:"Kit piedras prosperidad",
+    img: "../img/piedras_prosperidad.webp",
+    descricion: "Citrino, citrino, ojo de tigre",
+    precio: 4500,
+    categoria: ["Manifestacion", "Piedras"],
+    },
+    {
+    id:24,
+    nombre:"Portavelas y portasahumerios",
+    img: "../img/portasahumerio_portavela.webp",
+    descricion: "De yeso, variedad de colores",
+    precio: 4500,
+    categoria: ["Adorno", "Velas"],
+    },
+    {
+    id:25,
+    nombre:"Portavela",
+    img: "../img/portavela_lata.webp",
+    descricion: "De yeso, 6cmx6cm",
+    precio: 3500,
+    categoria: ["Adorno", "Velas"],
+    },
 ];
-// Iniciacion del array
-let productosAMostrar = productos;
+// Ordena en orden alfabetico segun los nombres / uso localeCompare porque respeta el español (ñ y tilde)
+let productosAMostrar = productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
 // VALOR A CARRITO ----------------------
 let carrito = [];
@@ -118,7 +231,7 @@ try{
 }// de esta manera existe carrito en todo el codigo
 
 
-/* Variables globales del DOM y conexion de nodos
+/* Variables globales del DOM y conexion de nodos -----------------------
  main -> section-product -> (section-categorias y section-cardproduct)
       -> section-carrito -> (section- header/body/footer -carrito)
 */
@@ -155,7 +268,7 @@ const main = document.querySelector('.main-productos');
 
 // van acá porque actualizarCarrito() los necesita declarados
 // Total del carrito ----------------------
-const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
+const total = carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
 const totalCarrito = document.createElement("article");
 totalCarrito.className = "card-carrito-mensaje";
 totalCarrito.innerText = `TOTAL: $${total}`;
@@ -186,6 +299,9 @@ borrarCarrito.onclick = () => {
     carrito = [];
     actualizarCarrito();
 }
+
+//// sector de funciones ----------------------------------
+
 // CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
 // Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
@@ -248,18 +364,7 @@ function crearCard (producto){
 //con cada objeto del array, creo una card
 productosAMostrar.forEach(e => crearCard(e));
 
-// actualizar section de productos segun el filtrado
-function actualizarProductos(prod){
-    seccionCardProductos.innerHTML = "";
-    if(prod.length > 0){
-        prod.forEach(e => crearCard(e));
-    }else{
-        mensajeNoProductos = document.createElement("p");
-        mensajeNoProductos.className = "mensaje-noProductos";
-        mensajeNoProductos.innerText = "** No hay productos de esa categoría **"
-        seccionCardProductos.appendChild(mensajeNoProductos);
-    };
-}
+
 // Seccion categorias
 const categorias = ["Todos", "Adornos", "Aromas", "Colgantes", "Defumacion", "Manifestacion", "Portasahumerios", "Portavelas", "Velas"];
 categorias.forEach(categoria => {
@@ -289,6 +394,19 @@ categorias.forEach(categoria => {
         actualizarProductos(productosAMostrar);
     };
 });
+
+// actualizar section de productos segun el filtrado
+function actualizarProductos(prod){
+    seccionCardProductos.innerHTML = "";
+    if(prod.length > 0){
+        prod.forEach(e => crearCard(e));
+    }else{
+        mensajeNoProductos = document.createElement("p");
+        mensajeNoProductos.className = "mensaje-noProductos";
+        mensajeNoProductos.innerText = "** No hay productos de esa categoría **"
+        seccionCardProductos.appendChild(mensajeNoProductos);
+    };
+}
 
 // AGREGAR AL CARRITO - CARGO EN STORAGE 
 function agregarCarrito(idElegido, varElegida){    
@@ -389,7 +507,7 @@ function actualizarCarrito(){
     }
 };
 
-
+////// Comienzo de codigo ------------------------
 // Actualizacion de pagina
 actualizarCarrito()
 actualizarProductos(productosAMostrar);
