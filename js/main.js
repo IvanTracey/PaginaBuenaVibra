@@ -314,7 +314,7 @@ borrarCarrito.onclick = () => {
 
 //// sector de funciones ----------------------------------
 
-// Seccion categorias
+// Seccion categorias - creacion de botones
 const categorias = ["Todos", "Adornos", "Aromas", "Defumacion", "Manifestacion", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
 categorias.forEach(categoria => {
     // Creo el boton para cada categoria
@@ -548,6 +548,7 @@ botonProductos.onclick = () => {
 
 // Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
+    // Cartel de confirmacion
     Swal.fire({
         title: "Estás por enviar el pedido",
         text: "¿Ya está listo?",
@@ -562,7 +563,13 @@ botonEnviar.onclick = () => {
             text: "Gracias por su pedido, te contactaremos a la brevedad para el pago y la entrega",
             icon: "success"
         });
+        // Limpieza de carrito y storage pero despues de confirmar 
+        localStorage.setItem("carrito", JSON.stringify([]));
+        carrito = [];
+        actualizarCarrito();
+
 });
+    
 };
 
 ////// Comienzo de codigo ------------------------
