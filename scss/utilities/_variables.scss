@@ -36,6 +36,7 @@ h2{
 h3{
 // (Nombres productos)
     font-size: $tamano-nombre;   
+
 }
 h4{
 // (Nombre de productos en carrito
@@ -45,7 +46,7 @@ h4{
 // Creo la estetica de las tarjetas para mis cardproducts
 .card{
     justify-items: center;
-    align-items: center;
+    text-align: center;
     margin: .6rem;
     padding: 1rem;
     background-color: $color-bg-secundario;   
