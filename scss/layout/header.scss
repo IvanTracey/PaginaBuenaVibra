@@ -20,7 +20,24 @@ header{
             text-decoration: none;
             padding-top: 7px;
           }
+        }
     }
+    .header-pages{
+        display: flex;
+        .boton-registro{
+            @include boton(50%, 15px 8px);
+            padding: 5px 12px;
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+        .boton-productos{
+            @include boton(50%, 15px 28px);
+            padding: 5px 12px;
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
     // Dimensiones de logo de usuario
     .login-icon{
         @include dimensionar(35px, 35px, 3px);

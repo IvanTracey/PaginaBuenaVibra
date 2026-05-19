@@ -103,12 +103,46 @@ header .header-titulo .titulo {
   text-decoration: none;
   padding-top: 7px;
 }
-header .login-icon {
+
+.header-pages {
+  display: flex;
+}
+.header-pages .boton-registro {
+  display: block;
+  justify-content: center;
+  width: 50%;
+  margin: 15px 8px;
+  background-color: #A8B8A5;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+  padding: 5px 12px;
+}
+.header-pages .boton-registro:hover {
+  transform: scale(1.05);
+}
+.header-pages .boton-productos {
+  display: block;
+  justify-content: center;
+  width: 50%;
+  margin: 15px 28px;
+  background-color: #A8B8A5;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+  padding: 5px 12px;
+}
+.header-pages .boton-productos:hover {
+  transform: scale(1.05);
+}
+.header-pages .login-icon {
   width: 35px;
   height: 35px;
   padding: 3px;
 }
-header .nav-link:hover {
+.header-pages .nav-link:hover {
   text-decoration: underline;
 }
 

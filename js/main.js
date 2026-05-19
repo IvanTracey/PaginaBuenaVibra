@@ -114,7 +114,7 @@ const productos = [
     img: "../img/portavela_flor.webp",
     descricion: "Flor de yeso para vela de hornillo",
     precio: 3000,
-    categoria: ["Adornoss","Velas"],
+    categoria: ["Adornoss","Portavelas"],
     },
     {
     id:14,
@@ -122,7 +122,7 @@ const productos = [
     img: "../img/portavela_mano.webp",
     descricion: "Mano de fatima de yeso",
     precio: 3500,
-    categoria: ["Adornos","Velas"],
+    categoria: ["Adornos","Portavelas"],
     },
     {
     id:15,
@@ -130,7 +130,7 @@ const productos = [
     img: "../img/portasahumerio_mano.webp",
     descricion: "Mano de fatima de yeso",
     precio: 3500,
-    categoria: ["Adornos","Velas"],
+    categoria: ["Adornos","Portasahumerios"],
     },
     {
     id:16,
@@ -146,7 +146,7 @@ const productos = [
     img: "../img/portavela_para4.webp",
     descricion: "Portavela de yeso, variedad de colores",
     precio: 4500,
-    categoria: ["Adornos", "Velas"],
+    categoria: ["Adornos", "Portavelas"],
     },
     {
     id:18,
@@ -154,7 +154,7 @@ const productos = [
     img: "../img/portavela_para2.webp",
     descricion: "Portavela de yeso, variedad de colores",
     precio: 4000,
-    categoria: ["Adornos", "Velas"],
+    categoria: ["Adornos", "Portavelas"],
     },
     {
     id:19,
@@ -202,7 +202,7 @@ const productos = [
     img: "../img/portasahumerio_portavela.webp",
     descricion: "De yeso, variedad de colores",
     precio: 4500,
-    categoria: ["Adornos", "Velas"],
+    categoria: ["Adornos", "Portasahumerios", "Portavelas"],
     },
     {
     id:25,
@@ -210,7 +210,7 @@ const productos = [
     img: "../img/portavela_lata.webp",
     descricion: "De yeso, 6cmx6cm",
     precio: 3500,
-    categoria: ["Adornos", "Velas"],
+    categoria: ["Adornos", "Portavelas"],
     },
 ];
 // Ordena en orden alfabetico segun los nombres / uso localeCompare porque respeta el español (ñ y tilde)
@@ -303,7 +303,7 @@ borrarCarrito.onclick = () => {
 
 
 // Seccion categorias
-const categorias = ["Todos", "Adornos", "Aromas", "Colgantes", "Defumacion", "Manifestacion", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
+const categorias = ["Todos", "Adornos", "Aromas", "Defumacion", "Manifestacion", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
 categorias.forEach(categoria => {
     // Creo el boton para cada categoria
     const boton = document.createElement("button");
@@ -503,6 +503,23 @@ function actualizarCarrito(){
         botonEnviar.style.display = 'block';
     }
 };
+
+const botonRegistro = document.querySelector('.boton-registro');
+botonRegistro.onclick = () => {
+    seccionCardProductos.innerHTML = "";
+    seccionCardProductos.innerText = " -- Hola bebe, cuando cuchareamos fuerte? --";
+
+}
+const botonProductos = document.querySelector('.boton-productos');
+botonProductos.onclick = () => {
+    seccionCardProductos.innerHTML = "";
+    // Saco el activo de todos
+    document.querySelectorAll('.boton-categoria')
+        .forEach(b => b.classList.remove("activo"));
+    // muestra todos los productos
+    actualizarProductos(productos);
+    
+}
 
 ////// Comienzo de codigo ------------------------
 // Actualizacion de pagina
