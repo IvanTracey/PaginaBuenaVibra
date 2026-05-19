@@ -35,7 +35,7 @@ const productos = [
     img: "../img/colgantes.webp",
     descricion: "Disco para colgar, 16cm diametro",
     precio: 4200,
-    categoria: ["Adorno"]
+    categoria: ["Adornos"]
     },
     {
     id:5,
@@ -85,7 +85,7 @@ const productos = [
     {
     id:10,
     nombre:"Velas 7 chackras",
-    img: "../img/velas.webp",
+    img: "",
     descricion: "Velas de hornillo aromaticas ",
     precio: 4500,
     categoria: ["Aromas","Velas"],
@@ -114,7 +114,7 @@ const productos = [
     img: "../img/portavela_flor.webp",
     descricion: "Flor de yeso para vela de hornillo",
     precio: 3000,
-    categoria: ["Adorno","Velas"],
+    categoria: ["Adornoss","Velas"],
     },
     {
     id:14,
@@ -122,7 +122,7 @@ const productos = [
     img: "../img/portavela_mano.webp",
     descricion: "Mano de fatima de yeso",
     precio: 3500,
-    categoria: ["Adorno","Velas"],
+    categoria: ["Adornos","Velas"],
     },
     {
     id:15,
@@ -130,8 +130,7 @@ const productos = [
     img: "../img/portasahumerio_mano.webp",
     descricion: "Mano de fatima de yeso",
     precio: 3500,
-    categoria: ["Adorno","Velas"],
-    
+    categoria: ["Adornos","Velas"],
     },
     {
     id:16,
@@ -147,7 +146,7 @@ const productos = [
     img: "../img/portavela_para4.webp",
     descricion: "Portavela de yeso, variedad de colores",
     precio: 4500,
-    categoria: ["Adorno", "Velas"],
+    categoria: ["Adornos", "Velas"],
     },
     {
     id:18,
@@ -155,7 +154,7 @@ const productos = [
     img: "../img/portavela_para2.webp",
     descricion: "Portavela de yeso, variedad de colores",
     precio: 4000,
-    categoria: ["Adorno", "Velas"],
+    categoria: ["Adornos", "Velas"],
     },
     {
     id:19,
@@ -163,7 +162,7 @@ const productos = [
     img: "../img/bolsas_aromaticas.webp",
     descricion: "Bolsitas de lavanda, 2 unidades",
     precio: 800,
-    categoria: ["Adorno", "Aromas"],
+    categoria: ["Aromas"],
     },
     {
     id:20,
@@ -203,7 +202,7 @@ const productos = [
     img: "../img/portasahumerio_portavela.webp",
     descricion: "De yeso, variedad de colores",
     precio: 4500,
-    categoria: ["Adorno", "Velas"],
+    categoria: ["Adornos", "Velas"],
     },
     {
     id:25,
@@ -211,7 +210,7 @@ const productos = [
     img: "../img/portavela_lata.webp",
     descricion: "De yeso, 6cmx6cm",
     precio: 3500,
-    categoria: ["Adorno", "Velas"],
+    categoria: ["Adornos", "Velas"],
     },
 ];
 // Ordena en orden alfabetico segun los nombres / uso localeCompare porque respeta el español (ñ y tilde)
@@ -302,6 +301,37 @@ borrarCarrito.onclick = () => {
 
 //// sector de funciones ----------------------------------
 
+
+// Seccion categorias
+const categorias = ["Todos", "Adornos", "Aromas", "Colgantes", "Defumacion", "Manifestacion", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
+categorias.forEach(categoria => {
+    // Creo el boton para cada categoria
+    const boton = document.createElement("button");
+    boton.className = "boton-categoria";
+    boton.innerText = categoria;
+    seccionCategorias.appendChild(boton);
+
+    boton.onclick = () => {
+        // Saco el activo de todos
+        document.querySelectorAll('.boton-categoria')
+            .forEach(b => b.classList.remove("activo"));
+        // Activo el clickeado
+        boton.classList.add("activo");
+        // Si es todos, devuelve productos, sino hago el filtro (operador ternario: condicion ? valorSiTrue : valorSiFalse)
+        productosAMostrar = categoria === "Todos" 
+            ? productos 
+            : productos.filter(e => {
+                // cubre tanto string como array
+                if (Array.isArray(e.categoria)){
+                    return e.categoria.includes(categoria);
+                } else {
+                    return e.categoria === categoria;
+                }
+            });
+        actualizarProductos(productosAMostrar);
+    };
+});
+
 // CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
 // Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
@@ -363,37 +393,6 @@ function crearCard (producto){
 };
 //con cada objeto del array, creo una card
 productosAMostrar.forEach(e => crearCard(e));
-
-
-// Seccion categorias
-const categorias = ["Todos", "Adornos", "Aromas", "Colgantes", "Defumacion", "Manifestacion", "Portasahumerios", "Portavelas", "Velas"];
-categorias.forEach(categoria => {
-    // Creo el boton para cada categoria
-    const boton = document.createElement("button");
-    boton.className = "boton-categoria";
-    boton.innerText = categoria;
-    seccionCategorias.appendChild(boton);
-
-    boton.onclick = () => {
-        // Saco el activo de todos
-        document.querySelectorAll('.boton-categoria')
-            .forEach(b => b.classList.remove("activo"));
-        // Activo el clickeado
-        boton.classList.add("activo");
-        // Si es todos, devuelve productos, sino hago el filtro (operador ternario: condicion ? valorSiTrue : valorSiFalse)
-        productosAMostrar = categoria === "Todos" 
-            ? productos 
-            : productos.filter(e => {
-                // cubre tanto string como array
-                if (Array.isArray(e.categoria)){
-                    return e.categoria.includes(categoria);
-                } else {
-                    return e.categoria === categoria;
-                }
-            });
-        actualizarProductos(productosAMostrar);
-    };
-});
 
 // actualizar section de productos segun el filtrado
 function actualizarProductos(prod){
@@ -472,8 +471,6 @@ function mostrarCarrito(e){
     const sumaProductoCarrito = document.createElement("p"); 
     sumaProductoCarrito.className = "p-carrito";
     sumaProductoCarrito.innerText  =`Suma parcial: $${e.precio*e.cantidad}`;
-
-    //const botonComprar = document.createElement("button");
 
     seccionBodyCarrito.appendChild(cardCarrito);
 

@@ -8,9 +8,7 @@
 @use "layout/header" as *;
 @use "layout/footer" as *;
 
-@use "pages/home" as *;
 @use "pages/products" as *;
-@use "pages/contact" as *;
 
 @use "layout/mq-tablet" as *;
 @use "layout/mq-phone" as *;
