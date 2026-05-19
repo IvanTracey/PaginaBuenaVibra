@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="Tienda online de productos holísticos y bienestar natural.">
+        <meta name="description" content="Productos de tienda online de productos holísticos y bienestar natural.">
         <meta name="keywords" content="holístico, bienestar, relajación, aromas, velas, difusores, sahumerios, armonía">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Logo en la pestaña -->
@@ -11,103 +11,35 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-        <!-- Linkeo a bootstrap -->
-      
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <!-- Inclusion del archivo CSS (luego de la fuente y del bootstrap) -->
         <link rel="stylesheet" href="css/estilos.css">
-                <!-- Titulo de la pestaña -->
-        <title>Buena vibra - Página Oficial</title>
+
+        <!-- Inclusion del archivo js -->
+        <script src="js/main.js" defer></script>
+
+        <!-- Titulo de la pestaña -->
+        <title>Buena vibra</title>
     </head>
 
-    <body> 
+    <body>
         <!-- Header: Titulo y lista de navegacion -->
-        <header class="header"> 
+        <header class="header">
             <!-- Lado izquierdo: logo+titulo -->
             <div class="header-titulo">
-                <img src="img/logo_colibri.webp" alt="Imagen de un colibri en colores vivos. Logo del emprendimiento" class="logo-colibri">
-                <a href="index.html" class="titulo"><strong>Buena vibra</strong></a>
+                <img src="/img/logo_colibri.webp" alt="Imagen de un colibri en colores vivos. Logo del emprendimiento" class="logo-colibri">
+                <a class="titulo"><strong>Buena vibra</strong></a>
             </div>
-            <!-- Lado derecho: Navbar desplegable (boostrap) +LogIn-->
+            <!-- Lado derecho: Navbar desplegable-->
             <div class="header-pages">
-                <nav class="navbar navbar-expand-lg">
-                    <div class="container-fluid">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                            </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">INICIO</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="pages/productos.html">PRODUCTOS</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="pages/contact.html">CONTACTO</a>
-                                </li>
-                                <!-- Lo coloco aca para que este en el desplegable -->
-                                <li class="nav-item">
-                                    <img src="img/logo_usuario.png" alt="Icono de usuario"  class="login-icon">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                <button class="boton-registro">REGISTRO</button>
+                <button class="boton-productos">PRODUCTOS</button>
             </div>
         </header>
-        
-        <main class="main-inicio">
-            <!-- Foto principal, bienvenida e inicio de sesion -->
-            <section class="section-bienvenida">
-                <h1 class="bienvenida" ">Bienvenidos a la página de nuestra tienda holística</h1>
-                <img src="img/portasahumerios-namaste.webp" alt="Foto de portada. Portasahumerios con la inscripción de namaste." class="image-portada">
-                <button class="boton-iniciosesion">Iniciar sesión</button>
-            </section>
-            <!-- Seccion de productos destacados -->
-            <section class="productos-destacados">
-                <header class="header-PD">
-                    <a href="pages/productos.html" class="link"><strong>Productos destacados</strong></a>
-                </header>
-                <div class="contenido-PD">
-                    <article>
-                        <img src="img/sahumerios.webp" alt="Producto destacado 1: Imagen de sahumerios importados, de nuestros productos mas buscado, vienen directo de India." class="index-producto">
-                        <h2>Sahumerios importados</h2>
-                    </article>
-                    <article>
-                        <img src="img/difusores.webp" alt="Producto destacado 2: Foto de difusores artesanales, hechos en el corazon de Cordoba. Sus aromas son mirra, verbena y sandalo" class="index-producto">
-                        <h2>Difusores</h2>
-                    </article>
-                    <article>
-                        <img src="img/rocios_auricos.webp" alt="Producto destacado 3: Foto de rocíos áuricos, preparado artesanal al que se le hace reiki, ayuda a cambiar el aura de las personas." class="index-producto">
-                        <h2>Rocíos áuricos</h2>
-                    </article>
-                </div>
-            </section>
-            <!-- Seccion de publicaciones recientes -->
-            <section class="publicaciones-recientes">
-                <header class="header-PR">
-                    <a href="#" class="link"><strong>Publicaciones recientes</strong></a>
-                </header>
-                <div class="contenido-PR">
-                    <article>
-                        <img src="img/post_chakras.webp" alt="Posteo 7 chakras" class="index-posteo">
-                        <h2>Características de los 7 chakras</h2>
-                    </article>
-                    <article>
-                        <img src="img/canela.webp" alt="Imagen de canela, correspondiente a un posteo de un ritual de abre caminos" class="index-posteo">
-                        <h2>Rituales para la abundancia</h2>
-                    </article>
-                    <article>
-                        <img src="img/luna_llena.webp" alt="Luna llena" class="index-posteo">
-                        <h2>Rituales de luna llena</h2>
-                    </article>
-                </div>
-            </section>
+        <main class="main-productos">
         </main> 
 
         <footer>
-            <div>
+           <div>
                 <p>© 2026 Buena vibra. Todos los derechos reservados.</p>
                 <p>Política de privacidad</p>
                 <p>Términos y condiciones</p>
@@ -115,13 +47,13 @@
             <nav>
                 <ul>  
                     <!-- Uso el atributo ref por sugerencia de seguridad. No coincide los nombres con el de las redes porque estoy en una transicion. No tengo facebook aun. -->
-                    <li><a href="https://www.instagram.com/diezpuntos.lp/" target="_blank" rel="noopener noreferrer"> <img src="img/logo_ig.png" alt="Icono que te lleva al perfil de Instagram" class="social-icon"></a>  </li>
-                    <li><a href="https://www.facebook.com/diezpuntos.lp/" target="_blank" rel="noopener noreferrer"> <img src="img/logo_fb.png" alt="Icono que te lleva al perfil de Facebook" class="social-icon"></a>  </li>
-                    <li><a href="https://wa.me/5492355411161" target="_blank" rel="noopener noreferrer"> <img src="img/logo_wa.png" alt="Icono que te lleva al Whats app" class="social-icon"></a></li>   
+                    <li><a href="https://www.instagram.com/diezpuntos.lp/" target="_blank" rel="noopener noreferrer"> <img src="/img/logo_ig.png" alt="Icono que te lleva al perfil de Instagram" class="social-icon"></a>  </li>
+                    <li><a href="https://www.facebook.com/diezpuntos.lp/" target="_blank" rel="noopener noreferrer"> <img src="/img/logo_fb.png" alt="Icono que te lleva al perfil de Facebook" class="social-icon"></a>  </li>
+                    <li><a href="https://wa.me/5492355411161" target="_blank" rel="noopener noreferrer"> <img src="/img/logo_wa.png" alt="Icono que te lleva al Whats app" class="social-icon"></a></li>   
                 </ul>
             </nav>
         </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     </body>
 </html>
-

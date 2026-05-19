@@ -7,18 +7,19 @@
 .main-productos{
     background-color: $color-bg-principal;
     display: grid;
-    @include grid(84% 16%, 1); 
-    min-height: 100vh;  /* mínimo toda la pantalla */
+    @include grid(80% 20%, 1); 
+    min-height: 100vh;  // mínimo toda la pantalla 
     .section-product{
         grid-column: 1;
+        margin: 6px;
         .section-categorias{
             display: flex;
             flex-wrap: wrap;
             justify-content:center;
             .boton-categoria{
-                @include boton(auto, 4px 6px);
-                padding: 2px 8px;
-                font-size: 18px;
+                @include boton(auto, 10px 6px);
+                padding: 6px 6px;
+                font-size: 20px;
                 &:hover{
                     transform: scale(1.05);
                 }
@@ -33,7 +34,7 @@
             @include grid(repeat(4, 1fr), auto); 
             .mensaje-noProductos{
                 grid-column: 1/-1;
-                margin-top: 40vh;
+                margin-top: 30vh;
                 justify-self: center;
                 align-items: center;
                 font-size: 25px;
@@ -47,6 +48,7 @@
                 }
                 .descripcion-producto{
                     font-size: 16px;
+                    margin-bottom: 6px;
                 }
                 .variedad-producto{
                     width: 100%;
@@ -56,14 +58,15 @@
                     background-color: $color-bg-boton;
                 }
                 .precio-producto{
-                    font-size: 2rem;
+                    font-size: 30px;
                 }
                 &:hover{
                     transform: scale(1.05);
                 }
                 .boton-agregarCarrito{
-                    @include boton(50%, 15px 8px);
-                    padding: 0px 2px;
+                    @include boton(50%, 10px 8px);
+                    padding: 4px 2px;
+                    font-size: 16px;
                     &:hover{
                         transform: scale(1.05);
                     }
@@ -75,10 +78,16 @@
         grid-column: 2;
         padding: 8px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        // Fijar carrito para que siempre este visible
+        position: sticky;
+        top: 0;          /* a qué distancia del tope queda fijo */
+        height: 100vh;   /* ocupa toda la altura de la pantalla */
+        overflow-y: auto; /* si el carrito tiene mucho contenido, scrollea internamente */
         .header-carrito{
             display: flex;
             justify-content:space-between;
             align-items: center;
+            margin: 6px;
             .boton-borrar{
                 @include boton(auto, 2px 8px); 
                 padding: 5px 8px;  

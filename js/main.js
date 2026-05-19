@@ -6,17 +6,17 @@ const productos = [
     // todo en castellano expecto id e img. img es relativa al HTML
     {
     id:1,
-    nombre:"Agua de florida",
+    nombre:"Agua de florida 60ml",
     img: "../img/aguas de florida.webp",
-    descricion: "De 60ml, producto artesanal",
+    descricion: "Producto artesanal, de las sierras cordobesas",
     precio: 5000,
     categoria: ["Aromas", "Manifestacion"],
     },
     {
     id:2,
-    nombre:"Agua de florida",
+    nombre:"Agua de florida 100ml",
     img: "../img/aguas de florida.webp",
-    descricion: "De 100ml, producto artesanal",
+    descricion: "Producto artesanal, de las sierras cordobesas",
     precio: 8000,
     categoria: ["Aromas", "Manifestacion"]
     },
@@ -58,7 +58,7 @@ const productos = [
     },
     {
     id:7,
-    nombre:"Sahumerios importados grandes",
+    nombre:"Sahumerios importados",
     img: "../img/sahumerios_importados.webp",
     descricion: "50cm de largo, 10 unidades",
     precio: 6500,
@@ -92,7 +92,7 @@ const productos = [
     },
     {
     id:11,
-    nombre:"Velas aromaticas",
+    nombre:"Velas aromaticas 4.5cm",
     img: "../img/vela_lata.webp",
     descricion: "Lata de mandala 4.5cm",
     precio: 6900,
@@ -101,7 +101,7 @@ const productos = [
     },
     {
     id:12,
-    nombre:"Velas aromaticas",
+    nombre:"Velas aromaticas 6.5cm",
     img: "../img/velas.webp",
     descricion: "Lata de mandala 4.5cm",
     precio: 9900,
@@ -300,7 +300,6 @@ borrarCarrito.onclick = () => {
 }
 
 //// sector de funciones ----------------------------------
-
 
 // Seccion categorias
 const categorias = ["Todos", "Adornos", "Aromas", "Defumacion", "Manifestacion", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
@@ -507,7 +506,6 @@ function actualizarCarrito(){
 const botonRegistro = document.querySelector('.boton-registro');
 botonRegistro.onclick = () => {
     seccionCardProductos.innerHTML = "";
-    seccionCardProductos.innerText = " -- Hola bebe, cuando cuchareamos fuerte? --";
 
 }
 const botonProductos = document.querySelector('.boton-productos');

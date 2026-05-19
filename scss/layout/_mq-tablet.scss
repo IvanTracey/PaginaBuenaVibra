@@ -4,26 +4,7 @@
 
 // QUERYES para tablets ------------------ 
 //@media (max-width: 1024px) and (min-width: 600px) {
-@media (max-width: 1050px) and (min-width: 600px) {
-   
-    // Pagina de inicio -----------
-    .main-inicio{ 
-        .contenido-PD{
-            article{
-                .index-producto{
-                object-fit: cover;
-                max-width: 100%;
-                }
-            }
-        }
-        .contenido-PR{
-            article{
-                .index-posteo{
-                    max-width: 100%;
-                }
-            }
-        }
-    }    
+@media (max-width: 1050px) and (min-width: 600px) { 
    
     // Pagina Productos --------------
     .main-productos{
@@ -52,22 +33,6 @@
                     font-size: 24px;
                 }
             }  
-        }
-    }
-    //Pagina Contacto
-    .main-contacto{
-        form{
-            @include grid(0% 25% 65% 0%, 1fr);
-            margin: 0px;
-            .boton-enviar{
-                @include boton(80%, 2px);
-            }
-        }
-        .section-mapa{
-            .mapa{
-            max-width: 100%;
-            height: 500px;
-            }
         }
     }
 }

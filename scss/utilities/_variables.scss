@@ -16,8 +16,8 @@ $color-tipografia:#052b20;
 
 $tamano-titulo:50px;
 $tamano-subtitulo:36px;
-$tamano-nombre:24px;
-$tamano-nombre-carrito: 16px;
+$tamano-nombre:22px;
+$tamano-nombre-carrito: 18px;
 $tamano-info-carrito: 14px;
 
 h1{
@@ -25,18 +25,16 @@ h1{
     font-size: $tamano-titulo;
     justify-self: center;
     font-weight: bold;
-    padding-top: 10px;
 }
 h2{
 // titulo secundario (Carrito)
     font-size: $tamano-subtitulo;  
-    font-weight: bold;
-    padding: 25px 0px;
+    font-weight: bold;  
 }
 h3{
 // (Nombres productos)
-    font-size: $tamano-nombre;   
-
+    font-size: $tamano-nombre; 
+  
 }
 h4{
 // (Nombre de productos en carrito
@@ -47,8 +45,8 @@ h4{
 .card{
     justify-items: center;
     text-align: center;
-    margin: .6rem;
-    padding: 1rem;
+    margin: 8px;
+    padding: 10px;
     background-color: $color-bg-secundario;   
     //border: 4px $color-bg-secundario solid;
     border-radius: 20px;
@@ -58,8 +56,8 @@ h4{
 }
 // Creo la estetica de los productos en el carrito
 .card-carrito{
-    margin: 10px 2px;
-    padding: 5px 2px;
+    margin: 10px 4px;
+    padding: 5px 4px;
     //border: 4px $color-bg-boton solid;
     border-radius: 5px;
     background-color: $color-bg-secundario;   
