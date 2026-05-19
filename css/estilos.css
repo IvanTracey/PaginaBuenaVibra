@@ -31,7 +31,7 @@ h4 {
 
 .card, .main-productos .section-product .section-cardproduct article {
   justify-items: center;
-  align-items: center;
+  text-align: center;
   margin: 0.6rem;
   padding: 1rem;
   background-color: #bbd9b6;
