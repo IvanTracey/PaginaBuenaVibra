@@ -48,7 +48,6 @@ h4{
     margin: 8px;
     padding: 10px;
     background-color: $color-bg-secundario;   
-    //border: 4px $color-bg-secundario solid;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     // Transicion suave en sus movimientos
@@ -58,7 +57,6 @@ h4{
 .card-carrito{
     margin: 10px 4px;
     padding: 5px 4px;
-    //border: 4px $color-bg-boton solid;
     border-radius: 5px;
     background-color: $color-bg-secundario;   
     box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
@@ -66,27 +64,14 @@ h4{
         font-size: $tamano-info-carrito;
     }
 }
-.card-carrito-info{
-    margin: 5px 2px;
-    padding: 8px 2px;
-    //border: 4px $color-bg-boton solid;
-    border-radius: 5px;
-    background-color: $color-bg-secundario; 
-    font-size: 20px;
-    font-weight: bold;
-    width: 100%;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
-}
-
+// carrito vacio y total
 .card-carrito-mensaje{
     margin: 4px 2px 6px 2px;
     padding: 10px 10px;
-    //border: 4px $color-bg-boton solid;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: $color-bg-secundario; 
     font-size: $tamano-nombre-carrito;
     font-weight: bold;
     justify-self: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
-
 }

@@ -7,7 +7,7 @@ const productos = [
     {
     id:1,
     nombre:"Agua de florida 60ml",
-    img: "../img/aguas de florida.webp",
+    img: "img/aguas de florida.webp",
     descricion: "Producto artesanal, de las sierras cordobesas",
     precio: 5000,
     categoria: ["Aromas", "Manifestacion"],
@@ -15,7 +15,7 @@ const productos = [
     {
     id:2,
     nombre:"Agua de florida 100ml",
-    img: "../img/aguas de florida.webp",
+    img: "img/aguas de florida.webp",
     descricion: "Producto artesanal, de las sierras cordobesas",
     precio: 8000,
     categoria: ["Aromas", "Manifestacion"]
@@ -23,7 +23,7 @@ const productos = [
     {
     id:3,
     nombre:"Difusor 100ml",
-    img: "../img/difusores.webp",
+    img: "img/difusores.webp",
     descricion: "Producto artesanal cordobes",
     precio: 6000,
     categoria: "Aromas",
@@ -32,7 +32,7 @@ const productos = [
     {
     id:4,
     nombre:"Colgante de flor de loto",
-    img: "../img/colgantes.webp",
+    img: "img/colgantes.webp",
     descricion: "Disco para colgar, 16cm diametro",
     precio: 4200,
     categoria: ["Adornos"]
@@ -41,7 +41,7 @@ const productos = [
     id:5,
     nombre:"Sahumerios artesanales",
     //relativa al HTML
-    img: "../img/sahumerios_artesanales.webp",
+    img: "img/sahumerios_artesanales.webp",
     descricion: "20cm de largo, 10 unidades",
     precio: 2000,
     categoria: ["Aromas","Defumacion"],
@@ -50,7 +50,7 @@ const productos = [
     {
     id:6,
     nombre:"Sahumerios importados",
-    img: "../img/sahumerios_importados.webp",
+    img: "img/sahumerios_importados.webp",
     descricion: "30cm de largo, 15 unidades",
     precio:3000,
     categoria: ["Aromas","Defumacion"],
@@ -59,7 +59,7 @@ const productos = [
     {
     id:7,
     nombre:"Sahumerios importados",
-    img: "../img/sahumerios_importados.webp",
+    img: "img/sahumerios_importados.webp",
     descricion: "50cm de largo, 10 unidades",
     precio: 6500,
     categoria: ["Aromas","Defumacion"],
@@ -68,7 +68,7 @@ const productos = [
     {
     id:8,
     nombre:"Sahumo mediano",
-    img: "../img/sahumos.webp",
+    img: "img/sahumos.webp",
     descricion: "Hecho con hierbas naturales, Xgr",
     precio: 500,
     categoria: "Defumacion",
@@ -77,7 +77,7 @@ const productos = [
     {
     id:9,
     nombre:"Sahumo grande",
-    img: "../img/sahumo_romero.webp",
+    img: "img/sahumo_romero.webp",
     descricion: "Hecho con Romero natural, Xgr",
     precio: 1000,
     categoria: "Defumacion",
@@ -93,7 +93,7 @@ const productos = [
     {
     id:11,
     nombre:"Velas aromaticas 4.5cm",
-    img: "../img/vela_lata.webp",
+    img: "img/vela_lata.webp",
     descricion: "Lata de mandala 4.5cm",
     precio: 6900,
     categoria: ["Aromas","Velas"],
@@ -102,7 +102,7 @@ const productos = [
     {
     id:12,
     nombre:"Velas aromaticas 6.5cm",
-    img: "../img/velas.webp",
+    img: "img/velas.webp",
     descricion: "Lata de mandala 4.5cm",
     precio: 9900,
     categoria: ["Aromas","Velas"],
@@ -111,7 +111,7 @@ const productos = [
     {
     id:13,
     nombre:"Portavela flor",
-    img: "../img/portavela_flor.webp",
+    img: "img/portavela_flor.webp",
     descricion: "Flor de yeso para vela de hornillo",
     precio: 3000,
     categoria: ["Adornoss","Portavelas"],
@@ -119,7 +119,7 @@ const productos = [
     {
     id:14,
     nombre:"Portavela mano de fatima",
-    img: "../img/portavela_mano.webp",
+    img: "img/portavela_mano.webp",
     descricion: "Mano de fatima de yeso",
     precio: 3500,
     categoria: ["Adornos","Portavelas"],
@@ -127,7 +127,7 @@ const productos = [
     {
     id:15,
     nombre:"Portasahumerios mano de fatima",
-    img: "../img/portasahumerio_mano.webp",
+    img: "img/portasahumerio_mano.webp",
     descricion: "Mano de fatima de yeso",
     precio: 3500,
     categoria: ["Adornos","Portasahumerios"],
@@ -135,7 +135,7 @@ const productos = [
     {
     id:16,
     nombre:"Rosario sagrado",
-    img: "../img/rosario_sagrado.webp",
+    img: "img/rosario_sagrado.webp",
     descricion: "Rosario hindú para manifestar los códigos sagrados de Agesta",
     precio: 3500,
     categoria: ["Manifestacion"],
@@ -143,7 +143,7 @@ const productos = [
     {
     id:17,
     nombre:"Portavelas para cuatro",
-    img: "../img/portavela_para4.webp",
+    img: "img/portavela_para4.webp",
     descricion: "Portavela de yeso, variedad de colores",
     precio: 4500,
     categoria: ["Adornos", "Portavelas"],
@@ -151,7 +151,7 @@ const productos = [
     {
     id:18,
     nombre:"Portavelas para dos",
-    img: "../img/portavela_para2.webp",
+    img: "img/portavela_para2.webp",
     descricion: "Portavela de yeso, variedad de colores",
     precio: 4000,
     categoria: ["Adornos", "Portavelas"],
@@ -159,7 +159,7 @@ const productos = [
     {
     id:19,
     nombre:"Bolsas aromaticas",
-    img: "../img/bolsas_aromaticas.webp",
+    img: "img/bolsas_aromaticas.webp",
     descricion: "Bolsitas de lavanda, 2 unidades",
     precio: 800,
     categoria: ["Aromas"],
@@ -167,7 +167,7 @@ const productos = [
     {
     id:20,
     nombre:"Piedras 7 arcangeles",
-    img: "../img/piedras_7arcangeles.webp",
+    img: "img/piedras_7arcangeles.webp",
     descricion: "Lapislazuli, citrino, calcita, cuarzo cristal, aventurita, cornalita, amatista",
     precio: 7000,
     categoria: ["Manifestacion", "Piedras"],
@@ -175,7 +175,7 @@ const productos = [
     {
     id:21,
     nombre:"Kit piedras autoestima",
-    img: "../img/piedras_autoestima.webp",
+    img: "img/piedras_autoestima.webp",
     descricion: "Cuarzo rosa, cuarzo cristal, cornalita",
     precio: 4500,
     categoria: ["Manifestacion", "Piedras"],
@@ -183,7 +183,7 @@ const productos = [
     {
     id:22,
     nombre:"Kit piedras salud",
-    img: "../img/piedras_salud.webp",
+    img: "img/piedras_salud.webp",
     descricion: "Cuarzo verde, cuarzo cristal, cuarzo ahumado",
     precio: 4500,
     categoria: ["Manifestacion", "Piedras"],
@@ -191,7 +191,7 @@ const productos = [
     {
     id:23,
     nombre:"Kit piedras prosperidad",
-    img: "../img/piedras_prosperidad.webp",
+    img: "img/piedras_prosperidad.webp",
     descricion: "Citrino, citrino, ojo de tigre",
     precio: 4500,
     categoria: ["Manifestacion", "Piedras"],
@@ -199,7 +199,7 @@ const productos = [
     {
     id:24,
     nombre:"Portavelas y portasahumerios",
-    img: "../img/portasahumerio_portavela.webp",
+    img: "img/portasahumerio_portavela.webp",
     descricion: "De yeso, variedad de colores",
     precio: 4500,
     categoria: ["Adornos", "Portasahumerios", "Portavelas"],
@@ -207,7 +207,7 @@ const productos = [
     {
     id:25,
     nombre:"Portavela",
-    img: "../img/portavela_lata.webp",
+    img: "img/portavela_lata.webp",
     descricion: "De yeso, 6cmx6cm",
     precio: 3500,
     categoria: ["Adornos", "Portavelas"],
@@ -297,6 +297,19 @@ borrarCarrito.onclick = () => {
     localStorage.setItem("carrito", JSON.stringify([]));
     carrito = [];
     actualizarCarrito();
+     Toastify({
+    text: "Carrito vaciado",
+    gravity: "bottom", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    duration: 2000,
+    className: "toast-agregado",
+    style: {
+        background: "#A38A75",
+        color: "#052b20",
+        borderRadius: "10px",
+}
+    }).showToast();
+
 }
 
 //// sector de funciones ----------------------------------
@@ -437,7 +450,21 @@ function agregarCarrito(idElegido, varElegida){
             carrito.push({...productoConVariedad, cantidad: 1});
         };
     }
-    console.log(carrito);
+    
+// Uso libreria - notificacion del agregado 
+    Toastify({
+    text: "Producto agregado al carrito",
+    gravity: "bottom", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    duration: 2000,
+    className: "toast-agregado",
+    style: {
+        background: "#75a38b",
+        color: "#052b20",
+        borderRadius: "10px",
+}
+    }).showToast();
+
 // Guardo en el storage como string
     localStorage.setItem("carrito", JSON.stringify(carrito));
 // Actualizo el carrito
@@ -518,6 +545,25 @@ botonProductos.onclick = () => {
     actualizarProductos(productos);
     
 }
+
+// Uso de libreria - Envio de pedido
+botonEnviar.onclick = () => {
+    Swal.fire({
+        title: "Estás por enviar el pedido",
+        text: "¿Ya está listo?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#4c8743",
+        cancelButtonColor: "#b38158",
+        confirmButtonText: "Confirmar!"
+    }).then((result) => {
+        if (result.isConfirmed) Swal.fire({
+            title: "Formulario enviado",
+            text: "Gracias por su pedido, te contactaremos a la brevedad para el pago y la entrega",
+            icon: "success"
+        });
+});
+};
 
 ////// Comienzo de codigo ------------------------
 // Actualizacion de pagina
