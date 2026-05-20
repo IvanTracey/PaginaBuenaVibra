@@ -11,7 +11,7 @@
     min-height: 100vh;  // mínimo toda la pantalla 
     .section-product{
         grid-column: 1;
-        margin: 6px;
+        margin: 10px;
         .section-categorias{
             display: flex;
             flex-wrap: wrap;
@@ -102,14 +102,14 @@
                     margin: 4px 2px;
                     padding: 0px;
                     font-size: $tamano-info-carrito;
-                    
+                
                 }
             }
         }
         .footer-carrito{
             justify-items: center;
             .boton-enviar{
-                @include boton(auto, 10px 8px); 
+                @include boton(auto, 20px 8px); 
                 padding: 5px 8px; 
                 &:hover{
                     transform: translateY(-2px);

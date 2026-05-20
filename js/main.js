@@ -1,6 +1,8 @@
 // Las variables van en castellano expecto CARD
 // Las secciones es section-<correspondiente> y cuando es la variable es sectionCorrespondiente
+// JSON no admite comentarios, comas finales y usa comillas dobles 
 
+/*
 // Sector de variables --------------------------------
 const productos = [
     // todo en castellano expecto id e img. img es relativa al HTML
@@ -48,173 +50,200 @@ const productos = [
     variedades: [{nombre: "Almizcle y benjui", cant: 2}, {nombre: "Citrus", cant: 1},{nombre: "Lavanda", cant: 2}, {nombre: "Melisa", cant: 1},{nombre: "Mirra", cant: 2}, {nombre: "Nag champa", cant: 1},{nombre: "Romero", cant: 2}, {nombre: "Sandalo", cant: 1}, {nombre: "Vainilla y coco", cant: 1},{nombre: "Verbena", cant: 2}, {nombre: "Verbena y melisa", cant: 1},]
     },
     {
-    id:6,
-    nombre:"Sahumerios importados",
-    img: "img/sahumerios_importados.webp",
-    descricion: "30cm de largo, 15 unidades",
-    precio:3000,
-    categoria: ["Aromas","Defumacion"],
-    variedades: [{nombre: "Atrae clientes", cant: 2}, {nombre: "Atrae dinero", cant: 1},{nombre: "Black ice", cant: 2}, {nombre: "Citronella", cant: 1},{nombre: "Cool water", cant: 2}, {nombre: "Fresa", cant: 1},{nombre: "Lavanda", cant: 2}, {nombre: "Lick me all over", cant: 1}, {nombre: "Limpia hogar", cant: 1},{nombre: "Manzana canela", cant: 2}, {nombre: "Meditacion", cant: 1},{nombre: "Om", cant: 2}, {nombre: "Palo santo", cant: 1}, {nombre: "Rosa roja", cant: 1},{nombre: "Rosa vainilla", cant: 2}, {nombre: "Sandalo", cant: 1}]
+    "id":6,
+    "nombre":"Sahumerios importados",
+    "img": "img/sahumerios_importados.webp",
+    "descricion": "30cm de largo, 15 unidades",
+    "precio":3000,
+    "categoria": ["Aromas","Defumacion"],
+    "variedades": [{"nombre": "Atrae clientes", "cant": 2}, {"nombre": "Atrae dinero", "cant": 1},{"nombre": "Black ice", "cant": 2}, {"nombre": "Citronella", "cant": 1},{"nombre": "Cool water", "cant": 2}, {"nombre": "Fresa", "cant": 1},{"nombre": "Lavanda", "cant": 2}, {"nombre": "Lick me all over", "cant": 1}, {"nombre": "Limpia hogar", "cant": 1},{"nombre": "Manzana canela", "cant": 2}, {"nombre": "Meditacion", "cant": 1},{"nombre": "Om", "cant": 2}, {"nombre": "Palo santo", "cant": 1}, {"nombre": "Rosa roja", "cant": 1},{"nombre": "Rosa vainilla", "cant": 2}, {"nombre": "Sandalo", "cant": 1}]
     },
     {
-    id:7,
-    nombre:"Sahumerios importados",
-    img: "img/sahumerios_importados.webp",
-    descricion: "50cm de largo, 10 unidades",
-    precio: 6500,
-    categoria: ["Aromas","Defumacion"],
-     variedades: [{nombre: "Almizcle", cant: 2}, {nombre: "Atrae dinero", cant: 1},{nombre: "Black ice", cant: 2}, {nombre: "Canela", cant: 1},{nombre: "Citronella", cant: 2}, {nombre: "Coco", cant: 1},{nombre: "Fresa", cant: 2}, {nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Limpia hogar", cant: 2}, {nombre: "Meditacion", cant: 1}, {nombre: "Mirra", cant: 2}, {nombre: "Om", cant: 2}, {nombre: "Palo santo", cant: 1}, {nombre: "Sandalo", cant: 1}]
+    "id":7,
+    "nombre":"Sahumerios importados",
+    "img": "img/sahumerios_importados.webp",
+    "descricion": "50cm de largo, 10 unidades",
+    "precio": 6500,
+    "categoria": ["Aromas","Defumacion"],
+     "variedades": [{"nombre": "Almizcle", "cant": 2}, {"nombre": "Atrae dinero", "cant": 1},{"nombre": "Black ice", cant: 2}, {"nombre": "Canela", "cant": 1},{"nombre": "Citronella", "cant": 2}, {"nombre": "Coco", "cant": 1},{"nombre": "Fresa", "cant": 2}, {"nombre": "Jazmin", "cant": 1}, {"nombre": "Lavanda", "cant": 1}, {"nombre": "Limpia hogar", "cant": 2}, {"nombre": "Meditacion", "cant": 1}, {"nombre": "Mirra", "cant": 2}, {"nombre": "Om", "cant": 2}, {nombre: "Palo santo", "cant": 1}, {"nombre": "Sandalo", "cant": 1}]
     },
     {
-    id:8,
-    nombre:"Sahumo mediano",
-    img: "img/sahumos.webp",
-    descricion: "Hecho con hierbas naturales, Xgr",
-    precio: 500,
-    categoria: "Defumacion",
-    variedades: [{nombre: "Cedron", cant: 1},{nombre: "Laurel", cant: 2}, {nombre: "Lavanda", cant: 1}, {nombre: "Pino alimonado y mandarina", cant: 2}, {nombre: "Pino alimonado y naranja", cant: 2}, {nombre: "Romero", cant: 1}, {nombre: "Salvia", cant: 1}]
+    "id":8,
+    "nombre":"Sahumo mediano",
+    "img": "img/sahumos.webp",
+    "descricion": "Hecho con hierbas naturales, Xgr",
+    "precio": 500,
+    "categoria": "Defumacion",
+    "variedades": [{"nombre": "Cedron", "cant": 1},{"nombre": "Laurel", "cant": 2}, {"nombre": "Lavanda", "cant": 1}, {"nombre": "Pino alimonado y mandarina", "cant": 2}, {"nombre": "Pino alimonado y naranja", "cant": 2}, {"nombre": "Romero", cant: 1}, {"nombre": "Salvia", "cant": 1}]
     },
     {
-    id:9,
-    nombre:"Sahumo grande",
-    img: "img/sahumo_romero.webp",
-    descricion: "Hecho con Romero natural, Xgr",
-    precio: 1000,
-    categoria: "Defumacion",
+    "id":9,
+    "nombre":"Sahumo grande",
+    "img": "img/sahumo_romero.webp",
+    "descricion": "Hecho con Romero natural, Xgr",
+    "precio": 1000,
+    "categoria": "Defumacion",
     },
     {
-    id:10,
-    nombre:"Velas 7 chackras",
-    img: "",
-    descricion: "Velas de hornillo aromaticas ",
-    precio: 4500,
-    categoria: ["Aromas","Velas"],
+    "id":10,
+    "nombre":"Velas 7 chackras",
+    "img": "",
+    "descricion": "Velas de hornillo aromaticas ",
+    "precio": 4500,
+    "categoria": ["Aromas","Velas"],
     },
     {
-    id:11,
-    nombre:"Velas aromaticas 4.5cm",
-    img: "img/vela_lata.webp",
-    descricion: "Lata de mandala 4.5cm",
-    precio: 6900,
-    categoria: ["Aromas","Velas"],
-    variedades: [{nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Vainilla africana", cant: 1}]
+    "id":11,
+    "nombre":"Velas aromaticas 4.5cm",
+    "img": "img/vela_lata.webp",
+    "descricion": "Lata de mandala 4.5cm",
+    "precio": 6900,
+    "categoria": ["Aromas","Velas"],
+    "variedades": [{"nombre": "Jazmin", "cant": 1}, {"nombre": "Lavanda", "cant": 1}, {"nombre": "Vainilla africana", "cant": 1}]
     },
     {
-    id:12,
-    nombre:"Velas aromaticas 6.5cm",
-    img: "img/velas.webp",
-    descricion: "Lata de mandala 4.5cm",
-    precio: 9900,
-    categoria: ["Aromas","Velas"],
-    variedades: [{nombre: "Jazmin", cant: 1}, {nombre: "Lavanda", cant: 1}, {nombre: "Vainilla africana", cant: 1}]
+    "id":12,
+    "nombre":"Velas aromaticas 6.5cm",
+    "img": "img/velas.webp",
+    "descricion": "Lata de mandala 4.5cm",
+    "precio": 9900,
+    "categoria": ["Aromas","Velas"],
+    "variedades": [{"nombre": "Jazmin", "cant": 1}, {"nombre": "Lavanda", "cant": 1}, {"nombre": "Vainilla africana", "cant": 1}]
     },
     {
-    id:13,
-    nombre:"Portavela flor",
-    img: "img/portavela_flor.webp",
-    descricion: "Flor de yeso para vela de hornillo",
-    precio: 3000,
-    categoria: ["Adornoss","Portavelas"],
+    "id":13,
+    "nombre":"Portavela flor",
+    "img": "img/portavela_flor.webp",
+    "descricion": "Flor de yeso para vela de hornillo",
+    "precio": 3000,
+    "categoria": ["Adornoss","Portavelas"],
     },
     {
-    id:14,
-    nombre:"Portavela mano de fatima",
-    img: "img/portavela_mano.webp",
-    descricion: "Mano de fatima de yeso",
-    precio: 3500,
-    categoria: ["Adornos","Portavelas"],
+    "id":14,
+    "nombre":"Portavela mano de fatima",
+    "img": "img/portavela_mano.webp",
+    "descricion": "Mano de fatima de yeso",
+    "precio": 3500,
+    "categoria": ["Adornos","Portavelas"],
     },
     {
-    id:15,
-    nombre:"Portasahumerios mano de fatima",
-    img: "img/portasahumerio_mano.webp",
-    descricion: "Mano de fatima de yeso",
-    precio: 3500,
-    categoria: ["Adornos","Portasahumerios"],
+    "id":15,
+    "nombre":"Portasahumerios mano de fatima",
+    "img": "img/portasahumerio_mano.webp",
+    "descricion": "Mano de fatima de yeso",
+    "precio": 3500,
+    "categoria": ["Adornos","Portasahumerios"],
     },
     {
-    id:16,
-    nombre:"Rosario sagrado",
-    img: "img/rosario_sagrado.webp",
-    descricion: "Rosario hindú para manifestar los códigos sagrados de Agesta",
-    precio: 3500,
-    categoria: ["Manifestacion"],
+    "id":16,
+    "nombre":"Rosario sagrado",
+    "img": "img/rosario_sagrado.webp",
+    "descricion": "Rosario hindú para manifestar los códigos sagrados de Agesta",
+    "precio": 3500,
+    "categoria": ["Manifestacion"],
     },
     {
-    id:17,
-    nombre:"Portavelas para cuatro",
-    img: "img/portavela_para4.webp",
-    descricion: "Portavela de yeso, variedad de colores",
-    precio: 4500,
-    categoria: ["Adornos", "Portavelas"],
+    "id":17,
+    "nombre":"Portavelas para cuatro",
+    "img": "img/portavela_para4.webp",
+    "descricion": "Portavela de yeso, variedad de colores",
+    "precio": 4500,
+    "categoria": ["Adornos", "Portavelas"],
     },
     {
-    id:18,
-    nombre:"Portavelas para dos",
-    img: "img/portavela_para2.webp",
-    descricion: "Portavela de yeso, variedad de colores",
-    precio: 4000,
-    categoria: ["Adornos", "Portavelas"],
+    "id":18,
+    "nombre":"Portavelas para dos",
+    "img": "img/portavela_para2.webp",
+    "descricion": "Portavela de yeso, variedad de colores",
+    "precio": 4000,
+    "categoria": ["Adornos", "Portavelas"],
     },
     {
-    id:19,
-    nombre:"Bolsas aromaticas",
-    img: "img/bolsas_aromaticas.webp",
-    descricion: "Bolsitas de lavanda, 2 unidades",
-    precio: 800,
-    categoria: ["Aromas"],
+    "id":19,
+    "nombre":"Bolsas aromaticas",
+    "img": "img/bolsas_aromaticas.webp",
+    "descricion": "Bolsitas de lavanda, 2 unidades",
+    "precio": 800,
+    "categoria": ["Aromas"],
     },
     {
-    id:20,
-    nombre:"Piedras 7 arcangeles",
-    img: "img/piedras_7arcangeles.webp",
-    descricion: "Lapislazuli, citrino, calcita, cuarzo cristal, aventurita, cornalita, amatista",
-    precio: 7000,
-    categoria: ["Manifestacion", "Piedras"],
+    "id":20,
+    "nombre":"Piedras 7 arcangeles",
+    "img": "img/piedras_7arcangeles.webp",
+    "descricion": "Lapislazuli, citrino, calcita, cuarzo cristal, aventurita, cornalita, amatista",
+    "precio": 7000,
+    "categoria": ["Manifestacion", "Piedras"],
     },
     {
-    id:21,
-    nombre:"Kit piedras autoestima",
-    img: "img/piedras_autoestima.webp",
-    descricion: "Cuarzo rosa, cuarzo cristal, cornalita",
-    precio: 4500,
-    categoria: ["Manifestacion", "Piedras"],
+    "id":21,
+    "nombre":"Kit piedras autoestima",
+    "img": "img/piedras_autoestima.webp",
+    "descricion": "Cuarzo rosa, cuarzo cristal, cornalita",
+    "precio": 4500,
+    "categoria": ["Manifestacion", "Piedras"],
     },
     {
-    id:22,
-    nombre:"Kit piedras salud",
-    img: "img/piedras_salud.webp",
-    descricion: "Cuarzo verde, cuarzo cristal, cuarzo ahumado",
-    precio: 4500,
-    categoria: ["Manifestacion", "Piedras"],
+    "id":22,
+    "nombre":"Kit piedras salud",
+    "img": "img/piedras_salud.webp",
+    "descricion": "Cuarzo verde, cuarzo cristal, cuarzo ahumado",
+    "precio": 4500,
+    "categoria": ["Manifestacion", "Piedras"],
     },
     {
-    id:23,
-    nombre:"Kit piedras prosperidad",
-    img: "img/piedras_prosperidad.webp",
-    descricion: "Citrino, citrino, ojo de tigre",
-    precio: 4500,
-    categoria: ["Manifestacion", "Piedras"],
+    "id":23,
+    "nombre":"Kit piedras prosperidad",
+    "img": "img/piedras_prosperidad.webp",
+    "descricion": "Citrino, citrino, ojo de tigre",
+    "precio": 4500,
+    "categoria": ["Manifestacion", "Piedras"],
     },
     {
-    id:24,
-    nombre:"Portavelas y portasahumerios",
-    img: "img/portasahumerio_portavela.webp",
-    descricion: "De yeso, variedad de colores",
-    precio: 4500,
-    categoria: ["Adornos", "Portasahumerios", "Portavelas"],
+    "id":24,
+    "nombre":"Portavelas y portasahumerios",
+    "img": "img/portasahumerio_portavela.webp",
+    "descricion": "De yeso, variedad de colores",
+    "precio": 4500,
+    "categoria": ["Adornos", "Portasahumerios", "Portavelas"],
     },
     {
-    id:25,
-    nombre:"Portavela",
-    img: "img/portavela_lata.webp",
-    descricion: "De yeso, 6cmx6cm",
-    precio: 3500,
-    categoria: ["Adornos", "Portavelas"],
+    "id":25,
+    "nombre":"Portavela",
+    "img": "img/portavela_lata.webp",
+    "descricion": "De yeso, 6cmx6cm",
+    "precio": 3500,
+    "categoria": ["Adornos", "Portavelas"],
     },
-];
+];*/
+let productos = [];
+let productosAMostrar = [];
+
+fetch ('./data/productos.json')
+    .then(response =>{ 
+        response.json();
+        seccionCardProductos.innerHTML = "";
+        /*
+        Swal.fire({
+            position: "center-center",
+            //icon: "success",
+            title: "Bienvenidos a Buena vibra",
+            showConfirmButton: false,
+            timer: 1000});*/
+        })
+    .then(data => { console.log(data);
 // Ordena en orden alfabetico segun los nombres / uso localeCompare porque respeta el español (ñ y tilde)
-let productosAMostrar = productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        productos = data.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        productosAMostrar = productos;
+
+        actualizarCarrito()
+        actualizarProductos(productosAMostrar);
+    })
+    .catch(error => {
+        console.log("Algo salió mal: ", error);
+    })
+    .finally(() => {
+        console.log("El finally funciona");
+    });
 
 // VALOR A CARRITO ----------------------
 let carrito = [];
@@ -531,9 +560,18 @@ function actualizarCarrito(){
 };
 
 const botonRegistro = document.querySelector('.boton-registro');
-botonRegistro.onclick = () => {
-    seccionCardProductos.innerHTML = "";
-
+botonRegistro.onclick = async () => {
+    const inputNombre = (await fetch("//api.ipify.org?format=json"));
+    const usuario = await inputNombre.json();
+    const { value: nombre } = await Swal.fire({
+    title: 'Bienvenido!\nCon quien tenemos el gusto?',
+    input: "text",
+    inputLabel: "Nombre y apellido",
+    showCancelButton: true,
+    inputValidator: (value) => {
+        if (!value) return "Por favor ingrese una manera de identificarlo";            }
+    });
+    if (nombre) Swal.fire(`Usted se registro como: ${nombre}`);
 }
 const botonProductos = document.querySelector('.boton-productos');
 botonProductos.onclick = () => {
@@ -559,8 +597,8 @@ botonEnviar.onclick = () => {
         confirmButtonText: "Confirmar!"
     }).then((result) => {
         if (result.isConfirmed) Swal.fire({
-            title: "Formulario enviado",
-            text: "Gracias por su pedido, te contactaremos a la brevedad para el pago y la entrega",
+            title: "Pedido enviado",
+            text: "Gracias!! Te contactaremos a la brevedad para el pago y la entrega",
             icon: "success"
         });
         // Limpieza de carrito y storage pero despues de confirmar 
