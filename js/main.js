@@ -219,17 +219,7 @@ let productos = [];
 let productosAMostrar = [];
 
 fetch ('./data/productos.json')
-    .then(response =>{ 
-        response.json();
-        seccionCardProductos.innerHTML = "";
-        /*
-        Swal.fire({
-            position: "center-center",
-            //icon: "success",
-            title: "Bienvenidos a Buena vibra",
-            showConfirmButton: false,
-            timer: 1000});*/
-        })
+    .then(response => response.json())
     .then(data => { console.log(data);
 // Ordena en orden alfabetico segun los nombres / uso localeCompare porque respeta el español (ñ y tilde)
         productos = data.sort((a, b) => a.nombre.localeCompare(b.nombre));
