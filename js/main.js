@@ -12,15 +12,16 @@ fetch ('./data/productos.json')
 // Ordena en orden alfabetico segun los nombres / uso localeCompare porque respeta el español (ñ y tilde)
         productos = data.sort((a, b) => a.nombre.localeCompare(b.nombre));
         productosAMostrar = productos;
-
-        actualizarCarrito()
+        //throw error;
+        actualizarCarrito();
         actualizarProductos(productosAMostrar);
     })
     .catch(error => {
-        console.log("Algo salió mal: ", error);
-    })
-    .finally(() => {
-        console.log("El finally funciona");
+       Swal.fire({
+            title: "Ocurrió un error al cargar los productos",
+            text: "Por favor comuniquese con nosotros",
+            icon: "error"
+        });
     });
 
 let carrito = [];
@@ -33,7 +34,7 @@ try{
     };
 } catch(e){
     carrito = [];
-}// de esta manera existe carrito en todo el codigo
+}
 
 let cliente = [];
 try{
@@ -128,25 +129,6 @@ borrarCarrito = document.createElement("button");
 borrarCarrito.innerText = "Borrar";
 borrarCarrito.className = "boton-borrar";
 seccionHeaderCarrito.appendChild(borrarCarrito);
-borrarCarrito.onclick = () => {
-    // Borro el storage y tamb la variable
-    localStorage.setItem("carrito", JSON.stringify([]));
-    carrito = [];
-    actualizarCarrito();
-     Toastify({
-    text: "Carrito vaciado",
-    gravity: "bottom", // `top` or `bottom`
-    position: "right", // `left`, `center` or `right`
-    duration: 2000,
-    className: "toast-agregado",
-    style: {
-        background: "#A38A75",
-        color: "#052b20",
-        borderRadius: "10px",
-}
-    }).showToast();
-
-}
 
 //// sector de funciones ----------------------------------
 
@@ -185,27 +167,21 @@ function crearCard (producto){
 // Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
     const cardProducto = document.createElement("article");
     cardProducto.className = "cardProduct";
-
     const nombreProducto = document.createElement("h3");
     nombreProducto.innerText = producto.nombre;
-
     const imgProducto = document.createElement("img"); 
     imgProducto.className = "imagen-producto";
     imgProducto.src = producto.img;
     imgProducto.alt = "NOIMG";
-
     const descProducto = document.createElement("p"); 
     descProducto.className = "descripcion-producto";
     descProducto.innerText = producto.descricion;
-
     const precioProducto = document.createElement("p"); 
     precioProducto.className = "precio-producto"
     precioProducto.innerText = `$${producto.precio}`;
-
     const botonCarrito = document.createElement("button"); 
     botonCarrito.innerText = "Agregar";
     botonCarrito.className = "boton-agregarCarrito"; 
-
 // Conexion de la card con el padre
     seccionCardProductos.appendChild(cardProducto);
 // Conexion de la card (article) con sus hijos
@@ -312,37 +288,48 @@ function mostrarCarrito(e){
 // Creacion del card y su contenido, luego lo asigno a un padre
     const cardCarrito = document.createElement("article");
     cardCarrito.className = "card-carrito";
+        const divInfo = document.createElement("div");
+        divInfo.className = "div-info";
+        cardCarrito.appendChild(divInfo);
+        const divBotones = document.createElement("div");
+        divBotones.className = "div-botones";
+        cardCarrito.appendChild(divBotones);
+            const botonX = document.createElement("button");
+            botonX.className = "boton-eliminar";
+            botonX.innerText = "X";
+            divBotones.appendChild(botonX);
+            const botonMas = document.createElement("button");
+            botonMas.className = "boton-carrito";
+            botonMas.innerText = "+";
+            divBotones.appendChild(botonMas);            const botonMenos = document.createElement("button");
+            botonMenos.className = "boton-carrito";
+            botonMenos.innerText = "-";
+            divBotones.appendChild(botonMenos);
 
     const nameProductoCarrito = document.createElement("h4");
     nameProductoCarrito.innerText = e.nombre;
-
     const variedadProductoCarrito = document.createElement("p"); 
     if (e.eleccion){
         variedadProductoCarrito.className = "p-carrito";
         variedadProductoCarrito.innerText = `Eleccion: ${e.eleccion}`;
     }
-
     const precioProductoCarrito = document.createElement("p"); 
     precioProductoCarrito.className = "p-carrito";
     precioProductoCarrito.innerText = `Precio unitario: $${e.precio}`;
-    
     const cantProductoCarrito = document.createElement("p"); 
     cantProductoCarrito.className = "p-carrito";
     cantProductoCarrito.innerText = `Cantidad: ${e.cantidad}`;
-    
     const sumaProductoCarrito = document.createElement("p"); 
     sumaProductoCarrito.className = "p-carrito";
     sumaProductoCarrito.innerText  =`Suma parcial: $${e.precio*e.cantidad}`;
-
     seccionBodyCarrito.appendChild(cardCarrito);
-
-    cardCarrito.appendChild(nameProductoCarrito);
+    divInfo.appendChild(nameProductoCarrito);
     if (e.eleccion){
-        cardCarrito.appendChild(variedadProductoCarrito);
+        divInfo.appendChild(variedadProductoCarrito);
     }
-    cardCarrito.appendChild(precioProductoCarrito);
-    cardCarrito.appendChild(cantProductoCarrito);    
-    cardCarrito.appendChild(sumaProductoCarrito);
+    divInfo.appendChild(precioProductoCarrito);
+    divInfo.appendChild(cantProductoCarrito);    
+    divInfo.appendChild(sumaProductoCarrito);
 }
 // ACTUALIZACION DE CARRITO ----------------------
 function actualizarCarrito(){
@@ -366,7 +353,6 @@ function actualizarCarrito(){
     }
 };
 
-
 function actualizarRegistro() {
     if (!cliente || cliente.length <= 0) {
         //Si cliente no existe o esta vacio, boton para registrarse
@@ -388,6 +374,26 @@ function actualizarRegistro() {
     }
 }
 // Funcionalidades OnClick
+borrarCarrito.onclick = () => {
+    // Borro el storage y tamb la variable
+    localStorage.setItem("carrito", JSON.stringify([]));
+    carrito = [];
+    actualizarCarrito();
+    Toastify({
+        text: "Carrito vaciado",
+        gravity: "bottom", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        duration: 2000,
+        className: "toast-agregado",
+        style: {
+            background: "#A38A75",
+            color: "#052b20",
+            borderRadius: "10px",
+    }
+    }).showToast();
+
+}
+
 // Funcion asincronica correspondiente al boton de registrarse
 async function manejarRegistro() {
     const { value: nombreCliente } = await Swal.fire({

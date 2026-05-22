@@ -9,7 +9,7 @@ header{
     justify-content: space-between;
     // Dimensiono el lado izquierdo del header 
         .logo-colibri{
-            @include dimensionar (auto, 5rem, 0px);
+            @include dimensionar (auto, 4.5rem, 0px);
             margin: 5px 0px;
         }
         .titulo{
@@ -30,7 +30,7 @@ header{
                 @include boton(100%, 0px);
                 padding: 2px 5px;
                 font-size: 18px;
-                background-color: #A38A75;
+                background-color: $color-bg-terceario;
                 box-shadow: none;
                 &:hover{
                     transform: scale(1.05);
@@ -44,10 +44,11 @@ header{
             .boton-borrarRegistro{
                 align-self: center;
                 border: none;
+                border-radius: 6px;
                 font-size: 18px;
                 padding: 3px 6px;
                 margin-left: 6px;
-                background-color: #D9CDBF;
+                background-color: $color-bg-principal;
             }
 
          }
