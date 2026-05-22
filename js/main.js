@@ -400,6 +400,7 @@ async function manejarRegistro() {
         title: '¿Con quien tenemos el gusto?',
         input: "text",
         inputLabel: "Nombre y apellido",
+        inputValue: "Cody",
         showCancelButton: true,
         inputValidator: (value) => {
             if (!value) return "Por favor ingrese una manera de identificarlo";
@@ -414,8 +415,8 @@ async function manejarRegistro() {
 
 // Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
-    // Cartel de confirmacion
-    Swal.fire({
+    if(cliente.length > 0){
+        Swal.fire({
         title: "Estás por enviar el pedido",
         text: "¿Ya está listo?",
         icon: "question",
@@ -423,7 +424,7 @@ botonEnviar.onclick = () => {
         confirmButtonColor: "#4c8743",
         cancelButtonColor: "#b38158",
         confirmButtonText: "Confirmar!"
-    }).then((result) => {
+        }).then((result) => {
         if (result.isConfirmed) Swal.fire({
             title: "Pedido enviado",
             text: "Gracias!! Te contactaremos a la brevedad para el pago y la entrega",
@@ -433,9 +434,10 @@ botonEnviar.onclick = () => {
         localStorage.setItem("carrito", JSON.stringify([]));
         carrito = [];
         actualizarCarrito();
-
-});
-    
+        });
+    }else{
+        Swal.fire("Por favor, ingrese su nombre para poder enviar el pedido");
+    }
 };
 
 ////// Comienzo de codigo ------------------------
