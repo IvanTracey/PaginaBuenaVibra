@@ -2,219 +2,7 @@
 // Las secciones es section-<correspondiente> y cuando es la variable es sectionCorrespondiente
 // JSON no admite comentarios, comas finales y usa comillas dobles 
 
-/*
-// Sector de variables --------------------------------
-const productos = [
-    // todo en castellano expecto id e img. img es relativa al HTML
-    {
-    id:1,
-    nombre:"Agua de florida 60ml",
-    img: "img/aguas de florida.webp",
-    descricion: "Producto artesanal, de las sierras cordobesas",
-    precio: 5000,
-    categoria: ["Aromas", "Manifestacion"],
-    },
-    {
-    id:2,
-    nombre:"Agua de florida 100ml",
-    img: "img/aguas de florida.webp",
-    descricion: "Producto artesanal, de las sierras cordobesas",
-    precio: 8000,
-    categoria: ["Aromas", "Manifestacion"]
-    },
-    {
-    id:3,
-    nombre:"Difusor 100ml",
-    img: "img/difusores.webp",
-    descricion: "Producto artesanal cordobes",
-    precio: 6000,
-    categoria: "Aromas",
-    variedades: [{nombre: "Mirra", cant: 2}, {nombre: "Sandalo", cant: 1},]
-    },
-    {
-    id:4,
-    nombre:"Colgante de flor de loto",
-    img: "img/colgantes.webp",
-    descricion: "Disco para colgar, 16cm diametro",
-    precio: 4200,
-    categoria: ["Adornos"]
-    },
-    {
-    id:5,
-    nombre:"Sahumerios artesanales",
-    //relativa al HTML
-    img: "img/sahumerios_artesanales.webp",
-    descricion: "20cm de largo, 10 unidades",
-    precio: 2000,
-    categoria: ["Aromas","Defumacion"],
-    variedades: [{nombre: "Almizcle y benjui", cant: 2}, {nombre: "Citrus", cant: 1},{nombre: "Lavanda", cant: 2}, {nombre: "Melisa", cant: 1},{nombre: "Mirra", cant: 2}, {nombre: "Nag champa", cant: 1},{nombre: "Romero", cant: 2}, {nombre: "Sandalo", cant: 1}, {nombre: "Vainilla y coco", cant: 1},{nombre: "Verbena", cant: 2}, {nombre: "Verbena y melisa", cant: 1},]
-    },
-    {
-    "id":6,
-    "nombre":"Sahumerios importados",
-    "img": "img/sahumerios_importados.webp",
-    "descricion": "30cm de largo, 15 unidades",
-    "precio":3000,
-    "categoria": ["Aromas","Defumacion"],
-    "variedades": [{"nombre": "Atrae clientes", "cant": 2}, {"nombre": "Atrae dinero", "cant": 1},{"nombre": "Black ice", "cant": 2}, {"nombre": "Citronella", "cant": 1},{"nombre": "Cool water", "cant": 2}, {"nombre": "Fresa", "cant": 1},{"nombre": "Lavanda", "cant": 2}, {"nombre": "Lick me all over", "cant": 1}, {"nombre": "Limpia hogar", "cant": 1},{"nombre": "Manzana canela", "cant": 2}, {"nombre": "Meditacion", "cant": 1},{"nombre": "Om", "cant": 2}, {"nombre": "Palo santo", "cant": 1}, {"nombre": "Rosa roja", "cant": 1},{"nombre": "Rosa vainilla", "cant": 2}, {"nombre": "Sandalo", "cant": 1}]
-    },
-    {
-    "id":7,
-    "nombre":"Sahumerios importados",
-    "img": "img/sahumerios_importados.webp",
-    "descricion": "50cm de largo, 10 unidades",
-    "precio": 6500,
-    "categoria": ["Aromas","Defumacion"],
-     "variedades": [{"nombre": "Almizcle", "cant": 2}, {"nombre": "Atrae dinero", "cant": 1},{"nombre": "Black ice", cant: 2}, {"nombre": "Canela", "cant": 1},{"nombre": "Citronella", "cant": 2}, {"nombre": "Coco", "cant": 1},{"nombre": "Fresa", "cant": 2}, {"nombre": "Jazmin", "cant": 1}, {"nombre": "Lavanda", "cant": 1}, {"nombre": "Limpia hogar", "cant": 2}, {"nombre": "Meditacion", "cant": 1}, {"nombre": "Mirra", "cant": 2}, {"nombre": "Om", "cant": 2}, {nombre: "Palo santo", "cant": 1}, {"nombre": "Sandalo", "cant": 1}]
-    },
-    {
-    "id":8,
-    "nombre":"Sahumo mediano",
-    "img": "img/sahumos.webp",
-    "descricion": "Hecho con hierbas naturales, Xgr",
-    "precio": 500,
-    "categoria": "Defumacion",
-    "variedades": [{"nombre": "Cedron", "cant": 1},{"nombre": "Laurel", "cant": 2}, {"nombre": "Lavanda", "cant": 1}, {"nombre": "Pino alimonado y mandarina", "cant": 2}, {"nombre": "Pino alimonado y naranja", "cant": 2}, {"nombre": "Romero", cant: 1}, {"nombre": "Salvia", "cant": 1}]
-    },
-    {
-    "id":9,
-    "nombre":"Sahumo grande",
-    "img": "img/sahumo_romero.webp",
-    "descricion": "Hecho con Romero natural, Xgr",
-    "precio": 1000,
-    "categoria": "Defumacion",
-    },
-    {
-    "id":10,
-    "nombre":"Velas 7 chackras",
-    "img": "",
-    "descricion": "Velas de hornillo aromaticas ",
-    "precio": 4500,
-    "categoria": ["Aromas","Velas"],
-    },
-    {
-    "id":11,
-    "nombre":"Velas aromaticas 4.5cm",
-    "img": "img/vela_lata.webp",
-    "descricion": "Lata de mandala 4.5cm",
-    "precio": 6900,
-    "categoria": ["Aromas","Velas"],
-    "variedades": [{"nombre": "Jazmin", "cant": 1}, {"nombre": "Lavanda", "cant": 1}, {"nombre": "Vainilla africana", "cant": 1}]
-    },
-    {
-    "id":12,
-    "nombre":"Velas aromaticas 6.5cm",
-    "img": "img/velas.webp",
-    "descricion": "Lata de mandala 4.5cm",
-    "precio": 9900,
-    "categoria": ["Aromas","Velas"],
-    "variedades": [{"nombre": "Jazmin", "cant": 1}, {"nombre": "Lavanda", "cant": 1}, {"nombre": "Vainilla africana", "cant": 1}]
-    },
-    {
-    "id":13,
-    "nombre":"Portavela flor",
-    "img": "img/portavela_flor.webp",
-    "descricion": "Flor de yeso para vela de hornillo",
-    "precio": 3000,
-    "categoria": ["Adornoss","Portavelas"],
-    },
-    {
-    "id":14,
-    "nombre":"Portavela mano de fatima",
-    "img": "img/portavela_mano.webp",
-    "descricion": "Mano de fatima de yeso",
-    "precio": 3500,
-    "categoria": ["Adornos","Portavelas"],
-    },
-    {
-    "id":15,
-    "nombre":"Portasahumerios mano de fatima",
-    "img": "img/portasahumerio_mano.webp",
-    "descricion": "Mano de fatima de yeso",
-    "precio": 3500,
-    "categoria": ["Adornos","Portasahumerios"],
-    },
-    {
-    "id":16,
-    "nombre":"Rosario sagrado",
-    "img": "img/rosario_sagrado.webp",
-    "descricion": "Rosario hindú para manifestar los códigos sagrados de Agesta",
-    "precio": 3500,
-    "categoria": ["Manifestacion"],
-    },
-    {
-    "id":17,
-    "nombre":"Portavelas para cuatro",
-    "img": "img/portavela_para4.webp",
-    "descricion": "Portavela de yeso, variedad de colores",
-    "precio": 4500,
-    "categoria": ["Adornos", "Portavelas"],
-    },
-    {
-    "id":18,
-    "nombre":"Portavelas para dos",
-    "img": "img/portavela_para2.webp",
-    "descricion": "Portavela de yeso, variedad de colores",
-    "precio": 4000,
-    "categoria": ["Adornos", "Portavelas"],
-    },
-    {
-    "id":19,
-    "nombre":"Bolsas aromaticas",
-    "img": "img/bolsas_aromaticas.webp",
-    "descricion": "Bolsitas de lavanda, 2 unidades",
-    "precio": 800,
-    "categoria": ["Aromas"],
-    },
-    {
-    "id":20,
-    "nombre":"Piedras 7 arcangeles",
-    "img": "img/piedras_7arcangeles.webp",
-    "descricion": "Lapislazuli, citrino, calcita, cuarzo cristal, aventurita, cornalita, amatista",
-    "precio": 7000,
-    "categoria": ["Manifestacion", "Piedras"],
-    },
-    {
-    "id":21,
-    "nombre":"Kit piedras autoestima",
-    "img": "img/piedras_autoestima.webp",
-    "descricion": "Cuarzo rosa, cuarzo cristal, cornalita",
-    "precio": 4500,
-    "categoria": ["Manifestacion", "Piedras"],
-    },
-    {
-    "id":22,
-    "nombre":"Kit piedras salud",
-    "img": "img/piedras_salud.webp",
-    "descricion": "Cuarzo verde, cuarzo cristal, cuarzo ahumado",
-    "precio": 4500,
-    "categoria": ["Manifestacion", "Piedras"],
-    },
-    {
-    "id":23,
-    "nombre":"Kit piedras prosperidad",
-    "img": "img/piedras_prosperidad.webp",
-    "descricion": "Citrino, citrino, ojo de tigre",
-    "precio": 4500,
-    "categoria": ["Manifestacion", "Piedras"],
-    },
-    {
-    "id":24,
-    "nombre":"Portavelas y portasahumerios",
-    "img": "img/portasahumerio_portavela.webp",
-    "descricion": "De yeso, variedad de colores",
-    "precio": 4500,
-    "categoria": ["Adornos", "Portasahumerios", "Portavelas"],
-    },
-    {
-    "id":25,
-    "nombre":"Portavela",
-    "img": "img/portavela_lata.webp",
-    "descricion": "De yeso, 6cmx6cm",
-    "precio": 3500,
-    "categoria": ["Adornos", "Portavelas"],
-    },
-];*/
+// Sector de variables --------------------
 let productos = [];
 let productosAMostrar = [];
 
@@ -235,7 +23,6 @@ fetch ('./data/productos.json')
         console.log("El finally funciona");
     });
 
-// VALOR A CARRITO ----------------------
 let carrito = [];
 // Adquiero el carrito del storage o lo inicio vacio si no esta. Mientras que si existe algun problema CATCH tamb me lo da vacio
 try{
@@ -248,12 +35,42 @@ try{
     carrito = [];
 }// de esta manera existe carrito en todo el codigo
 
+let cliente = [];
+try{
+    cliente=JSON.parse(localStorage.getItem("cliente"));
+    if(!cliente){
+        cliente = [];
+        console.log(cliente)
+    };
+} catch(e){
+    console.log(e)
+    cliente = [];
+}
+
 
 /* Variables globales del DOM y conexion de nodos -----------------------
  main -> section-product -> (section-categorias y section-cardproduct)
       -> section-carrito -> (section- header/body/footer -carrito)
 */
-const main = document.querySelector('.main-productos');
+const header = document.querySelector('header');
+    const tituloPagina = document.createElement("p");
+    tituloPagina.className = "titulo";
+    tituloPagina.innerText = "Buena vibra";
+    header.appendChild(tituloPagina);
+    const logo = document.createElement("img");
+    logo.className = "logo-colibri";
+    logo.src = "img/logo_colibri.webp";
+    logo.alt = "Imagen de un colibri en colores vivos. Logo del emprendimiento"
+    header.appendChild(logo);
+    const seccionRegistro = document.createElement("section");
+    seccionRegistro.className = "seccion-registro";
+    header.appendChild(seccionRegistro);
+    const botonRegistro = document.createElement("button");
+    botonRegistro.className = "boton-registro";
+    botonRegistro.innerText = "Registrese";
+    seccionRegistro.appendChild(botonRegistro);
+
+const main = document.querySelector('main');
     const seccionProductos = document.createElement("section");
     seccionProductos.className = "section-product";
     main.appendChild(seccionProductos);
@@ -549,29 +366,44 @@ function actualizarCarrito(){
     }
 };
 
-const botonRegistro = document.querySelector('.boton-registro');
-botonRegistro.onclick = async () => {
-    const inputNombre = (await fetch("//api.ipify.org?format=json"));
-    const usuario = await inputNombre.json();
-    const { value: nombre } = await Swal.fire({
-    title: 'Bienvenido!\nCon quien tenemos el gusto?',
-    input: "text",
-    inputLabel: "Nombre y apellido",
-    showCancelButton: true,
-    inputValidator: (value) => {
-        if (!value) return "Por favor ingrese una manera de identificarlo";            }
-    });
-    if (nombre) Swal.fire(`Usted se registro como: ${nombre}`);
+
+function actualizarRegistro() {
+    if (!cliente || cliente.length <= 0) {
+        //Si cliente no existe o esta vacio, boton para registrarse
+        seccionRegistro.innerHTML = `<button class="boton-registro">Registrese</button>`;
+        // como innerHTML regenera el botón, hay que reasignar el evento
+        document.querySelector('.boton-registro').onclick = manejarRegistro;
+    } else {
+        //Si ya dio su nombre, lo saludo y creo un boton
+        seccionRegistro.innerHTML = `
+            <p>Hola, ${cliente}!</p>
+            <button class="boton-borrarRegistro" heigth=auto> X </button>
+        `;
+        // Le doy la funcionalidad de borrar los datos y llamo nuevamente a la funcion para que coloque el boton para registrarse
+        document.querySelector('.boton-borrarRegistro').onclick = () => {
+            localStorage.removeItem("cliente");
+            cliente = [];
+            actualizarRegistro();
+        };
+    }
 }
-const botonProductos = document.querySelector('.boton-productos');
-botonProductos.onclick = () => {
-    seccionCardProductos.innerHTML = "";
-    // Saco el activo de todos
-    document.querySelectorAll('.boton-categoria')
-        .forEach(b => b.classList.remove("activo"));
-    // muestra todos los productos
-    actualizarProductos(productos);
-    
+// Funcionalidades OnClick
+// Funcion asincronica correspondiente al boton de registrarse
+async function manejarRegistro() {
+    const { value: nombreCliente } = await Swal.fire({
+        title: '¿Con quien tenemos el gusto?',
+        input: "text",
+        inputLabel: "Nombre y apellido",
+        showCancelButton: true,
+        inputValidator: (value) => {
+            if (!value) return "Por favor ingrese una manera de identificarlo";
+        }
+    });
+    if (nombreCliente) {
+        localStorage.setItem("cliente", JSON.stringify(nombreCliente));
+        cliente = nombreCliente;
+        actualizarRegistro();
+    }
 }
 
 // Uso de libreria - Envio de pedido
@@ -604,6 +436,15 @@ botonEnviar.onclick = () => {
 // Actualizacion de pagina
 actualizarCarrito()
 actualizarProductos(productosAMostrar);
+actualizarRegistro();
+
+Swal.fire({
+  position: "center",
+  title: "Bienvenidos a Buena vibra",
+  showConfirmButton: false,
+  timer: 1500
+});
+
 
 
 

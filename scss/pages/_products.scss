@@ -4,7 +4,7 @@
 
 
 // ----------- Pagina Productos
-.main-productos{
+main{
     background-color: $color-bg-principal;
     display: grid;
     @include grid(80% 20%, 1); 
@@ -41,6 +41,7 @@
             }
             article{
                 @extend .card;
+                min-width: 50px;
                 .imagen-producto{
                     @include dimensionar(100%, auto, 2px);
                     aspect-ratio:1/1; // Relacion de 1:1 en la imagen
@@ -83,6 +84,13 @@
         top: 0;          /* a qué distancia del tope queda fijo */
         height: 100vh;   /* ocupa toda la altura de la pantalla */
         overflow-y: auto; /* si el carrito tiene mucho contenido, scrollea internamente */
+        .bienvenida-usuario{
+            margin: 10px 25px;
+            padding: 8px;
+            text-align: center;
+            font-size: 20px;
+            background-color: #A38A75;
+        }
         .header-carrito{
             display: flex;
             justify-content:space-between;
