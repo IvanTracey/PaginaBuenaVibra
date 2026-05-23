@@ -8,8 +8,7 @@ let productosAMostrar = [];
 
 fetch ('./data/productos.json')
     .then(response => response.json())
-    .then(data => { console.log(data);
-// Ordena en orden alfabetico segun los nombres / uso localeCompare porque respeta el español (ñ y tilde)
+    .then(data => {
         productos = data.sort((a, b) => a.nombre.localeCompare(b.nombre));
         productosAMostrar = productos;
         //throw error;
@@ -41,13 +40,10 @@ try{
     cliente=JSON.parse(localStorage.getItem("cliente"));
     if(!cliente){
         cliente = [];
-        console.log(cliente)
     };
 } catch(e){
-    console.log(e)
     cliente = [];
 }
-
 
 /* Variables globales del DOM y conexion de nodos -----------------------
  main -> section-product -> (section-categorias y section-cardproduct)
@@ -57,52 +53,35 @@ const header = document.querySelector('header');
     const tituloPagina = document.createElement("p");
     tituloPagina.className = "titulo";
     tituloPagina.innerText = "Buena vibra";
-    header.appendChild(tituloPagina);
     const logo = document.createElement("img");
     logo.className = "logo-colibri";
     logo.src = "img/logo_colibri.webp";
     logo.alt = "Imagen de un colibri en colores vivos. Logo del emprendimiento"
-    header.appendChild(logo);
     const seccionRegistro = document.createElement("section");
     seccionRegistro.className = "seccion-registro";
-    header.appendChild(seccionRegistro);
     const botonRegistro = document.createElement("button");
     botonRegistro.className = "boton-registro";
     botonRegistro.innerText = "Registrese";
-    seccionRegistro.appendChild(botonRegistro);
-
 const main = document.querySelector('main');
     const seccionProductos = document.createElement("section");
     seccionProductos.className = "section-product";
-    main.appendChild(seccionProductos);
-        const titulo = document.createElement("h1");
-        titulo.innerText = "Productos";
-        seccionProductos.appendChild(titulo);
-    const seccionCategorias = document.createElement("section");
-    seccionCategorias.className = "section-categorias";
-    seccionProductos.appendChild(seccionCategorias);
-       
-    const seccionCardProductos = document.createElement("section");
-    seccionCardProductos.className = "section-cardproduct";
-    seccionProductos.appendChild(seccionCardProductos);
-
-    const seccionCarrito = document.createElement("section");
-    seccionCarrito.className = "section-carrito";
-    main.appendChild(seccionCarrito);
+    const titulo = document.createElement("h1");
+    titulo.innerText = "Productos";
+        const seccionCategorias = document.createElement("section");
+        seccionCategorias.className = "section-categorias";
+        const seccionCardProductos = document.createElement("section");
+        seccionCardProductos.className = "section-cardproduct";
+        const seccionCarrito = document.createElement("section");
+        seccionCarrito.className = "section-carrito";
         const seccionHeaderCarrito = document.createElement("section");
         seccionHeaderCarrito.className = "header-carrito";
-        seccionCarrito.appendChild(seccionHeaderCarrito);
-            const tituloCarrito = document.createElement("h2");
-            tituloCarrito.innerText = "Carrito";
-            seccionHeaderCarrito.appendChild(tituloCarrito);
+        const tituloCarrito = document.createElement("h2");
+        tituloCarrito.innerText = "Carrito";
         const seccionBodyCarrito = document.createElement("section");
         seccionBodyCarrito.className = "body-carrito";
-        seccionCarrito.appendChild(seccionBodyCarrito);
         const seccionFooterCarrito = document.createElement("section");
         seccionFooterCarrito.className = "footer-carrito";
-        seccionCarrito.appendChild(seccionFooterCarrito);
 
-// van acá porque actualizarCarrito() los necesita declarados
 // Total del carrito ----------------------
 const total = carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
 const totalCarrito = document.createElement("article");
@@ -114,16 +93,27 @@ const carritoVacio = document.createElement("article");
 carritoVacio.className = "card-carrito-mensaje";
 carritoVacio.innerText = "Carrito vacío";
 
-// Le asigno el padre a los dos
-seccionFooterCarrito.appendChild(carritoVacio);
-seccionFooterCarrito.appendChild(totalCarrito);
-
 // Boton de envio de pedido
 botonEnviar = document.createElement("button");
 botonEnviar.innerText = "Enviar pedido";
 botonEnviar.className = "boton-enviar";
-seccionFooterCarrito.appendChild(botonEnviar);
 
+header.appendChild(tituloPagina); 
+header.appendChild(logo);
+header.appendChild(seccionRegistro);
+    seccionRegistro.appendChild(botonRegistro);
+main.appendChild(seccionProductos);
+    seccionProductos.appendChild(titulo);
+    seccionProductos.appendChild(seccionCategorias);
+    seccionProductos.appendChild(seccionCardProductos);
+main.appendChild(seccionCarrito);
+    seccionCarrito.appendChild(seccionHeaderCarrito);
+        seccionHeaderCarrito.appendChild(tituloCarrito);
+    seccionCarrito.appendChild(seccionBodyCarrito);
+    seccionCarrito.appendChild(seccionFooterCarrito);
+        seccionFooterCarrito.appendChild(carritoVacio);
+        seccionFooterCarrito.appendChild(totalCarrito);
+        seccionFooterCarrito.appendChild(botonEnviar);
 // VACIAR CARRITO ----------------------
 borrarCarrito = document.createElement("button");
 borrarCarrito.innerText = "Borrar";
@@ -262,8 +252,6 @@ function agregarCarrito(idElegido, varElegida){
             carrito.push({...productoConVariedad, cantidad: 1});
         };
     }
-    
-// Uso libreria - notificacion del agregado 
     Toastify({
     text: "Producto agregado al carrito",
     gravity: "bottom", // `top` or `bottom`
@@ -276,10 +264,7 @@ function agregarCarrito(idElegido, varElegida){
         borderRadius: "10px",
 }
     }).showToast();
-
-// Guardo en el storage como string
     localStorage.setItem("carrito", JSON.stringify(carrito));
-// Actualizo el carrito
     actualizarCarrito();
 }
 
@@ -290,46 +275,89 @@ function mostrarCarrito(e){
     cardCarrito.className = "card-carrito";
         const divInfo = document.createElement("div");
         divInfo.className = "div-info";
-        cardCarrito.appendChild(divInfo);
+            const nameProductoCarrito = document.createElement("h4");
+            const precioProductoCarrito = document.createElement("p"); 
+            precioProductoCarrito.className = "p-carrito";
+            const cantProductoCarrito = document.createElement("p"); 
+            cantProductoCarrito.className = "p-carrito";
+            const sumaProductoCarrito = document.createElement("p"); 
+            sumaProductoCarrito.className = "p-carrito";
         const divBotones = document.createElement("div");
         divBotones.className = "div-botones";
-        cardCarrito.appendChild(divBotones);
             const botonX = document.createElement("button");
             botonX.className = "boton-eliminar";
             botonX.innerText = "X";
-            divBotones.appendChild(botonX);
             const botonMas = document.createElement("button");
             botonMas.className = "boton-carrito";
             botonMas.innerText = "+";
-            divBotones.appendChild(botonMas);            const botonMenos = document.createElement("button");
+            const botonMenos = document.createElement("button");
             botonMenos.className = "boton-carrito";
             botonMenos.innerText = "-";
-            divBotones.appendChild(botonMenos);
-
-    const nameProductoCarrito = document.createElement("h4");
+    
     nameProductoCarrito.innerText = e.nombre;
-    const variedadProductoCarrito = document.createElement("p"); 
-    if (e.eleccion){
-        variedadProductoCarrito.className = "p-carrito";
-        variedadProductoCarrito.innerText = `Eleccion: ${e.eleccion}`;
-    }
-    const precioProductoCarrito = document.createElement("p"); 
-    precioProductoCarrito.className = "p-carrito";
     precioProductoCarrito.innerText = `Precio unitario: $${e.precio}`;
-    const cantProductoCarrito = document.createElement("p"); 
-    cantProductoCarrito.className = "p-carrito";
     cantProductoCarrito.innerText = `Cantidad: ${e.cantidad}`;
-    const sumaProductoCarrito = document.createElement("p"); 
-    sumaProductoCarrito.className = "p-carrito";
     sumaProductoCarrito.innerText  =`Suma parcial: $${e.precio*e.cantidad}`;
+        
     seccionBodyCarrito.appendChild(cardCarrito);
-    divInfo.appendChild(nameProductoCarrito);
-    if (e.eleccion){
-        divInfo.appendChild(variedadProductoCarrito);
+    cardCarrito.appendChild(divInfo);
+        divInfo.appendChild(nameProductoCarrito);
+        divInfo.appendChild(precioProductoCarrito);
+        if (e.eleccion){
+            const variedadProductoCarrito = document.createElement("p"); 
+            variedadProductoCarrito.className = "p-carrito";
+            variedadProductoCarrito.innerText = `Eleccion: ${e.eleccion}`;
+            divInfo.appendChild(variedadProductoCarrito);
+        }
+        divInfo.appendChild(cantProductoCarrito);    
+        divInfo.appendChild(sumaProductoCarrito);
+        cardCarrito.appendChild(divBotones);
+        divBotones.appendChild(botonX);
+        divBotones.appendChild(botonMas);            
+        divBotones.appendChild(botonMenos);
+    
+    botonX.onclick = () => {
+        const indice = carrito.findIndex(el => el.id === e.id && el.eleccion === e.eleccion);
+        carrito.splice(indice, 1);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        actualizarCarrito();
     }
-    divInfo.appendChild(precioProductoCarrito);
-    divInfo.appendChild(cantProductoCarrito);    
-    divInfo.appendChild(sumaProductoCarrito);
+    
+    botonMas.onclick = () => {
+        carrito = carrito.map(el => {
+            if(el.id === e.id && el.eleccion === e.eleccion){
+                return{
+                    ...el,
+                    cantidad: el.cantidad +1,
+                };
+            }else{
+                return el;
+            }
+        });
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        actualizarCarrito();
+    };
+    
+    botonMenos.onclick = () => {
+        const indice = carrito.findIndex(el => el.id === e.id && el.eleccion === e.eleccion);
+        carrito = carrito.map(el => {
+            if(el.id === e.id && el.eleccion === e.eleccion){
+                if(el.cantidad > 1){
+                    return{
+                        ...el,
+                        cantidad: el.cantidad -1,  
+                    }
+                };
+            }else{
+                return el;
+            }
+        });
+        if(e.cantidad === 1){
+            carrito.splice(indice, 1);
+        }
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        actualizarCarrito();
+    }
 }
 // ACTUALIZACION DE CARRITO ----------------------
 function actualizarCarrito(){
@@ -413,6 +441,8 @@ async function manejarRegistro() {
     }
 }
 
+
+
 // Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
     if(cliente.length > 0){
@@ -452,7 +482,5 @@ Swal.fire({
   showConfirmButton: false,
   timer: 1500
 });
-
-
 
 
