@@ -31,7 +31,7 @@ main{
         }
         .section-cardproduct{
             display: grid;
-            @include grid(repeat(4, 1fr), auto); 
+            @include grid(repeat(4, 1fr), auto);
             .mensaje-noProductos{
                 grid-column: 1/-1;
                 margin-top: 30vh;
@@ -65,7 +65,7 @@ main{
                     transform: scale(1.05);
                 }
                 .boton-agregarCarrito{
-                    @include boton(50%, 10px 8px);
+                    @include boton(50%, 15px 0px);
                     padding: 4px 2px;
                     font-size: 16px;
                     &:hover{
