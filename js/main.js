@@ -234,21 +234,17 @@ function agregarCarrito(idElegido, varElegida){
         }
 // verifico si el producto ya esta en el carrito (.some da true si el elemento que pasaste existe al menos una vez) - tanto con el id como con la variedad
         if(carrito.some(e => e.id === productoConVariedad.id && e.eleccion === productoConVariedad.eleccion)){
-// El producto ESTA, uso MAPS para recorrer el carrito
             carrito=carrito.map(e => {
                 if (e.id === productoConVariedad.id && e.eleccion === productoConVariedad.eleccion){
-// lo que hago en el elemento que coincide, sumo 1
                     return{
                         ...e,
                         cantidad: e.cantidad+1,
                     };
                 }else{
-// lo que hago en los elemento que no coincide, sin cambios
                     return e;    
                 }
             });     
         }else{
-//NO ESTA, agrego el objeto producto elegido + cantidad:1
             carrito.push({...productoConVariedad, cantidad: 1});
         };
     }
@@ -270,7 +266,6 @@ function agregarCarrito(idElegido, varElegida){
 
 // MOSTRAR CARRITO ----------------------
 function mostrarCarrito(e){
-// Creacion del card y su contenido, luego lo asigno a un padre
     const cardCarrito = document.createElement("article");
     cardCarrito.className = "card-carrito";
         const divInfo = document.createElement("div");
@@ -320,16 +315,46 @@ function mostrarCarrito(e){
         const indice = carrito.findIndex(el => el.id === e.id && el.eleccion === e.eleccion);
         carrito.splice(indice, 1);
         localStorage.setItem("carrito", JSON.stringify(carrito));
-        actualizarCarrito();
+        actualizarCarrito();         
+        Toastify({
+            text: "Producto eliminado del carrito",
+            gravity: "bottom", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            duration: 2000,
+            className: "toast-agregado",
+            style: {
+                background: "#A38A75",
+                color: "#052b20",
+                borderRadius: "10px",
+        }
+        }).showToast();
     }
     
     botonMas.onclick = () => {
+        let vector = [];
+        let numero = 5;
+        if(e.eleccion){
+            vector = carrito.find(el =>
+                el.id === e.id && el.eleccion === e.eleccion);
+            console.log("Vector: ", vector);
+            
+
+        }else{
+            
+        }
         carrito = carrito.map(el => {
             if(el.id === e.id && el.eleccion === e.eleccion){
-                return{
+        // No incrementar por encima del stock
+                if(el.cantidad === numero){
+                    return{
                     ...el,
-                    cantidad: el.cantidad +1,
-                };
+                    }
+                }else{
+                    return{
+                    ...el,
+                    cantidad: el.cantidad +1,    
+                    }
+                    }
             }else{
                 return el;
             }
@@ -353,7 +378,19 @@ function mostrarCarrito(e){
             }
         });
         if(e.cantidad === 1){
-            carrito.splice(indice, 1);
+            carrito.splice(indice, 1);            
+            Toastify({
+                text: "Producto eliminado del carrito",
+                gravity: "bottom", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                duration: 2000,
+                className: "toast-agregado",
+                style: {
+                    background: "#A38A75",
+                    color: "#052b20",
+                    borderRadius: "10px",
+            }
+            }).showToast();
         }
         localStorage.setItem("carrito", JSON.stringify(carrito));
         actualizarCarrito();
@@ -440,8 +477,6 @@ async function manejarRegistro() {
         actualizarRegistro();
     }
 }
-
-
 
 // Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
