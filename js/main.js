@@ -187,7 +187,7 @@ function crearCard (producto){
         selectVariedades.name = "variedades";
         producto.variedades.forEach(variedad => {
             const option = document.createElement("option");
-            if (variedad.cant) {
+            if (variedad.stock) {
                 option.value = variedad.nombre;
                 option.innerText = variedad.nombre;
                 selectVariedades.appendChild(option);}
@@ -292,7 +292,7 @@ function mostrarCarrito(e){
     nameProductoCarrito.innerText = e.nombre;
     precioProductoCarrito.innerText = `Precio unitario: $${e.precio}`;
     cantProductoCarrito.innerText = `Cantidad: ${e.cantidad}`;
-    sumaProductoCarrito.innerText  =`Suma parcial: $${e.precio*e.cantidad}`;
+    sumaProductoCarrito.innerText  =`Suma parcial: $${e.precio * e.cantidad}`;
         
     seccionBodyCarrito.appendChild(cardCarrito);
     cardCarrito.appendChild(divInfo);
@@ -318,8 +318,8 @@ function mostrarCarrito(e){
         actualizarCarrito();         
         Toastify({
             text: "Producto eliminado del carrito",
-            gravity: "bottom", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
+            gravity: "bottom",  
+            position: "right",  
             duration: 2000,
             className: "toast-agregado",
             style: {
@@ -403,7 +403,7 @@ function actualizarCarrito(){
     seccionBodyCarrito.innerHTML= "";
     // Cargo nuevamente el carrito
     carrito.forEach(e => mostrarCarrito(e));
-    const total= carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
+    const total= carrito.reduce((acc, e) => acc + e.precio * e.cantidad, 0);
     totalCarrito.innerText = `TOTAL: $${total}`;
 
     // Muestro solo un mensaje. Va aca para que ese actualizado
@@ -423,7 +423,7 @@ function actualizarRegistro() {
         //Si cliente no existe o esta vacio, boton para registrarse
         seccionRegistro.innerHTML = `<button class="boton-registro">Registrese</button>`;
         // como innerHTML regenera el botón, hay que reasignar el evento
-        document.querySelector('.boton-registro').onclick = manejarRegistro;
+        document.querySelector('.boton-registro').onclick = registrar;
     } else {
         //Si ya dio su nombre, lo saludo y creo un boton
         seccionRegistro.innerHTML = `
@@ -460,7 +460,7 @@ borrarCarrito.onclick = () => {
 }
 
 // Funcion asincronica correspondiente al boton de registrarse
-async function manejarRegistro() {
+async function registrar() {
     const { value: nombreCliente } = await Swal.fire({
         title: '¿Con quien tenemos el gusto?',
         input: "text",
