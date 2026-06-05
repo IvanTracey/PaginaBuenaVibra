@@ -24,7 +24,7 @@ main{
                     transform: scale(1.05);
                 }
                 &.activo {
-                background-color: #A38A75;
+                background-color: $color-bg-terceario;
                 font-weight: bold;
                 }
             }
@@ -45,20 +45,35 @@ main{
                 .div-nombre{
                     height: 50px;
                     align-content: center;
-                    margin: 2px 0px;
+                    margin: 1px 0px;
                 }
                 .imagen-producto{
                     @include dimensionar(100%, auto, 2px);
                     aspect-ratio: 1/1; // Relacion de 1:1 en la imagen
                     object-fit: cover;
                 }
-                .div-descripcion{
-                    height: 60px;
+                .div-categoria{
+                    justify-content: center;
                     align-content: center;
-                    margin: 1px 0px;
+                    margin: 3px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 5px;
+                    .tag-categoria{
+                        font-size: 12px;
+                        font-weight: bold;
+                        background-color: $color-bg-boton;
+                        padding: 3px;
+                        box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+                        border-radius: 4px;
+                    }
+                }
+                .div-descripcion{
+                    height: 50px;
+                    align-content: center;
                 }
                 .descripcion-producto{
-                    font-size: 16px;
+                    font-size: 14px;
                     margin-bottom: 6px;
                 }
                 .variedad-producto{

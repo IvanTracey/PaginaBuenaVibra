@@ -123,7 +123,7 @@ seccionHeaderCarrito.appendChild(borrarCarrito);
 //// sector de funciones ----------------------------------
 
 // Seccion categorias - creacion de botones
-const categorias = ["Todos", "Adornos", "Aromas", "Defumacion", "Manifestacion", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
+const categorias = ["Todos", "Adornos", "Aromas", "Defumación", "Manifestación", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
 categorias.forEach(categoria => {
     // Creo el boton para cada categoria
     const boton = document.createElement("button");
@@ -165,6 +165,18 @@ function crearCard (producto){
     imgProducto.className = "imagen-producto";
     imgProducto.src = producto.img;
     imgProducto.alt = "NOIMG";
+    const divCategoria = document.createElement("div");
+    divCategoria.className = "div-categoria";
+// Chequea si es array y si es un string, lo hace array
+        const categorias = Array.isArray(producto.categoria)
+            ? producto.categoria : [producto.categoria];
+// Recorro el array y creo "span" por cada categoria para poder darle estilo sin afectar el resto
+        categorias.forEach((array, indice) => {
+            const spanCategoria = document.createElement("span");
+            spanCategoria.className = "tag-categoria";
+            spanCategoria.innerText = array;
+            divCategoria.appendChild(spanCategoria);
+        })
     const divDescripcion = document.createElement("div");
     divDescripcion.className = "div-descripcion";
         const descProducto = document.createElement("p"); 
@@ -180,8 +192,9 @@ function crearCard (producto){
     seccionCardProductos.appendChild(cardProducto);
 // Conexion de la card (article) con sus hijos
     cardProducto.appendChild(divNombre);
-    divNombre.appendChild(nombreProducto);
+        divNombre.appendChild(nombreProducto);
     cardProducto.appendChild(imgProducto);
+    cardProducto.appendChild(divCategoria);
     cardProducto.appendChild(divDescripcion);
         divDescripcion.appendChild(descProducto);
 // SELECT para las variedades de productos - aqui para que aparezca en el orden que quiero

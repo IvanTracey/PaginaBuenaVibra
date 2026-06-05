@@ -6,7 +6,7 @@
     "descricion": "Producto artesanal, de las sierras cordobesas",
     "precio": 5000,
     "stock": 5,
-    "categoria": ["Aromas", "Manifestacion"]
+    "categoria": ["Aromas", "Manifestación"]
     },
     {
     "id":2,
@@ -15,7 +15,7 @@
     "descricion": "Producto artesanal, de las sierras cordobesas",
     "precio": 8000,
     "stock": 5,
-    "categoria": ["Aromas", "Manifestacion"]
+    "categoria": ["Aromas", "Manifestación"]
     },
     {
     "id":3,
@@ -41,7 +41,7 @@
     "img": "img/sahumerios_artesanales.webp",
     "descricion": "20cm de largo, 10 unidades",
     "precio": 2000,
-    "categoria": ["Aromas","Defumacion"],
+    "categoria": ["Aromas","Defumación"],
     "variedades": [{"nombre": "Almizcle y benjui", "stock": 2}, {"nombre": "Citrus", "stock": 1},{"nombre": "Lavanda", "stock": 2}, {"nombre": "Melisa", "stock": 1},{"nombre": "Mirra", "stock": 2}, {"nombre": "Nag champa", "stock": 1},{"nombre": "Romero", "stock": 2}, {"nombre": "Sandalo", "stock": 1}, {"nombre": "Vainilla y coco", "stock": 1},{"nombre": "Verbena", "stock": 2}, {"nombre": "Verbena y melisa", "stock": 1}]
     },
     {
@@ -50,7 +50,7 @@
     "img": "img/sahumerios_importados.webp",
     "descricion": "30cm de largo, 15 unidades",
     "precio":3000,
-    "categoria": ["Aromas","Defumacion"],
+    "categoria": ["Aromas","Defumación"],
     "variedades": [{"nombre": "Atrae clientes", "stock": 2}, {"nombre": "Atrae dinero", "stock": 1},{"nombre": "Black ice", "stock": 2}, {"nombre": "Citronella", "stock": 1},{"nombre": "Cool water", "stock": 2}, {"nombre": "Fresa", "stock": 1},{"nombre": "Lavanda", "stock": 2}, {"nombre": "Lick me all over", "stock": 1}, {"nombre": "Limpia hogar", "stock": 1},{"nombre": "Manzana canela", "stock": 2}, {"nombre": "Meditacion", "stock": 1},{"nombre": "Om", "stock": 2}, {"nombre": "Palo santo", "stock": 1}, {"nombre": "Rosa roja", "stock": 1},{"nombre": "Rosa vainilla", "stock": 2}, {"nombre": "Sandalo", "stock": 1}]
     },
     {
@@ -59,7 +59,7 @@
     "img": "img/sahumerios_importados.webp",
     "descricion": "50cm de largo, 10 unidades",
     "precio": 6500,
-    "categoria": ["Aromas","Defumacion"],
+    "categoria": ["Aromas","Defumación"],
      "variedades": [{"nombre": "Almizcle", "stock": 2}, {"nombre": "Atrae dinero", "stock": 1},{"nombre": "Black ice", "stock": 2}, {"nombre": "Canela", "stock": 1},{"nombre": "Citronella", "stock": 2}, {"nombre": "Coco", "stock": 1},{"nombre": "Fresa", "stock": 2}, {"nombre": "Jazmin", "stock": 1}, {"nombre": "Lavanda", "stock": 1}, {"nombre": "Limpia hogar", "stock": 2}, {"nombre": "Meditacion", "stock": 1}, {"nombre": "Mirra", "stock": 2}, {"nombre": "Om", "stock": 2}, {"nombre": "Palo santo", "stock": 1}, {"nombre": "Sandalo", "stock": 1}]
     },
     {
@@ -68,7 +68,7 @@
     "img": "img/sahumos.webp",
     "descricion": "Hecho con hierbas naturales, Xgr",
     "precio": 500,
-    "categoria": "Defumacion",
+    "categoria": "Defumación",
     "variedades": [{"nombre": "Cedron", "stock": 1},{"nombre": "Laurel", "stock": 2}, {"nombre": "Lavanda", "stock": 1}, {"nombre": "Pino alimonado y mandarina", "stock": 2}, {"nombre": "Pino alimonado y naranja", "stock": 2}, {"nombre": "Romero", "stock": 1}, {"nombre": "Salvia", "stock": 1}]
     },
     {
@@ -78,7 +78,7 @@
     "descricion": "Hecho con Romero natural, Xgr",
     "precio": 1000,
     "stock": 5,
-    "categoria": "Defumacion"
+    "categoria": "Defumación"
     },
     {
     "id":10,
@@ -114,7 +114,7 @@
     "descricion": "Flor de yeso para vela de hornillo",
     "precio": 3000,
     "stock": 5,
-    "categoria": ["Adornoss","Portavelas"]
+    "categoria": ["Adornos","Portavelas"]
     },
     {
     "id":14,
@@ -141,7 +141,7 @@
     "descricion": "Rosario hindú para manifestar los códigos sagrados de Agesta",
     "precio": 3500,
     "stock": 5,
-    "categoria": ["Manifestacion"]
+    "categoria": ["Manifestación"]
     },
     {
     "id":17,
@@ -177,7 +177,7 @@
     "descricion": "Lapislazuli, citrino, calcita, cuarzo cristal, aventurita, cornalita, amatista",
     "precio": 7000,
     "stock": 5,
-    "categoria": ["Manifestacion", "Piedras"]
+    "categoria": ["Manifestación", "Piedras"]
     },
     {
     "id":21,
@@ -186,7 +186,7 @@
     "descricion": "Cuarzo rosa, cuarzo cristal, cornalita",
     "precio": 4500,
     "stock": 5,
-    "categoria": ["Manifestacion", "Piedras"]
+    "categoria": ["Manifestación", "Piedras"]
     },
     {
     "id":22,
@@ -195,16 +195,16 @@
     "descricion": "Cuarzo verde, cuarzo cristal, cuarzo ahumado",
     "precio": 4500,
     "stock": 5,
-    "categoria": ["Manifestacion", "Piedras"]
+    "categoria": ["Manifestación", "Piedras"]
     },
     {
     "id":23,
     "nombre":"Kit piedras prosperidad",
     "img": "img/piedras_prosperidad.webp",
-    "descricion": "Citrino, citrino, ojo de tigre",
+    "descricion": "Citrino, pirita, ojo de tigre",
     "precio": 4500,
     "stock": 5,
-    "categoria": ["Manifestacion", "Piedras"]
+    "categoria": ["Manifestación", "Piedras"]
     },
     {
     "id":24,
@@ -213,7 +213,7 @@
     "descricion": "De yeso, variedad de colores",
     "precio": 4500,
     "stock": 5,
-    "categoria": ["Adornos", "Portasahumerios", "Portavelas"]
+    "categoria": ["Portasahumerios", "Portavelas"]
     },
     {
     "id":25,
