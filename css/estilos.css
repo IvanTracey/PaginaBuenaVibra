@@ -198,7 +198,7 @@ main .section-product .section-categorias .boton-categoria.activo {
 }
 main .section-product .section-cardproduct {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto;
 }
 main .section-product .section-cardproduct .mensaje-noProductos {
@@ -296,9 +296,8 @@ main .section-carrito .body-carrito .card-carrito .div-botones {
   justify-items: center;
 }
 main .section-carrito .body-carrito .card-carrito .div-botones .boton-eliminar {
-  width: 60%;
-  height: 70%;
-  margin: 2px 0px;
+  width: 25px;
+  height: 20px;
   border-radius: 6px;
   background-color: #A8B8A5;
 }
@@ -306,9 +305,8 @@ main .section-carrito .body-carrito .card-carrito .div-botones .boton-eliminar:h
   transform: scale(1.05);
 }
 main .section-carrito .body-carrito .card-carrito .div-botones .boton-carrito {
-  width: 90%;
-  height: 90%;
-  margin: 1px 0px;
+  width: 30px;
+  height: 25px;
   border-radius: 6px;
 }
 main .section-carrito .body-carrito .card-carrito .div-botones .boton-carrito:hover {
@@ -334,70 +332,71 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
 }
 
 @media (max-width: 1050px) and (min-width: 600px) {
-  .main-productos {
-    display: grid;
-    grid-template-columns: 20% 80%;
-    grid-template-rows: 1;
-  }
-  .main-productos .sidebar {
-    display: block;
-    grid-column: 1;
-  }
-  .main-productos .boton-categorias {
-    display: none;
-  }
-  .main-productos .section-product {
-    grid-column: 2;
-  }
-  .main-productos .section-product .section-cardproduct {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-  }
-  .main-productos .section-product .section-cardproduct .nombre-producto {
-    font-size: 20px;
-  }
-  .main-productos .section-product .section-cardproduct .precio-producto {
-    font-size: 24px;
-  }
+  /*
+   // Pagina Productos --------------
+   .main-productos{
+       display: grid;
+       @include grid(20% 80%, 1);
+       // Saco el aside con las categorias 
+      .sidebar{
+           display: block;
+           grid-column: 1;
+       }
+       // Formato del boton desplegable de categorias 
+       .boton-categorias{
+           display: none;
+       }
+       // Dispongo un nuevo Layout
+       .section-product{
+           grid-column: 2;
+           .section-cardproduct{
+               display: grid;
+               grid-template-columns: repeat(2, 1fr);
+               grid-template-rows: auto;
+               .nombre-producto{
+                   font-size: 20px;
+               }
+               .precio-producto{
+                   font-size: 24px;
+               }
+           }  
+       }
+   }*/
 }
 @media (max-width: 600px) {
-  .header .header-titulo .titulo {
-    font-size: 32px;
+  /*
+  // Modificacion del titulo del header
+  .header{
+      .header-titulo{
+          .titulo{
+              font-size: 32px;
+          }
+      }
   }
-  .main-productos {
-    display: flex;
-    flex-direction: column;
-  }
-  .main-productos .sidebar {
-    display: none;
-  }
-  .main-productos .boton-categorias {
-    display: block;
-    justify-content: center;
-    width: 50%;
-    margin: 5px;
-    background-color: #A8B8A5;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease;
-  }
-  .main-productos .section-product .section-cardproduct {
-    display: flex;
-    flex-direction: column;
-  }
-  .main-productos .section-product .boton-vermas {
-    display: block;
-    justify-content: center;
-    width: 98%;
-    margin: 10px 2px;
-    background-color: #A8B8A5;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease;
-  }
+
+
+  // Pagina Productos --------------
+  .main-productos{
+      @include modo-flex;
+      // Saco el aside con las categorias 
+     .sidebar{
+          display: none;
+      }
+      // Formato del boton desplegable de categorias 
+      .boton-categorias{
+          @include boton(50%, 5px);
+      }
+      // Dispongo un nuevo Layout
+      .section-product{
+          .section-cardproduct{
+              display: flex;
+              flex-direction: column;
+          }
+          .boton-vermas{
+              @include boton(98%, 10px 2px);
+          }
+      }
+  }*/
 }
 
 /*# sourceMappingURL=estilos.css.map */

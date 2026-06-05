@@ -31,7 +31,7 @@ main{
         }
         .section-cardproduct{
             display: grid;
-            @include grid(repeat(4, 1fr), auto);
+            @include grid(repeat(5, 1fr), auto);
             .mensaje-noProductos{
                 grid-column: 1/-1;
                 margin-top: 30vh;
@@ -112,9 +112,8 @@ main{
                     display: grid;
                     justify-items: center;
                     .boton-eliminar{
-                        width: 60%;
-                        height: 70%;
-                        margin: 2px 0px;
+                        width: 25px;
+                        height: 20px;
                         border-radius: 6px;
                         background-color: $color-bg-boton;
                         &:hover{
@@ -122,9 +121,8 @@ main{
                         }
                     }
                     .boton-carrito{
-                        width: 90%;
-                        height: 90%;
-                        margin: 1px 0px;
+                        width: 30px;
+                        height: 25px;
                         border-radius: 6px;
                         &:hover{
                             transform: scale(1.05);

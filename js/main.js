@@ -331,21 +331,30 @@ function mostrarCarrito(e){
     }
     
     botonMas.onclick = () => {
-        let vector = [];
-        let numero = 5;
-        if(e.eleccion){
-            vector = carrito.find(el =>
-                el.id === e.id && el.eleccion === e.eleccion);
-            console.log("Vector: ", vector);
-            
-
+        const productoSeleccionado = carrito.find(el => 
+            el.id === e.id);
+        let stockDisponible;
+        if(productoSeleccionado.variedades){
+            variedad = productoSeleccionado.variedades.find(el => el.nombre === e.eleccion);
+            stockDisponible = variedad.stock;       
         }else{
-            
+            stockDisponible = productoSeleccionado.stock;       
         }
         carrito = carrito.map(el => {
             if(el.id === e.id && el.eleccion === e.eleccion){
         // No incrementar por encima del stock
-                if(el.cantidad === numero){
+                if(el.cantidad === stockDisponible){
+                    Toastify({ 
+                        text: "Stock máximo alcanzado", 
+                        gravity: "bottom",  
+                        position: "right",   
+                        duration: 2000,
+                        className: "toast-agregado",
+                        style: {
+                            background: "#7ba972",
+                            color: "#052b20",
+                            borderRadius: "10px"}
+                    }).showToast();
                     return{
                     ...el,
                     }
