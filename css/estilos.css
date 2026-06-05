@@ -211,12 +211,22 @@ main .section-product .section-cardproduct .mensaje-noProductos {
 main .section-product .section-cardproduct article {
   min-width: 50px;
 }
+main .section-product .section-cardproduct article .div-nombre {
+  height: 50px;
+  align-content: center;
+  margin: 2px 0px;
+}
 main .section-product .section-cardproduct article .imagen-producto {
   width: 100%;
   height: auto;
   padding: 2px;
   aspect-ratio: 1/1;
   object-fit: cover;
+}
+main .section-product .section-cardproduct article .div-descripcion {
+  height: 60px;
+  align-content: center;
+  margin: 1px 0px;
 }
 main .section-product .section-cardproduct article .descripcion-producto {
   font-size: 16px;

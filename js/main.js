@@ -157,15 +157,19 @@ function crearCard (producto){
 // Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
     const cardProducto = document.createElement("article");
     cardProducto.className = "cardProduct";
-    const nombreProducto = document.createElement("h3");
-    nombreProducto.innerText = producto.nombre;
+    const divNombre = document.createElement("div");
+    divNombre.className = "div-nombre";
+        const nombreProducto = document.createElement("h3");
+        nombreProducto.innerText = producto.nombre;
     const imgProducto = document.createElement("img"); 
     imgProducto.className = "imagen-producto";
     imgProducto.src = producto.img;
     imgProducto.alt = "NOIMG";
-    const descProducto = document.createElement("p"); 
-    descProducto.className = "descripcion-producto";
-    descProducto.innerText = producto.descricion;
+    const divDescripcion = document.createElement("div");
+    divDescripcion.className = "div-descripcion";
+        const descProducto = document.createElement("p"); 
+        descProducto.className = "descripcion-producto";
+        descProducto.innerText = producto.descricion;
     const precioProducto = document.createElement("p"); 
     precioProducto.className = "precio-producto"
     precioProducto.innerText = `$${producto.precio}`;
@@ -175,9 +179,11 @@ function crearCard (producto){
 // Conexion de la card con el padre
     seccionCardProductos.appendChild(cardProducto);
 // Conexion de la card (article) con sus hijos
-    cardProducto.appendChild(nombreProducto);
+    cardProducto.appendChild(divNombre);
+    divNombre.appendChild(nombreProducto);
     cardProducto.appendChild(imgProducto);
-    cardProducto.appendChild(descProducto);
+    cardProducto.appendChild(divDescripcion);
+        divDescripcion.appendChild(descProducto);
 // SELECT para las variedades de productos - aqui para que aparezca en el orden que quiero
     let selectVariedades = null;    // La inicio fuera para que sea variable global
 // Solo si el producto tiene variedades

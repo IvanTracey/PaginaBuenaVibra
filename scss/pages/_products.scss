@@ -42,10 +42,20 @@ main{
             article{
                 @extend .card;
                 min-width: 50px;
+                .div-nombre{
+                    height: 50px;
+                    align-content: center;
+                    margin: 2px 0px;
+                }
                 .imagen-producto{
                     @include dimensionar(100%, auto, 2px);
-                    aspect-ratio:1/1; // Relacion de 1:1 en la imagen
+                    aspect-ratio: 1/1; // Relacion de 1:1 en la imagen
                     object-fit: cover;
+                }
+                .div-descripcion{
+                    height: 60px;
+                    align-content: center;
+                    margin: 1px 0px;
                 }
                 .descripcion-producto{
                     font-size: 16px;
