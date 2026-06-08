@@ -3,6 +3,7 @@
 // JSON no admite comentarios, comas finales y usa comillas dobles 
 
 // Sector de variables --------------------
+//  
 let productos = [];
 let productosAMostrar = [];
 
@@ -13,7 +14,7 @@ fetch ('./data/productos.json')
         productosAMostrar = productos;
         //throw error;
         actualizarCarrito();
-        actualizarProductos(productosAMostrar);
+        filtrarProductos(productosAMostrar);
     })
     .catch(error => {
        Swal.fire({
@@ -122,6 +123,7 @@ seccionHeaderCarrito.appendChild(borrarCarrito);
 
 //// sector de funciones ----------------------------------
 
+
 // Seccion categorias - creacion de botones
 const categorias = ["Todos", "Adornos", "Aromas", "Defumación", "Manifestación", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
 categorias.forEach(categoria => {
@@ -148,7 +150,7 @@ categorias.forEach(categoria => {
                     return e.categoria === categoria;
                 }
             });
-        actualizarProductos(productosAMostrar);
+        filtrarProductos(productosAMostrar);
     };
 });
 
@@ -228,7 +230,7 @@ function crearCard (producto){
 productosAMostrar.forEach(e => crearCard(e));
 
 // actualizar section de productos segun el filtrado
-function actualizarProductos(prod){
+function filtrarProductos(prod){
     seccionCardProductos.innerHTML = "";
     if(prod.length > 0){
         prod.forEach(e => crearCard(e));
@@ -449,7 +451,7 @@ function actualizarCarrito(){
 function actualizarRegistro() {
     if (!cliente || cliente.length <= 0) {
         //Si cliente no existe o esta vacio, boton para registrarse
-        seccionRegistro.innerHTML = `<button class="boton-registro">Registrese</button>`;
+        seccionRegistro.innerHTML = `<button class="boton-registro">Registrarse</button>`;
         // como innerHTML regenera el botón, hay que reasignar el evento
         document.querySelector('.boton-registro').onclick = registrar;
     } else {
@@ -461,6 +463,8 @@ function actualizarRegistro() {
         // Le doy la funcionalidad de borrar los datos y llamo nuevamente a la funcion para que coloque el boton para registrarse
         document.querySelector('.boton-borrarRegistro').onclick = () => {
             localStorage.removeItem("cliente");
+            localStorage.removeItem("telefono");
+            localStorage.removeItem("email");
             cliente = [];
             actualizarRegistro();
         };
@@ -489,23 +493,31 @@ borrarCarrito.onclick = () => {
 
 // Funcion asincronica correspondiente al boton de registrarse
 async function registrar() {
-    const { value: nombreCliente } = await Swal.fire({
-        title: '¿Con quien tenemos el gusto?',
-        input: "text",
-        inputLabel: "Nombre y apellido",
-        inputValue: "Cody",
+    const result = await Swal.fire({
+        title: 'Informacion para contactarte',
+        html: `Nombre y Apellido: <input id="inputNombre" value = "Cody"><br></br>
+        Telefono: <input id="inputTelefono" value = "221454545"><br></br>
+        Email: <input id="inputEmail" value = "cody@gmail.com">`,
         showCancelButton: true,
-        inputValidator: (value) => {
-            if (!value) return "Por favor ingrese una manera de identificarlo";
+        preConfirm: () => {
+            const nombreCliente = document.getElementById("inputNombre").value;
+            const telefonoCliente = document.getElementById("inputTelefono").value;
+            const emailCliente = document.getElementById("inputEmail").value;
+
+            if (!nombreCliente || !telefonoCliente || !emailCliente){
+                Swal.showValidationMessage("Por favor complete todos los campos");
+                return false; //no cierra la ventana
+            }
+            return { nombreCliente, telefonoCliente, emailCliente
+            }
         }
     });
-    if (nombreCliente) {
-        localStorage.setItem("cliente", JSON.stringify(nombreCliente));
-        cliente = nombreCliente;
+        localStorage.setItem("cliente", JSON.stringify(result.value.nombreCliente));
+        localStorage.setItem("telefono", JSON.stringify(result.value.telefonoCliente));
+        localStorage.setItem("email", JSON.stringify(result.value.emailCliente));
+        cliente = result.value.nombreCliente;
         actualizarRegistro();
-    }
 }
-
 // Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
     if(cliente.length > 0){
@@ -536,9 +548,8 @@ botonEnviar.onclick = () => {
 ////// Comienzo de codigo ------------------------
 // Actualizacion de pagina
 actualizarCarrito()
-actualizarProductos(productosAMostrar);
+filtrarProductos(productosAMostrar);
 actualizarRegistro();
-
 Swal.fire({
   position: "center",
   title: "Bienvenidos a Buena vibra",
