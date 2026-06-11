@@ -7,51 +7,45 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // Dimensiono el lado izquierdo del header 
+    .section-titulo{
+        display: flex;
+        align-items: center;
         .logo-colibri{
-            @include dimensionar (auto, 4.5rem, 0px);
-            margin: 5px 0px;
+            @include dimensionar (auto, 4.5rem, 0px);        margin: 4px 8px;
         }
         .titulo{
             font-size: $tamano-titulo;
             font-weight: bold;
-            margin-left: 30px
         }
-        .seccion-registro{
-            margin-right: 80px;
-            padding: 5px 15px;
-            border-radius: 8px;
-            background-color: #A38A75;
-            text-align: center;
-            font-size: 20px;
-            display: flex;
-            justify-content: space-between;
-            .boton-registro{
-                @include boton(100%, 0px);
-                padding: 2px 5px;
-                font-size: 18px;
-                background-color: $color-bg-terceario;
-                box-shadow: none;
-                &:hover{
-                    transform: scale(1.05);
-                }
-            }   
-            p{
-                align-self: center;
-                font-size: 16px;
-                padding: 6px;
+    }
+    .seccion-registro{
+        margin: 0px 20px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background-color: #A38A75;
+        text-align: center;
+        font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        .boton-registro{
+            @include boton(100%, 0px);
+            font-size: 18px;
+            background-color: $color-bg-terceario;
+            box-shadow: none;
+            &:hover{
+                transform: scale(1.05);
             }
-            .boton-borrarRegistro{
-                align-self: center;
-                border: none;
-                border-radius: 6px;
-                font-size: 18px;
-                padding: 3px 6px;
-                margin-left: 6px;
-                background-color: $color-bg-principal;
-            }
-
-         }
+        }  
+        //boton x al estar registrado
+        .boton-borrarRegistro{
+            align-self: center;
+            border: none;
+            border-radius: 6px;
+            padding: 3px 6px;
+            margin-left: 10px;
+            background-color: $color-bg-principal;
+        }
+    }
     .nav-link:hover{
         text-decoration: underline;
     }

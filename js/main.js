@@ -51,18 +51,20 @@ try{
       -> section-carrito -> (section- header/body/footer -carrito)
 */
 const header = document.querySelector('header');
-    const tituloPagina = document.createElement("p");
-    tituloPagina.className = "titulo";
-    tituloPagina.innerText = "Buena vibra";
-    const logo = document.createElement("img");
-    logo.className = "logo-colibri";
-    logo.src = "img/logo_colibri.webp";
-    logo.alt = "Imagen de un colibri en colores vivos. Logo del emprendimiento"
+    const seccionTitulo = document.createElement("section");
+    seccionTitulo.className = "section-titulo"
+        const tituloPagina = document.createElement("p");
+        tituloPagina.className = "titulo";
+        tituloPagina.innerText = "Buena vibra";
+        const logo = document.createElement("img");
+        logo.className = "logo-colibri";
+        logo.src = "img/logo_colibri.webp";
+        logo.alt = "Imagen de un colibri en colores vivos. Logo del emprendimiento"
     const seccionRegistro = document.createElement("section");
     seccionRegistro.className = "seccion-registro";
-    const botonRegistro = document.createElement("button");
-    botonRegistro.className = "boton-registro";
-    botonRegistro.innerText = "Registrese";
+        const botonRegistro = document.createElement("button");
+        botonRegistro.className = "boton-registro";
+        botonRegistro.innerText = "Registrese";
 const main = document.querySelector('main');
     const seccionProductos = document.createElement("section");
     seccionProductos.className = "section-product";
@@ -99,8 +101,10 @@ botonEnviar = document.createElement("button");
 botonEnviar.innerText = "Enviar pedido";
 botonEnviar.className = "boton-enviar";
 
-header.appendChild(tituloPagina); 
-header.appendChild(logo);
+
+header.appendChild(seccionTitulo); 
+    seccionTitulo.appendChild(logo);
+    seccionTitulo.appendChild(tituloPagina); 
 header.appendChild(seccionRegistro);
     seccionRegistro.appendChild(botonRegistro);
 main.appendChild(seccionProductos);
@@ -322,7 +326,7 @@ function mostrarCarrito(e){
         if (e.eleccion){
             const variedadProductoCarrito = document.createElement("p"); 
             variedadProductoCarrito.className = "p-carrito";
-            variedadProductoCarrito.innerText = `Eleccion: ${e.eleccion}`;
+            variedadProductoCarrito.innerText = `Elección: ${e.eleccion}`;
             divInfo.appendChild(variedadProductoCarrito);
         }
         divInfo.appendChild(cantProductoCarrito);    

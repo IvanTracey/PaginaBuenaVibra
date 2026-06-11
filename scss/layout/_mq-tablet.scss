@@ -3,36 +3,37 @@
 @use "../utilities/mixin" as *;
 
 // QUERYES para tablets ------------------ 
-//@media (max-width: 1024px) and (min-width: 600px) {
-@media (max-width: 1050px) and (min-width: 600px) { 
-   /*
-    // Pagina Productos --------------
-    .main-productos{
-        display: grid;
-        @include grid(20% 80%, 1);
-        // Saco el aside con las categorias 
-       .sidebar{
-            display: block;
-            grid-column: 1;
-        }
-        // Formato del boton desplegable de categorias 
-        .boton-categorias{
-            display: none;
-        }
-        // Dispongo un nuevo Layout
+@media (max-width: 1024px) and (min-width: 600px) { 
+    h3{
+        font-size: 18px;
+    }
+    h4{
+        font-size: 16px;
+    }
+    main{
+        @include grid(75% 25%, 1); 
         .section-product{
-            grid-column: 2;
             .section-cardproduct{
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: auto;
-                .nombre-producto{
-                    font-size: 20px;
-                }
-                .precio-producto{
-                    font-size: 24px;
+                @include grid(repeat(3, 1fr), auto);
+                article{
+                    .div-descripcion{
+                        height: auto;
+                        margin: 10px;
+                    }
+                    .variedad-producto{
+                        font-size: 14px;
+                    }
                 }
             }  
         }
-    }*/
+        .section-carrito{
+            .body-carrito{
+                .card-carrito{
+                    @include grid(80% 20%, 1);
+                }
+            }
+        }
+        
+    }
+
 }

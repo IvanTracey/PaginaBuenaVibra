@@ -2,40 +2,66 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixin" as *;
 
-
-// QUERYES para telefono ------------------ 
 @media (max-width:600px){  
-    /*
-    // Modificacion del titulo del header
-    .header{
-        .header-titulo{
+    h1{
+        font-size: 36px;
+    }
+    h3{
+        font-size: 16px;
+    }
+    h4{
+        font-size: 16px;
+    }
+    header{
+        .section-titulo{
             .titulo{
-                font-size: 32px;
+                font-size: 28px;
+            }
+            .logo-colibri{
+                height: 3rem;
+            }                
+        }
+        .seccion-registro{
+            margin: 0px 10px;
+            padding: 8px;
+            font-size: 14px;
+            align-items: center;    
+        }
+    }
+    main{
+        display: flex;
+        flex-direction: column;
+        .section-product{
+            .section-categorias{
+                .boton-categoria{
+                    font-size: 16px;
+                    padding: 4px;
+                    margin: 2px;
+                }
+            }
+            .section-cardproduct{
+                @include grid(repeat(2, 1fr), auto);
+                article{
+                    .div-nombre{
+                        height: auto;
+                        margin: 8px;
+                    }
+                    .div-descripcion{
+                        height: auto;
+                        margin: 8px;
+                    }
+                    .variedad-producto{
+                        font-size: 14px;
+                    }
+                }
+            }  
+        }
+        .section-carrito{
+            .body-carrito{
+                .card-carrito{
+                    @include grid(80% 20%, 1);
+                }
             }
         }
     }
-
-
-    // Pagina Productos --------------
-    .main-productos{
-        @include modo-flex;
-        // Saco el aside con las categorias 
-       .sidebar{
-            display: none;
-        }
-        // Formato del boton desplegable de categorias 
-        .boton-categorias{
-            @include boton(50%, 5px);
-        }
-        // Dispongo un nuevo Layout
-        .section-product{
-            .section-cardproduct{
-                display: flex;
-                flex-direction: column;
-            }
-            .boton-vermas{
-                @include boton(98%, 10px 2px);
-            }
-        }
-    }*/
 }

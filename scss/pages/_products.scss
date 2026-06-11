@@ -15,11 +15,11 @@ main{
         .section-categorias{
             display: flex;
             flex-wrap: wrap;
-            justify-content:center;
+            justify-content: center;
             .boton-categoria{
-                @include boton(auto, 10px 6px);
-                padding: 6px 6px;
-                font-size: 20px;
+                @include boton(auto, 4px 6px);
+                padding: 6px;
+                font-size: 18px;
                 &:hover{
                     transform: scale(1.05);
                 }
@@ -71,10 +71,10 @@ main{
                 .div-descripcion{
                     height: 50px;
                     align-content: center;
-                }
-                .descripcion-producto{
-                    font-size: 14px;
-                    margin-bottom: 6px;
+                    .descripcion-producto{
+                        font-size: 14px;
+                        margin-bottom: 6px;
+                    }
                 }
                 .variedad-producto{
                     width: 100%;
@@ -162,6 +162,7 @@ main{
             .boton-enviar{
                 @include boton(auto, 20px 8px); 
                 padding: 5px 8px; 
+                font-size: 18px;
                 &:hover{
                     transform: translateY(-2px);
                 }
