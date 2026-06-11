@@ -75,7 +75,7 @@ const main = document.querySelector('main');
             titulo.innerText = "Productos";
             const botonCarrito = document.createElement("button");
             botonCarrito.className = "boton-carrito-phone"
-            botonCarrito.innerHTML = `<img src="../img/carrito.png"></img>`;
+            botonCarrito.innerHTML = `<img src="img/carrito.png"></img>`;
         const seccionCategorias = document.createElement("section");
         seccionCategorias.className = "section-categorias";
         const seccionCardProductos = document.createElement("section");

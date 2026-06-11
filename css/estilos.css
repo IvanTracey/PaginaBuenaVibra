@@ -385,16 +385,16 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
 }
 @media (max-width: 600px) {
   h1 {
-    font-size: 30px;
+    font-size: 34px;
   }
   h3 {
-    font-size: 16px;
+    font-size: 20px;
   }
   h4 {
     font-size: 16px;
   }
   header .section-titulo .titulo {
-    font-size: 34px;
+    font-size: 38px;
   }
   header .section-titulo .logo-colibri {
     height: 3rem;
@@ -432,7 +432,7 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     justify-content: left;
   }
   main .section-product .section-categorias .boton-categoria {
-    font-size: 16px;
+    font-size: 18px;
     padding: 4px;
     margin: 4px;
   }
