@@ -11,7 +11,12 @@ main{
     min-height: 100vh;  // mínimo toda la pantalla 
     .section-product{
         grid-column: 1;
-        margin: 10px;
+        margin: 5px;
+        .div-titulo{
+            .boton-carrito-phone{
+                display: none;
+            }
+        }
         .section-categorias{
             display: flex;
             flex-wrap: wrap;

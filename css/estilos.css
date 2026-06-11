@@ -165,7 +165,10 @@ main {
 }
 main .section-product {
   grid-column: 1;
-  margin: 10px;
+  margin: 5px;
+}
+main .section-product .div-titulo .boton-carrito-phone {
+  display: none;
 }
 main .section-product .section-categorias {
   display: flex;
@@ -382,7 +385,7 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
 }
 @media (max-width: 600px) {
   h1 {
-    font-size: 36px;
+    font-size: 30px;
   }
   h3 {
     font-size: 16px;
@@ -391,7 +394,7 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     font-size: 16px;
   }
   header .section-titulo .titulo {
-    font-size: 28px;
+    font-size: 34px;
   }
   header .section-titulo .logo-colibri {
     height: 3rem;
@@ -406,10 +409,30 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     display: flex;
     flex-direction: column;
   }
+  main .section-product .div-titulo {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 10px;
+  }
+  main .section-product .div-titulo .boton-carrito-phone {
+    display: block;
+    justify-content: center;
+    width: auto;
+    margin: 4px 6px;
+    background-color: #A8B8A5;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+    padding: 2px 6px;
+  }
+  main .section-product .section-categorias {
+    justify-content: left;
+  }
   main .section-product .section-categorias .boton-categoria {
     font-size: 16px;
     padding: 4px;
-    margin: 2px;
+    margin: 4px;
   }
   main .section-product .section-cardproduct {
     grid-template-columns: repeat(2, 1fr);

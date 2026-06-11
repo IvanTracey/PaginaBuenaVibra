@@ -65,17 +65,23 @@ const header = document.querySelector('header');
         const botonRegistro = document.createElement("button");
         botonRegistro.className = "boton-registro";
         botonRegistro.innerText = "Registrese";
+
 const main = document.querySelector('main');
     const seccionProductos = document.createElement("section");
     seccionProductos.className = "section-product";
-    const titulo = document.createElement("h1");
-    titulo.innerText = "Productos";
+        const divTitulo = document.createElement("div");
+        divTitulo.className = "div-titulo";
+            const titulo = document.createElement("h1");
+            titulo.innerText = "Productos";
+            const botonCarrito = document.createElement("button");
+            botonCarrito.className = "boton-carrito-phone"
+            botonCarrito.innerHTML = `<img src="../img/carrito.png"></img>`;
         const seccionCategorias = document.createElement("section");
         seccionCategorias.className = "section-categorias";
         const seccionCardProductos = document.createElement("section");
         seccionCardProductos.className = "section-cardproduct";
-        const seccionCarrito = document.createElement("section");
-        seccionCarrito.className = "section-carrito";
+    const seccionCarrito = document.createElement("section");
+    seccionCarrito.className = "section-carrito";
         const seccionHeaderCarrito = document.createElement("section");
         seccionHeaderCarrito.className = "header-carrito";
         const tituloCarrito = document.createElement("h2");
@@ -107,8 +113,11 @@ header.appendChild(seccionTitulo);
     seccionTitulo.appendChild(tituloPagina); 
 header.appendChild(seccionRegistro);
     seccionRegistro.appendChild(botonRegistro);
+
 main.appendChild(seccionProductos);
-    seccionProductos.appendChild(titulo);
+    seccionProductos.appendChild(divTitulo);
+        divTitulo.appendChild(titulo);
+        divTitulo.appendChild(botonCarrito);
     seccionProductos.appendChild(seccionCategorias);
     seccionProductos.appendChild(seccionCardProductos);
 main.appendChild(seccionCarrito);
@@ -191,9 +200,9 @@ function crearCard (producto){
     const precioProducto = document.createElement("p"); 
     precioProducto.className = "precio-producto"
     precioProducto.innerText = `$${producto.precio}`;
-    const botonCarrito = document.createElement("button"); 
-    botonCarrito.innerText = "Agregar";
-    botonCarrito.className = "boton-agregarCarrito"; 
+    const botonAgregarCarrito = document.createElement("button"); 
+    botonAgregarCarrito.innerText = "Agregar";
+    botonAgregarCarrito.className = "boton-agregarCarrito"; 
 // Conexion de la card con el padre
     seccionCardProductos.appendChild(cardProducto);
 // Conexion de la card (article) con sus hijos
@@ -220,11 +229,11 @@ function crearCard (producto){
         cardProducto.appendChild(selectVariedades);
     }
     cardProducto.appendChild(precioProducto);
-    cardProducto.appendChild(botonCarrito);
+    cardProducto.appendChild(botonAgregarCarrito);
     
 // Se crea evento del boton aqui (card individual, se creara en todas), se vincula con el id 
 // del producto elegido 
-    botonCarrito.onclick = () => {
+    botonAgregarCarrito.onclick = () => {
 //si select existe, dame su valor; si no, dame null - así cubrís todos los productos
         const variedadElegida = selectVariedades ? selectVariedades.value : null;
         agregarCarrito(producto.id, variedadElegida);

@@ -4,7 +4,7 @@
 
 @media (max-width:600px){  
     h1{
-        font-size: 36px;
+        font-size: 30px;
     }
     h3{
         font-size: 16px;
@@ -15,7 +15,7 @@
     header{
         .section-titulo{
             .titulo{
-                font-size: 28px;
+                font-size: 34px;
             }
             .logo-colibri{
                 height: 3rem;
@@ -31,12 +31,22 @@
     main{
         display: flex;
         flex-direction: column;
-        .section-product{
+        .section-product{        
+            .div-titulo{
+                display: flex;
+                justify-content: space-between;
+                margin: 0px 10px;
+                .boton-carrito-phone{
+                    @include boton(auto, 4px 6px);
+                    padding: 2px 6px;
+                }
+            }
             .section-categorias{
+                justify-content: left;
                 .boton-categoria{
                     font-size: 16px;
                     padding: 4px;
-                    margin: 2px;
+                    margin: 4px;
                 }
             }
             .section-cardproduct{
