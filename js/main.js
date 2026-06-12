@@ -69,23 +69,18 @@ const header = document.querySelector('header');
 const main = document.querySelector('main');
     const seccionProductos = document.createElement("section");
     seccionProductos.className = "section-product";
-        const divTitular = document.createElement("div");
-        divTitular.className = "div-titular";
-            const divTitulo = document.createElement("div");
-            divTitulo.className = "div-titulo";
-                const titulo = document.createElement("h1");
-                titulo.innerText = "Productos";
-                const botonCarrito = document.createElement("button");
-                botonCarrito.className = "boton-carrito-phone"
-                botonCarrito.innerHTML = `<img src="img/carrito.png"></img>`;
-            const divFiltro = document.createElement("div");
-            divFiltro.className = "div-filtro";
-                const filtro = document.createElement("input");
-                filtro.className = "filtro-producto";
-                filtro.placeholder = " Buscar...";
-                const botonFiltro = document.createElement("button");
-                botonFiltro.className = "boton-filtro";
-                botonFiltro.innerHTML = `<img src="img/lupa.png"></img>`;
+        const divTitulo = document.createElement("div");
+        divTitulo.className = "div-titulo";
+            const titulo = document.createElement("h1");
+            titulo.innerText = "Productos";
+        const divFiltro = document.createElement("div");
+        divFiltro.className = "div-filtro";
+            const filtro = document.createElement("input");
+            filtro.className = "filtro-producto";
+            filtro.placeholder = " Buscar...";
+            const botonFiltro = document.createElement("button");
+            botonFiltro.className = "boton-filtro";
+            botonFiltro.innerHTML = `<img src="img/lupa.png"></img>`;
         const seccionCategorias = document.createElement("section");
         seccionCategorias.className = "section-categorias";
         const seccionCardProductos = document.createElement("section");
@@ -102,7 +97,9 @@ const main = document.querySelector('main');
         seccionFooterCarrito.className = "footer-carrito";
     const overlay = document.createElement("div");
     overlay.className = "overlay";
-
+    const botonCarrito = document.createElement("button");
+    botonCarrito.className = "boton-carrito-phone"
+    botonCarrito.innerHTML = `<img src="img/carrito.png"></img>`;
 // Total del carrito ----------------------
 const total = carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
 const totalCarrito = document.createElement("article");
@@ -128,11 +125,9 @@ header.appendChild(seccionRegistro);
 
 main.appendChild(seccionProductos);
 
-    seccionProductos.appendChild(divTitular);
-        divTitular.appendChild(divTitulo);
-            divTitulo.appendChild(titulo);
-            divTitulo.appendChild(botonCarrito);
-        divTitular.appendChild(divFiltro);
+    seccionProductos.appendChild(divTitulo);
+        divTitulo.appendChild(titulo);
+        divTitulo.appendChild(divFiltro);
             divFiltro.appendChild(filtro);
             divFiltro.appendChild(botonFiltro);
     seccionProductos.appendChild(seccionCategorias);
@@ -145,7 +140,8 @@ main.appendChild(seccionCarrito);
         seccionFooterCarrito.appendChild(carritoVacio);
         seccionFooterCarrito.appendChild(totalCarrito);
         seccionFooterCarrito.appendChild(botonEnviar);
- main.appendChild(overlay);
+main.appendChild(overlay);
+main.appendChild(botonCarrito);
 // VACIAR CARRITO ----------------------
 borrarCarrito = document.createElement("button");
 borrarCarrito.innerText = "Borrar";
@@ -303,8 +299,8 @@ function agregarCarrito(idElegido, varElegida){
     }
     Toastify({
     text: "Producto agregado al carrito",
-    gravity: "bottom", // `top` or `bottom`
-    position: "right", // `left`, `center` or `right`
+    gravity: "bottom", 
+    position: "left", 
     duration: 2000,
     className: "toast-agregado",
     style: {
@@ -372,7 +368,7 @@ function mostrarCarrito(e){
         Toastify({
             text: "Producto eliminado del carrito",
             gravity: "bottom",  
-            position: "right",  
+            position: "left",  
             duration: 2000,
             className: "toast-agregado",
             style: {
@@ -400,7 +396,7 @@ function mostrarCarrito(e){
                     Toastify({ 
                         text: "Stock máximo alcanzado", 
                         gravity: "bottom",  
-                        position: "right",   
+                        position: "left",   
                         duration: 2000,
                         className: "toast-agregado",
                         style: {
@@ -443,8 +439,8 @@ function mostrarCarrito(e){
             carrito.splice(indice, 1);            
             Toastify({
                 text: "Producto eliminado del carrito",
-                gravity: "bottom", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
+                gravity: "bottom", 
+                position: "left", 
                 duration: 2000,
                 className: "toast-agregado",
                 style: {
@@ -510,8 +506,8 @@ borrarCarrito.onclick = () => {
     actualizarCarrito();
     Toastify({
         text: "Carrito vacío",
-        gravity: "bottom", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
+        gravity: "bottom", 
+        position: "left", 
         duration: 2000,
         className: "toast-agregado",
         style: {

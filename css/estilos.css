@@ -163,30 +163,30 @@ main {
   grid-template-rows: 1;
   min-height: 100vh;
 }
+main .boton-carrito-phone {
+  display: none;
+}
 main .section-product {
   grid-column: 1;
   margin: 5px;
 }
-main .section-product .div-titular {
+main .section-product .div-titulo {
   display: flex;
   justify-content: space-between;
   align-self: center;
   margin: 6px 20px;
 }
-main .section-product .div-titular .div-titulo .boton-carrito-phone {
-  display: none;
-}
-main .section-product .div-titular .div-filtro {
+main .section-product .div-titulo .div-filtro {
   width: auto;
   align-content: center;
 }
-main .section-product .div-titular .div-filtro .filtro-producto {
+main .section-product .div-titulo .div-filtro .filtro-producto {
   border-radius: 4px;
   width: 140px;
   font-size: 18px;
   background-color: #bbd9b6;
 }
-main .section-product .div-titular .div-filtro .boton-filtro {
+main .section-product .div-titulo .div-filtro .boton-filtro {
   border-radius: 10px;
   padding: 3px 10px 0px 10px;
   margin: 2px 4px;
@@ -443,19 +443,7 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
   main {
     display: flex;
   }
-  main .section-product .div-titular {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    margin: 4px 10px;
-  }
-  main .section-product .div-titular .div-titulo {
-    grid-row: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  main .section-product .div-titular .div-titulo .boton-carrito-phone {
+  main .boton-carrito-phone {
     display: block;
     justify-content: center;
     width: auto;
@@ -465,17 +453,24 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     border-radius: 5px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
+    background-color: #A38A75;
     padding: 8px 14px;
     border-radius: 10px;
     align-self: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    z-index: 100;
   }
-  main .section-product .div-titular .div-filtro {
-    grid-row: 2;
-    width: 100%;
+  main .section-product .div-titulo {
+    display: flex;
+    margin: 4px 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  main .section-product .div-titulo .div-filtro {
     text-align: center;
-  }
-  main .section-product .div-titular .div-filtro .filtro-producto {
-    width: 60%;
   }
   main .section-product .section-categorias .boton-categoria {
     font-size: 18px;

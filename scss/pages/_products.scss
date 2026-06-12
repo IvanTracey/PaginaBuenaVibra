@@ -9,36 +9,34 @@ main{
     display: grid;
     @include grid(80% 20%, 1); 
     min-height: 100vh;  // mínimo toda la pantalla 
+    .boton-carrito-phone{
+        display: none;
+    }
     .section-product{
         grid-column: 1;
         margin: 5px;
-    .div-titular{
-        display: flex;
-        justify-content: space-between;
-        align-self: center;
-        margin: 6px 20px;
         .div-titulo{
-            .boton-carrito-phone{
-                display: none;
+            display: flex;
+            justify-content: space-between;
+            align-self: center;
+            margin: 6px 20px;
+            .div-filtro{
+                width: auto;
+                align-content: center;
+                .filtro-producto{
+                    border-radius: 4px;
+                    width: 140px;
+                    font-size: 18px;
+                    background-color: $color-bg-secundario;
+                }
+                .boton-filtro{
+                    border-radius: 10px;
+                    padding: 3px 10px 0px 10px;
+                    margin: 2px 4px;                    
+                    background-color: $color-bg-secundario;
+                }
             }
         }
-        .div-filtro{
-            width: auto;
-            align-content: center;
-            .filtro-producto{
-                border-radius: 4px;
-                width: 140px;
-                font-size: 18px;
-                background-color: $color-bg-secundario;
-            }
-            .boton-filtro{
-                border-radius: 10px;
-                padding: 3px 10px 0px 10px;
-                margin: 2px 4px;                    
-                background-color: $color-bg-secundario;
-            }
-        }
-    }
         .section-categorias{
             display: flex;
             flex-wrap: wrap;
