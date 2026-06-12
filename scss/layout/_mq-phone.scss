@@ -30,24 +30,37 @@
     }
     main{
         display: flex;
-        .section-product{        
-            .div-titulo{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin: 2px 20px;
-                .boton-carrito-phone{
-                    @include boton(auto, 0px);
-                    padding: 8px 14px;
-                    border-radius: 10px;
-                    align-self: center;
+        .section-product{    
+            .div-titular{    
+                display: grid;
+                @include grid(1fr, 1fr 1fr);
+                margin: 4px 10px;   
+                .div-titulo{                
+                    grid-row: 1;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center; 
+                    .boton-carrito-phone{
+                        @include boton(auto, 0px);
+                        padding: 8px 14px;
+                        border-radius: 10px;
+                        align-self: center;
+                    }   
+                } 
+                .div-filtro{
+                    grid-row: 2;
+                    width: 100%;
+                    text-align: center;
+                    .filtro-producto{
+                        width: 60%;
+                    }
                 }
             }
             .section-categorias{
                 .boton-categoria{
                     font-size: 18px;
                     padding: 4px;
-                    margin: 5px 4px;
+                    margin: 4px;
                 }
             }
             .section-cardproduct{

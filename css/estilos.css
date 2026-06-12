@@ -167,8 +167,30 @@ main .section-product {
   grid-column: 1;
   margin: 5px;
 }
-main .section-product .div-titulo .boton-carrito-phone {
+main .section-product .div-titular {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  margin: 6px 20px;
+}
+main .section-product .div-titular .div-titulo .boton-carrito-phone {
   display: none;
+}
+main .section-product .div-titular .div-filtro {
+  width: auto;
+  align-content: center;
+}
+main .section-product .div-titular .div-filtro .filtro-producto {
+  border-radius: 4px;
+  width: 140px;
+  font-size: 18px;
+  background-color: #bbd9b6;
+}
+main .section-product .div-titular .div-filtro .boton-filtro {
+  border-radius: 10px;
+  padding: 3px 10px 0px 10px;
+  margin: 2px 4px;
+  background-color: #bbd9b6;
 }
 main .section-product .section-categorias {
   display: flex;
@@ -276,7 +298,17 @@ main .section-product .section-cardproduct article .boton-agregarCarrito:hover {
   transform: scale(1.05);
 }
 main .overlay {
-  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+main .overlay.visible {
+  opacity: 1;
+  pointer-events: all;
 }
 main .section-carrito {
   grid-column: 2;
@@ -411,13 +443,19 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
   main {
     display: flex;
   }
-  main .section-product .div-titulo {
+  main .section-product .div-titular {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 4px 10px;
+  }
+  main .section-product .div-titular .div-titulo {
+    grid-row: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 2px 20px;
   }
-  main .section-product .div-titulo .boton-carrito-phone {
+  main .section-product .div-titular .div-titulo .boton-carrito-phone {
     display: block;
     justify-content: center;
     width: auto;
@@ -431,10 +469,18 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     border-radius: 10px;
     align-self: center;
   }
+  main .section-product .div-titular .div-filtro {
+    grid-row: 2;
+    width: 100%;
+    text-align: center;
+  }
+  main .section-product .div-titular .div-filtro .filtro-producto {
+    width: 60%;
+  }
   main .section-product .section-categorias .boton-categoria {
     font-size: 18px;
     padding: 4px;
-    margin: 5px 4px;
+    margin: 4px;
   }
   main .section-product .section-cardproduct {
     grid-template-columns: repeat(2, 1fr);
@@ -485,7 +531,6 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
 /*
 *{
   outline:1px solid red;
-}
-*/
+}*/
 
 /*# sourceMappingURL=estilos.css.map */

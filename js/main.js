@@ -69,13 +69,23 @@ const header = document.querySelector('header');
 const main = document.querySelector('main');
     const seccionProductos = document.createElement("section");
     seccionProductos.className = "section-product";
-        const divTitulo = document.createElement("div");
-        divTitulo.className = "div-titulo";
-            const titulo = document.createElement("h1");
-            titulo.innerText = "Productos";
-            const botonCarrito = document.createElement("button");
-            botonCarrito.className = "boton-carrito-phone"
-            botonCarrito.innerHTML = `<img src="img/carrito.png"></img>`;
+        const divTitular = document.createElement("div");
+        divTitular.className = "div-titular";
+            const divTitulo = document.createElement("div");
+            divTitulo.className = "div-titulo";
+                const titulo = document.createElement("h1");
+                titulo.innerText = "Productos";
+                const botonCarrito = document.createElement("button");
+                botonCarrito.className = "boton-carrito-phone"
+                botonCarrito.innerHTML = `<img src="img/carrito.png"></img>`;
+            const divFiltro = document.createElement("div");
+            divFiltro.className = "div-filtro";
+                const filtro = document.createElement("input");
+                filtro.className = "filtro-producto";
+                filtro.placeholder = " Buscar...";
+                const botonFiltro = document.createElement("button");
+                botonFiltro.className = "boton-filtro";
+                botonFiltro.innerHTML = `<img src="img/lupa.png"></img>`;
         const seccionCategorias = document.createElement("section");
         seccionCategorias.className = "section-categorias";
         const seccionCardProductos = document.createElement("section");
@@ -117,9 +127,14 @@ header.appendChild(seccionRegistro);
     seccionRegistro.appendChild(botonRegistro);
 
 main.appendChild(seccionProductos);
-    seccionProductos.appendChild(divTitulo);
-        divTitulo.appendChild(titulo);
-        divTitulo.appendChild(botonCarrito);
+
+    seccionProductos.appendChild(divTitular);
+        divTitular.appendChild(divTitulo);
+            divTitulo.appendChild(titulo);
+            divTitulo.appendChild(botonCarrito);
+        divTitular.appendChild(divFiltro);
+            divFiltro.appendChild(filtro);
+            divFiltro.appendChild(botonFiltro);
     seccionProductos.appendChild(seccionCategorias);
     seccionProductos.appendChild(seccionCardProductos);
 main.appendChild(seccionCarrito);
@@ -141,6 +156,7 @@ seccionHeaderCarrito.appendChild(borrarCarrito);
 
 
 // Seccion categorias - creacion de botones
+
 const categorias = ["Todos", "Adornos", "Aromas", "Defumación", "Manifestación", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
 categorias.forEach(categoria => {
     // Creo el boton para cada categoria
