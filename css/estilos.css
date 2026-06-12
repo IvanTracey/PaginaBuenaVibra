@@ -275,6 +275,9 @@ main .section-product .section-cardproduct article .boton-agregarCarrito {
 main .section-product .section-cardproduct article .boton-agregarCarrito:hover {
   transform: scale(1.05);
 }
+main .overlay {
+  display: none;
+}
 main .section-carrito {
   grid-column: 2;
   padding: 8px;
@@ -427,9 +430,6 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     padding: 8px 14px;
     border-radius: 10px;
     align-self: center;
-  }
-  main .section-product .section-categorias {
-    justify-content: left;
   }
   main .section-product .section-categorias .boton-categoria {
     font-size: 18px;

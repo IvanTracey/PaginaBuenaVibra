@@ -493,7 +493,7 @@ borrarCarrito.onclick = () => {
     carrito = [];
     actualizarCarrito();
     Toastify({
-        text: "Carrito vaciado",
+        text: "Carrito vacío",
         gravity: "bottom", // `top` or `bottom`
         position: "right", // `left`, `center` or `right`
         duration: 2000,
