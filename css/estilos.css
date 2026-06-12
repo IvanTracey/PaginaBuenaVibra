@@ -394,7 +394,7 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     font-size: 16px;
   }
   header .section-titulo .titulo {
-    font-size: 38px;
+    font-size: 36px;
   }
   header .section-titulo .logo-colibri {
     height: 3rem;
@@ -407,12 +407,12 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
   }
   main {
     display: flex;
-    flex-direction: column;
   }
   main .section-product .div-titulo {
     display: flex;
     justify-content: space-between;
-    margin: 2px 10px;
+    align-items: center;
+    margin: 2px 20px;
   }
   main .section-product .div-titulo .boton-carrito-phone {
     display: block;
@@ -424,8 +424,8 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     border-radius: 5px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease;
-    padding: 4px 10px 4px 7px;
-    border: 1px black solid;
+    padding: 8px 14px;
+    border-radius: 10px;
     align-self: center;
   }
   main .section-product .section-categorias {
@@ -434,7 +434,7 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
   main .section-product .section-categorias .boton-categoria {
     font-size: 18px;
     padding: 4px;
-    margin: 4px;
+    margin: 5px 4px;
   }
   main .section-product .section-cardproduct {
     grid-template-columns: repeat(2, 1fr);
@@ -450,6 +450,32 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
   }
   main .section-product .section-cardproduct article .variedad-producto {
     font-size: 14px;
+  }
+  main .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  main .overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+  main .section-carrito {
+    z-index: 300;
+    background-color: #D9CDBF;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  main .section-carrito.abierto {
+    transform: translateX(0%);
   }
   main .section-carrito .body-carrito .card-carrito {
     grid-template-columns: 80% 20%;

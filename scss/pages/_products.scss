@@ -105,6 +105,9 @@ main{
             }
         } 
     }
+    .overlay {
+        display: none;
+    }
     .section-carrito{
         grid-column: 2;
         padding: 8px;

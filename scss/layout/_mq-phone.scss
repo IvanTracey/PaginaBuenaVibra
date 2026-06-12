@@ -15,7 +15,7 @@
     header{
         .section-titulo{
             .titulo{
-                font-size: 38px;
+                font-size: 36px;
             }
             .logo-colibri{
                 height: 3rem;
@@ -30,16 +30,16 @@
     }
     main{
         display: flex;
-        flex-direction: column;
         .section-product{        
             .div-titulo{
                 display: flex;
                 justify-content: space-between;
-                margin: 2px 10px;
+                align-items: center;
+                margin: 2px 20px;
                 .boton-carrito-phone{
                     @include boton(auto, 0px);
-                    padding: 4px 10px 4px 7px;
-                    border: 1px black solid;
+                    padding: 8px 14px;
+                    border-radius: 10px;
                     align-self: center;
                 }
             }
@@ -48,7 +48,7 @@
                 .boton-categoria{
                     font-size: 18px;
                     padding: 4px;
-                    margin: 4px;
+                    margin: 5px 4px;
                 }
             }
             .section-cardproduct{
@@ -68,7 +68,33 @@
                 }
             }  
         }
+        
+        .overlay {
+            position: fixed;
+            inset: 0;                      // cubre toda la pantalla
+            background: rgba(0, 0, 0, 0.5); // negro semitransparente
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;          // invisible = no bloquea clicks
+            transition: opacity 0.3s;
+            &.visible {
+                opacity: 1;
+                pointer-events: all;       // visible = bloquea clicks
+            }
+        }
+
         .section-carrito{
+            z-index: 300; // encima del overlay
+            background-color: $color-bg-principal;   
+            position: fixed;        // 1. sale del flujo y se superpone
+            top: 0;                 // 2. empieza desde arriba
+            right: 0;               // 3. pegado a la derecha
+            height: 100vh;          // ocupa toda la altura de la pantalla
+            transform: translateX(100%);  // empieza fuera de pantalla
+            transition: transform 0.3s ease; // animación al deslizar            
+            &.abierto{
+                transform: translateX(0%);  // ← se desliza adentro
+            }
             .body-carrito{
                 .card-carrito{
                     @include grid(80% 20%, 1);

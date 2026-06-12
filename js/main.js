@@ -90,6 +90,8 @@ const main = document.querySelector('main');
         seccionBodyCarrito.className = "body-carrito";
         const seccionFooterCarrito = document.createElement("section");
         seccionFooterCarrito.className = "footer-carrito";
+    const overlay = document.createElement("div");
+    overlay.className = "overlay";
 
 // Total del carrito ----------------------
 const total = carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
@@ -128,6 +130,7 @@ main.appendChild(seccionCarrito);
         seccionFooterCarrito.appendChild(carritoVacio);
         seccionFooterCarrito.appendChild(totalCarrito);
         seccionFooterCarrito.appendChild(botonEnviar);
+ main.appendChild(overlay);
 // VACIAR CARRITO ----------------------
 borrarCarrito = document.createElement("button");
 borrarCarrito.innerText = "Borrar";
@@ -504,6 +507,16 @@ borrarCarrito.onclick = () => {
 
 }
 
+botonCarrito.onclick = () => {
+    seccionCarrito.classList.add("abierto");
+    overlay.classList.add("visible");
+}
+overlay.onclick = cerrarCarrito;
+
+function cerrarCarrito() {
+    seccionCarrito.classList.remove("abierto");
+    overlay.classList.remove("visible");
+}
 // Funcion asincronica correspondiente al boton de registrarse
 async function registrar() {
     const result = await Swal.fire({
