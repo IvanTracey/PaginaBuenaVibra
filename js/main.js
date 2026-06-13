@@ -298,7 +298,6 @@ function agregarCarrito(idElegido, varElegida){
         };
     }
     mostrarAlert("Producto agregado al carrito", "#75a38b"); 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
     actualizarCarrito();
 }
 
@@ -352,7 +351,6 @@ function mostrarCarrito(e){
     botonX.onclick = () => {
         const indice = carrito.findIndex(el => el.id === e.id && el.eleccion === e.eleccion);
         carrito.splice(indice, 1);
-        localStorage.setItem("carrito", JSON.stringify(carrito));
         actualizarCarrito();         
         mostrarAlert("Producto eliminado del carrito", "#A38A75"); 
     }
@@ -385,7 +383,6 @@ function mostrarCarrito(e){
                 return el;
             }
         });
-        localStorage.setItem("carrito", JSON.stringify(carrito));
         actualizarCarrito();
     };
     
@@ -407,7 +404,6 @@ function mostrarCarrito(e){
             carrito.splice(indice, 1);  
             mostrarAlert("Producto eliminado del carrito", "#A38A75");  
         }
-        localStorage.setItem("carrito", JSON.stringify(carrito));
         actualizarCarrito();
     }
 }
@@ -415,6 +411,7 @@ function mostrarCarrito(e){
 // ACTUALIZACION DE CARRITO ----------------------
 function actualizarCarrito(){
 // Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     // Limpio lo que habia del carrito
     seccionBodyCarrito.innerHTML= "";
     // Cargo nuevamente el carrito
@@ -433,6 +430,51 @@ function actualizarCarrito(){
         botonEnviar.style.display = 'block';
     }
 };
+
+function mostrarAlert(texto, color){
+    Toastify({
+        text: texto,
+        gravity: "bottom", 
+        position: "left", 
+        duration: 2000,
+        className: "toast-agregado",
+        style: {
+            background: color,
+            color: "#052b20",
+            borderRadius: "10px",
+    }
+    }).showToast();
+}
+
+// Funcion asincronica correspondiente al boton de registrarse
+async function registrar() {
+    const result = await Swal.fire({
+        title: 'Informacion para contactarte',
+        html: `Nombre y Apellido: <input id="inputNombre" value = "Cody"><br></br>
+        Telefono: <input id="inputTelefono" value = "221454545"><br></br>
+        Email: <input id="inputEmail" value = "cody@gmail.com">`,
+        showCancelButton: true,
+        preConfirm: () => {
+            const nombreCliente = document.getElementById("inputNombre").value;
+            const telefonoCliente = document.getElementById("inputTelefono").value;
+            const emailCliente = document.getElementById("inputEmail").value;
+
+            if (!nombreCliente || !telefonoCliente || !emailCliente){
+                Swal.showValidationMessage("Por favor complete todos los campos");
+                return false; //no cierra la ventana
+            }
+            return { nombreCliente, telefonoCliente, emailCliente
+            }
+        }
+    });
+    if(result.isConfirmed && result.value){
+        localStorage.setItem("cliente", JSON.stringify(result.value.nombreCliente));
+        localStorage.setItem("telefono", JSON.stringify(result.value.telefonoCliente));
+        localStorage.setItem("email", JSON.stringify(result.value.emailCliente));
+        cliente = result.value.nombreCliente;
+    }
+    actualizarRegistro();
+}
 
 function actualizarRegistro() {
     if (!cliente || cliente.length <= 0) {
@@ -469,55 +511,12 @@ botonCarrito.onclick = () => {
     seccionCarrito.classList.add("abierto");
     overlay.classList.add("visible");
 }
-overlay.onclick = cerrarCarrito;
 
-function mostrarAlert(texto, color){
-    Toastify({
-        text: texto,
-        gravity: "bottom", 
-        position: "left", 
-        duration: 2000,
-        className: "toast-agregado",
-        style: {
-            background: color,
-            color: "#052b20",
-            borderRadius: "10px",
-    }
-    }).showToast();
-}
+overlay.onclick = cerrarCarrito;
 
 function cerrarCarrito() {
     seccionCarrito.classList.remove("abierto");
     overlay.classList.remove("visible");
-}
-// Funcion asincronica correspondiente al boton de registrarse
-async function registrar() {
-    const result = await Swal.fire({
-        title: 'Informacion para contactarte',
-        html: `Nombre y Apellido: <input id="inputNombre" value = "Cody"><br></br>
-        Telefono: <input id="inputTelefono" value = "221454545"><br></br>
-        Email: <input id="inputEmail" value = "cody@gmail.com">`,
-        showCancelButton: true,
-        preConfirm: () => {
-            const nombreCliente = document.getElementById("inputNombre").value;
-            const telefonoCliente = document.getElementById("inputTelefono").value;
-            const emailCliente = document.getElementById("inputEmail").value;
-
-            if (!nombreCliente || !telefonoCliente || !emailCliente){
-                Swal.showValidationMessage("Por favor complete todos los campos");
-                return false; //no cierra la ventana
-            }
-            return { nombreCliente, telefonoCliente, emailCliente
-            }
-        }
-    });
-    if(result.isConfirmed && result.value){
-        localStorage.setItem("cliente", JSON.stringify(result.value.nombreCliente));
-        localStorage.setItem("telefono", JSON.stringify(result.value.telefonoCliente));
-        localStorage.setItem("email", JSON.stringify(result.value.emailCliente));
-        cliente = result.value.nombreCliente;
-    }
-    actualizarRegistro();
 }
 // Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
