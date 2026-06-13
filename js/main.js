@@ -297,18 +297,7 @@ function agregarCarrito(idElegido, varElegida){
             carrito.push({...productoConVariedad, cantidad: 1});
         };
     }
-    Toastify({
-    text: "Producto agregado al carrito",
-    gravity: "bottom", 
-    position: "left", 
-    duration: 2000,
-    className: "toast-agregado",
-    style: {
-        background: "#75a38b",
-        color: "#052b20",
-        borderRadius: "10px",
-}
-    }).showToast();
+    mostrarAlert("Producto agregado al carrito", "#75a38b"); 
     localStorage.setItem("carrito", JSON.stringify(carrito));
     actualizarCarrito();
 }
@@ -365,18 +354,7 @@ function mostrarCarrito(e){
         carrito.splice(indice, 1);
         localStorage.setItem("carrito", JSON.stringify(carrito));
         actualizarCarrito();         
-        Toastify({
-            text: "Producto eliminado del carrito",
-            gravity: "bottom",  
-            position: "left",  
-            duration: 2000,
-            className: "toast-agregado",
-            style: {
-                background: "#A38A75",
-                color: "#052b20",
-                borderRadius: "10px",
-        }
-        }).showToast();
+        mostrarAlert("Producto eliminado del carrito", "#A38A75"); 
     }
     
     botonMas.onclick = () => {
@@ -393,17 +371,7 @@ function mostrarCarrito(e){
             if(el.id === e.id && el.eleccion === e.eleccion){
         // No incrementar por encima del stock
                 if(el.cantidad === stockDisponible){
-                    Toastify({ 
-                        text: "Stock máximo alcanzado", 
-                        gravity: "bottom",  
-                        position: "left",   
-                        duration: 2000,
-                        className: "toast-agregado",
-                        style: {
-                            background: "#7ba972",
-                            color: "#052b20",
-                            borderRadius: "10px"}
-                    }).showToast();
+                    mostrarAlert("Stock máximo alcanzado", "#7ba972");  
                     return{
                     ...el,
                     }
@@ -436,24 +404,14 @@ function mostrarCarrito(e){
             }
         });
         if(e.cantidad === 1){
-            carrito.splice(indice, 1);            
-            Toastify({
-                text: "Producto eliminado del carrito",
-                gravity: "bottom", 
-                position: "left", 
-                duration: 2000,
-                className: "toast-agregado",
-                style: {
-                    background: "#A38A75",
-                    color: "#052b20",
-                    borderRadius: "10px",
-            }
-            }).showToast();
+            carrito.splice(indice, 1);  
+            mostrarAlert("Producto eliminado del carrito", "#A38A75");  
         }
         localStorage.setItem("carrito", JSON.stringify(carrito));
         actualizarCarrito();
     }
 }
+
 // ACTUALIZACION DE CARRITO ----------------------
 function actualizarCarrito(){
 // Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
@@ -504,19 +462,7 @@ borrarCarrito.onclick = () => {
     localStorage.setItem("carrito", JSON.stringify([]));
     carrito = [];
     actualizarCarrito();
-    Toastify({
-        text: "Carrito vacío",
-        gravity: "bottom", 
-        position: "left", 
-        duration: 2000,
-        className: "toast-agregado",
-        style: {
-            background: "#A38A75",
-            color: "#052b20",
-            borderRadius: "10px",
-    }
-    }).showToast();
-
+    mostrarAlert("Carrito vacío", "#A38A75");
 }
 
 botonCarrito.onclick = () => {
@@ -524,6 +470,21 @@ botonCarrito.onclick = () => {
     overlay.classList.add("visible");
 }
 overlay.onclick = cerrarCarrito;
+
+function mostrarAlert(texto, color){
+    Toastify({
+        text: texto,
+        gravity: "bottom", 
+        position: "left", 
+        duration: 2000,
+        className: "toast-agregado",
+        style: {
+            background: color,
+            color: "#052b20",
+            borderRadius: "10px",
+    }
+    }).showToast();
+}
 
 function cerrarCarrito() {
     seccionCarrito.classList.remove("abierto");
@@ -550,11 +511,13 @@ async function registrar() {
             }
         }
     });
+    if(result.isConfirmed && result.value){
         localStorage.setItem("cliente", JSON.stringify(result.value.nombreCliente));
         localStorage.setItem("telefono", JSON.stringify(result.value.telefonoCliente));
         localStorage.setItem("email", JSON.stringify(result.value.emailCliente));
         cliente = result.value.nombreCliente;
-        actualizarRegistro();
+    }
+    actualizarRegistro();
 }
 // Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
