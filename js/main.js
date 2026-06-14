@@ -530,18 +530,24 @@ botonEnviar.onclick = () => {
         cancelButtonColor: "#b38158",
         confirmButtonText: "Confirmar!"
         }).then((result) => {
-        if (result.isConfirmed) Swal.fire({
-            title: "Pedido enviado",
-            text: "Gracias!! Te contactaremos a la brevedad para el pago y la entrega",
-            icon: "success"
-        });
-        // Limpieza de carrito y storage pero despues de confirmar 
-        localStorage.setItem("carrito", JSON.stringify([]));
-        carrito = [];
-        actualizarCarrito();
-        });
+            if (result.isConfirmed) {
+                Swal.fire({
+                title: "Pedido enviado",
+                text: "Gracias!! Te contactaremos a la brevedad para el pago y la entrega",
+                icon: "success"
+                });
+                // Limpieza de carrito y storage pero despues de confirmar 
+                localStorage.setItem("carrito", JSON.stringify([]));
+                carrito = [];
+                actualizarCarrito();
+            }
+        });   
     }else{
-        Swal.fire("Por favor, ingrese su nombre para poder enviar el pedido");
+        Swal.fire("Para poder enviar el pedido es necesario que se registre");
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }
 };
 
