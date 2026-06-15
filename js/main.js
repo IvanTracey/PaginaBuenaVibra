@@ -73,14 +73,9 @@ const main = document.querySelector('main');
         divTitulo.className = "div-titulo";
             const titulo = document.createElement("h1");
             titulo.innerText = "Productos";
-        const divFiltro = document.createElement("div");
-        divFiltro.className = "div-filtro";
             const filtro = document.createElement("input");
             filtro.className = "filtro-producto";
             filtro.placeholder = " Buscar...";
-            const botonFiltro = document.createElement("button");
-            botonFiltro.className = "boton-filtro";
-            botonFiltro.innerHTML = `<img src="img/lupa.png"></img>`;
         const seccionCategorias = document.createElement("section");
         seccionCategorias.className = "section-categorias";
         const seccionCardProductos = document.createElement("section");
@@ -130,9 +125,7 @@ main.appendChild(seccionProductos);
 
     seccionProductos.appendChild(divTitulo);
         divTitulo.appendChild(titulo);
-        divTitulo.appendChild(divFiltro);
-            divFiltro.appendChild(filtro);
-            divFiltro.appendChild(botonFiltro);
+        divTitulo.appendChild(filtro);
     seccionProductos.appendChild(seccionCategorias);
     seccionProductos.appendChild(seccionCardProductos);
 main.appendChild(seccionCarrito);
@@ -269,10 +262,24 @@ function filtrarProductos(prod){
     }else{
         mensajeNoProductos = document.createElement("p");
         mensajeNoProductos.className = "mensaje-noProductos";
-        mensajeNoProductos.innerText = "** No hay productos de esa categoría **"
+        mensajeNoProductos.innerText = "** No hay productos **"
         seccionCardProductos.appendChild(mensajeNoProductos);
     };
 }
+
+filtro.oninput = () => {
+    const texto = filtro.value.toLowerCase().trim();
+    
+    if(!texto){
+        filtrarProductos(productosAMostrar); // si borrás todo, muestra los actuales
+        return;
+    }
+    
+    const filtrados = productosAMostrar.filter(e => 
+        e.nombre.toLowerCase().includes(texto)
+    );
+    filtrarProductos(filtrados);
+};
 
 // AGREGAR AL CARRITO - CARGO EN STORAGE 
 function agregarCarrito(idElegido, varElegida){    
