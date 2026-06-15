@@ -166,6 +166,26 @@ main {
 main .boton-carrito-phone {
   display: none;
 }
+main .boton-top {
+  display: block;
+  justify-content: center;
+  width: auto;
+  margin: 0px;
+  background-color: #A8B8A5;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+  background-color: #bbd9b6;
+  padding: 8px 14px;
+  border-radius: 10px;
+  align-self: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+}
 main .section-product {
   grid-column: 1;
   margin: 5px;
@@ -250,7 +270,7 @@ main .section-product .section-cardproduct article .div-categoria {
   margin: 3px;
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 6px;
 }
 main .section-product .section-cardproduct article .div-categoria .tag-categoria {
   font-size: 12px;
@@ -462,6 +482,11 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     right: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
     z-index: 100;
+  }
+  main .boton-top {
+    background-color: #A38A75;
+    bottom: 80px;
+    right: 20px;
   }
   main .section-product .div-titulo {
     display: flex;

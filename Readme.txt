@@ -17,11 +17,3 @@ Se hace uso de local storage al registrarse alguien y con el estado del carrito.
 
 /// FUNCIONES UTILIZADAS
 
-
-
-
-- en cartel que pide registrarse al enviar el pedido, usar la palabra "registrarse".
-- al registrarse pedir el numero de teléfono y o mail.
-- evaluar si uso un textbox para comentarios en la sección carritos
-- crear un div para el desplegable de variables asi se alinea?
-- si el stock de algo es 0, lo muestra? se q en variedades no, pero cuando es solo un producto tengo duda. ver y arreglar

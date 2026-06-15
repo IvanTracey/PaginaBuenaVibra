@@ -100,6 +100,9 @@ const main = document.querySelector('main');
     const botonCarrito = document.createElement("button");
     botonCarrito.className = "boton-carrito-phone"
     botonCarrito.innerHTML = `<img src="img/carrito.png"></img>`;
+    const botonTop = document.createElement("button");
+    botonTop.className = "boton-top";
+    botonTop.innerHTML = `<img src="img/top.png"></img>`;
 // Total del carrito ----------------------
 const total = carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
 const totalCarrito = document.createElement("article");
@@ -142,6 +145,7 @@ main.appendChild(seccionCarrito);
         seccionFooterCarrito.appendChild(botonEnviar);
 main.appendChild(overlay);
 main.appendChild(botonCarrito);
+main.appendChild(botonTop);
 // VACIAR CARRITO ----------------------
 borrarCarrito = document.createElement("button");
 borrarCarrito.innerText = "Borrar";
@@ -510,6 +514,13 @@ borrarCarrito.onclick = () => {
 botonCarrito.onclick = () => {
     seccionCarrito.classList.add("abierto");
     overlay.classList.add("visible");
+}
+
+botonTop.onclick = () => {
+    window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
 }
 
 overlay.onclick = cerrarCarrito;

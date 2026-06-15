@@ -12,6 +12,18 @@ main{
     .boton-carrito-phone{
         display: none;
     }
+    .boton-top{
+            @include boton(auto, 0px);
+            background-color: $color-bg-secundario;
+            padding: 8px 14px;
+            border-radius: 10px;
+            align-self: center;
+            position: fixed;
+            bottom: 20px;
+            right:  20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            z-index: 100;
+        }
     .section-product{
         grid-column: 1;
         margin: 5px;
@@ -83,7 +95,7 @@ main{
                     margin: 3px;
                     display: flex;
                     flex-wrap: wrap;
-                    gap: 5px;
+                    gap: 6px;
                     .tag-categoria{
                         font-size: 12px;
                         font-weight: bold;
