@@ -293,13 +293,22 @@ function agregarCarrito(idElegido, varElegida){
             eleccion: varElegida,
         }
 // verifico si el producto ya esta en el carrito (.some da true si el elemento que pasaste existe al menos una vez) - tanto con el id como con la variedad
+        const stockDisponible = deteccionStock(idElegido, varElegida);
         if(carrito.some(e => e.id === productoConVariedad.id && e.eleccion === productoConVariedad.eleccion)){
             carrito=carrito.map(e => {
                 if (e.id === productoConVariedad.id && e.eleccion === productoConVariedad.eleccion){
-                    return{
+                    if(e.cantidad === stockDisponible){
+                        mostrarAlert("Stock máximo alcanzado", "#7ba972");  
+                        return{
                         ...e,
-                        cantidad: e.cantidad+1,
-                    };
+                        }
+                    }else{
+                        mostrarAlert("Producto agregado al carrito", "#75a38b"); 
+                        return{
+                        ...e,
+                        cantidad: e.cantidad +1,    
+                        }
+                    }
                 }else{
                     return e;    
                 }
@@ -308,11 +317,22 @@ function agregarCarrito(idElegido, varElegida){
             carrito.push({...productoConVariedad, cantidad: 1});
         };
     }
-    mostrarAlert("Producto agregado al carrito", "#75a38b"); 
     actualizarCarrito();
 }
 
-// MOSTRAR CARRITO ----------------------
+function deteccionStock(id_elegido, var_elegido){
+    const productoSeleccionado = productos.find(e => e.id === id_elegido);
+        let stock;
+        if(productoSeleccionado.variedades){
+            const variedad = productoSeleccionado.variedades.find(el => el.nombre === var_elegido);
+            stock = variedad.stock;       
+        }else{
+            stock = productoSeleccionado.stock;       
+        }
+    return stock;
+}
+
+// Creacion de cards de carrito y funcionalidad de botones ----------------------
 function mostrarCarrito(e){
     const cardCarrito = document.createElement("article");
     cardCarrito.className = "card-carrito";
@@ -367,18 +387,10 @@ function mostrarCarrito(e){
     }
     
     botonMas.onclick = () => {
-        const productoSeleccionado = carrito.find(el => 
-            el.id === e.id);
-        let stockDisponible;
-        if(productoSeleccionado.variedades){
-            variedad = productoSeleccionado.variedades.find(el => el.nombre === e.eleccion);
-            stockDisponible = variedad.stock;       
-        }else{
-            stockDisponible = productoSeleccionado.stock;       
-        }
+        const stockDisponible = deteccionStock(e.id, e.eleccion);
         carrito = carrito.map(el => {
             if(el.id === e.id && el.eleccion === e.eleccion){
-        // No incrementar por encima del stock
+            // No incrementar por encima del stock
                 if(el.cantidad === stockDisponible){
                     mostrarAlert("Stock máximo alcanzado", "#7ba972");  
                     return{
@@ -418,7 +430,6 @@ function mostrarCarrito(e){
         actualizarCarrito();
     }
 }
-
 // ACTUALIZACION DE CARRITO ----------------------
 function actualizarCarrito(){
 // Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
