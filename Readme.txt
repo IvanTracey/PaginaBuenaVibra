@@ -15,5 +15,19 @@ En el footer se nombra los términos y condiciones, junto con compartir las rede
 Se hace uso de local storage al registrarse alguien y con el estado del carrito. De esta manera, no perderás dicha información al cerrar el navegador o apagar la computadora.
 
 
-/// FUNCIONES UTILIZADAS
+/// Funciones, métodos y manejadores de eventos utilizados:
+- filtro.oninput Realiza el filtrado a partir de ingresar caracteres en el textbox correspondiente a la busqueda.
+
+- categorias.forEach() Creación de botones de las categorías y de la funcionalidad de cada botón. Según cual se elija, define la categoría de los productos que se mostraran en pantalla.
+
+- filtrarPorCategoria() Muestra las categorías que indique en su variable. De no haber productos de ese tipo, muestra un mensaje indicándolo.
+
+- crearCard() Se crea la estructura de la tarjeta del producto y el botón de "Agregar al carrito" con su manejador de evento al clickearlo.
+
+- deteccionStock() A partir de agregar un elemento al carrito, esta funcionalidad detecta el stock del producto en cuestión con el objetivo de usarlo para limitar el contador del carrito.
+
+- mostrarAlert() Usa la librería Toastify para notificar un texto de un color que se le ingrese. Se usa en los ingresos o las quitas hechas en el carrito.
+
+- agregarCarrito() A partir de querer agregar un elemento al carrito contrasta si aún no se llegó al limite de stock, y si no es el caso, aumenta la cantidad en uno. En ambos casos, se muestra una notificación indicando lo hecho. También detecta de que variedad se trata el producto, si es necesario.
+
 

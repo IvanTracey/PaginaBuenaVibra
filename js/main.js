@@ -14,7 +14,7 @@ fetch ('./data/productos.json')
         productosAMostrar = productos;
         //throw error;
         actualizarCarrito();
-        filtrarProductos(productosAMostrar);
+        filtrarPorCategoria(productosAMostrar);
     })
     .catch(error => {
        Swal.fire({
@@ -110,7 +110,7 @@ carritoVacio.className = "card-carrito-mensaje";
 carritoVacio.innerText = "Carrito vacío";
 
 // Boton de envio de pedido
-botonEnviar = document.createElement("button");
+const botonEnviar = document.createElement("button");
 botonEnviar.innerText = "Enviar pedido";
 botonEnviar.className = "boton-enviar";
 
@@ -140,16 +140,27 @@ main.appendChild(overlay);
 main.appendChild(botonCarrito);
 main.appendChild(botonTop);
 // VACIAR CARRITO ----------------------
-borrarCarrito = document.createElement("button");
+const borrarCarrito = document.createElement("button");
 borrarCarrito.innerText = "Borrar";
 borrarCarrito.className = "boton-borrar";
 seccionHeaderCarrito.appendChild(borrarCarrito);
 
 //// sector de funciones ----------------------------------
 
-
+filtro.oninput = () => {
+    const texto = filtro.value.toLowerCase().trim();
+    
+    if(!texto){
+        filtrarPorCategoria(productosAMostrar); // si borrás todo, muestra los actuales
+        return;
+    }
+    
+    const filtrados = productosAMostrar.filter(e => 
+        e.nombre.toLowerCase().includes(texto)
+    );
+    filtrarPorCategoria(filtrados);
+};
 // Seccion categorias - creacion de botones
-
 const categorias = ["Todos", "Adornos", "Aromas", "Defumación", "Manifestación", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
 categorias.forEach(categoria => {
     // Creo el boton para cada categoria
@@ -175,9 +186,22 @@ categorias.forEach(categoria => {
                     return e.categoria === categoria;
                 }
             });
-        filtrarProductos(productosAMostrar);
+        filtrarPorCategoria(productosAMostrar);
     };
 });
+
+// actualizar section de productos segun la eleccion de categoria
+function filtrarPorCategoria(prod){
+    seccionCardProductos.innerHTML = "";
+    if(prod.length > 0){
+        prod.forEach(e => crearCard(e));
+    }else{
+        const mensajeNoProductos = document.createElement("p");
+        mensajeNoProductos.className = "mensaje-noProductos";
+        mensajeNoProductos.innerText = "** No hay productos de ese tipo**"
+        seccionCardProductos.appendChild(mensajeNoProductos);
+    };
+}
 
 // CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
@@ -228,7 +252,7 @@ function crearCard (producto){
     let selectVariedades = null;    // La inicio fuera para que sea variable global
 // Solo si el producto tiene variedades
     if(producto.variedades) {
-        selectVariedades = document.createElement("select");
+        const selectVariedades = document.createElement("select");
         selectVariedades.className = "variedad-producto";
         selectVariedades.name = "variedades";
         producto.variedades.forEach(variedad => {
@@ -251,35 +275,33 @@ function crearCard (producto){
         agregarCarrito(producto.id, variedadElegida);
     }
 };
-//con cada objeto del array, creo una card
-productosAMostrar.forEach(e => crearCard(e));
 
-// actualizar section de productos segun el filtrado
-function filtrarProductos(prod){
-    seccionCardProductos.innerHTML = "";
-    if(prod.length > 0){
-        prod.forEach(e => crearCard(e));
-    }else{
-        mensajeNoProductos = document.createElement("p");
-        mensajeNoProductos.className = "mensaje-noProductos";
-        mensajeNoProductos.innerText = "** No hay productos **"
-        seccionCardProductos.appendChild(mensajeNoProductos);
-    };
+function deteccionStock(id_elegido, var_elegido){
+    const productoSeleccionado = productos.find(e => e.id === id_elegido);
+        let stock;
+        if(productoSeleccionado.variedades){
+            const variedad = productoSeleccionado.variedades.find(el => el.nombre === var_elegido);
+            stock = variedad.stock;       
+        }else{
+            stock = productoSeleccionado.stock;       
+        }
+    return stock;
 }
 
-filtro.oninput = () => {
-    const texto = filtro.value.toLowerCase().trim();
-    
-    if(!texto){
-        filtrarProductos(productosAMostrar); // si borrás todo, muestra los actuales
-        return;
+function mostrarAlert(texto, color){
+    Toastify({
+        text: texto,
+        gravity: "bottom", 
+        position: "left", 
+        duration: 2000,
+        className: "toast-agregado",
+        style: {
+            background: color,
+            color: "#052b20",
+            borderRadius: "10px",
     }
-    
-    const filtrados = productosAMostrar.filter(e => 
-        e.nombre.toLowerCase().includes(texto)
-    );
-    filtrarProductos(filtrados);
-};
+    }).showToast();
+}
 
 // AGREGAR AL CARRITO - CARGO EN STORAGE 
 function agregarCarrito(idElegido, varElegida){    
@@ -295,7 +317,7 @@ function agregarCarrito(idElegido, varElegida){
 // verifico si el producto ya esta en el carrito (.some da true si el elemento que pasaste existe al menos una vez) - tanto con el id como con la variedad
         const stockDisponible = deteccionStock(idElegido, varElegida);
         if(carrito.some(e => e.id === productoConVariedad.id && e.eleccion === productoConVariedad.eleccion)){
-            carrito=carrito.map(e => {
+            carrito = carrito.map(e => {
                 if (e.id === productoConVariedad.id && e.eleccion === productoConVariedad.eleccion){
                     if(e.cantidad === stockDisponible){
                         mostrarAlert("Stock máximo alcanzado", "#7ba972");  
@@ -318,18 +340,6 @@ function agregarCarrito(idElegido, varElegida){
         };
     }
     actualizarCarrito();
-}
-
-function deteccionStock(id_elegido, var_elegido){
-    const productoSeleccionado = productos.find(e => e.id === id_elegido);
-        let stock;
-        if(productoSeleccionado.variedades){
-            const variedad = productoSeleccionado.variedades.find(el => el.nombre === var_elegido);
-            stock = variedad.stock;       
-        }else{
-            stock = productoSeleccionado.stock;       
-        }
-    return stock;
 }
 
 // Creacion de cards de carrito y funcionalidad de botones ----------------------
@@ -453,21 +463,6 @@ function actualizarCarrito(){
     }
 };
 
-function mostrarAlert(texto, color){
-    Toastify({
-        text: texto,
-        gravity: "bottom", 
-        position: "left", 
-        duration: 2000,
-        className: "toast-agregado",
-        style: {
-            background: color,
-            color: "#052b20",
-            borderRadius: "10px",
-    }
-    }).showToast();
-}
-
 // Funcion asincronica correspondiente al boton de registrarse
 async function registrar() {
     const result = await Swal.fire({
@@ -583,7 +578,7 @@ botonEnviar.onclick = () => {
 ////// Comienzo de codigo ------------------------
 // Actualizacion de pagina
 actualizarCarrito()
-filtrarProductos(productosAMostrar);
+filtrarPorCategoria(productosAMostrar);
 actualizarRegistro();
 Swal.fire({
   position: "center",
