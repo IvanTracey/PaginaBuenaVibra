@@ -5,13 +5,12 @@
 // Sector de variables --------------------
 let productos = [];
 let productosAMostrar = [];
-
+// Cargo los productos en orden alfabetico, por defecto cargo todos en pantalla
 fetch ('./data/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data.sort((a, b) => a.nombre.localeCompare(b.nombre));
         productosAMostrar = productos;
-        //throw error;
         actualizarCarrito();
         filtrarPorCategoria(productosAMostrar);
     })
@@ -22,22 +21,21 @@ fetch ('./data/productos.json')
             icon: "error"
         });
     });
-
+// Adquiero el carrito del storage o lo inicio vacio si no esta. 
 let carrito = [];
-// Adquiero el carrito del storage o lo inicio vacio si no esta. Mientras que si existe algun problema CATCH tamb me lo da vacio
 try{
-    carrito=JSON.parse(localStorage.getItem("carrito"));
-// Si no existe en storage, lo inicio vacio
+    carrito = JSON.parse(localStorage.getItem("carrito"));
     if(!carrito){
         carrito = [];
     };
 } catch(e){
+    //Si existe algun problema CATCH tamb me lo da vacio
     carrito = [];
 }
-
+// Misma lógica para el nombre del cliente
 let cliente = [];
 try{
-    cliente=JSON.parse(localStorage.getItem("cliente"));
+    cliente = JSON.parse(localStorage.getItem("cliente"));
     if(!cliente){
         cliente = [];
     };
@@ -58,7 +56,7 @@ const header = document.querySelector('header');
         const logo = document.createElement("img");
         logo.className = "logo-colibri";
         logo.src = "img/logo_colibri.webp";
-        logo.alt = "Imagen de un colibri en colores vivos. Logo del emprendimiento"
+        logo.alt = "Imagen de un colibri. Logo del emprendimiento"
     const seccionRegistro = document.createElement("section");
     seccionRegistro.className = "seccion-registro";
         const botonRegistro = document.createElement("button");
@@ -93,10 +91,10 @@ const main = document.querySelector('main');
     overlay.className = "overlay";
     const botonCarrito = document.createElement("button");
     botonCarrito.className = "boton-carrito-phone"
-    botonCarrito.innerHTML = `<img src="img/carrito.png"></img>`;
+    botonCarrito.innerHTML = `<img src="img/carrito.png" alt="Icono de carrito"></img>`;
     const botonTop = document.createElement("button");
     botonTop.className = "boton-top";
-    botonTop.innerHTML = `<img src="img/top.png"></img>`;
+    botonTop.innerHTML = `<img src="img/top.png"alt="Flecha hacia arriba"></img>`;
 // Total del carrito ----------------------
 const total = carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
 const totalCarrito = document.createElement("article");
@@ -162,8 +160,7 @@ async function registrar() {
                 Swal.showValidationMessage("Por favor complete todos los campos");
                 return false; //no cierra la ventana
             }
-            return { nombreCliente, telefonoCliente, emailCliente
-            }
+            return { nombreCliente, telefonoCliente, emailCliente}
         }
     });
     if(result.isConfirmed && result.value){
