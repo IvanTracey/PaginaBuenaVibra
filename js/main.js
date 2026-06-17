@@ -438,7 +438,6 @@ function crearCardCarrito(e){
         actualizarCarrito();         
         mostrarAlert("Producto eliminado del carrito", "#A38A75"); 
     }
-    
     botonMas.onclick = () => {
         const stockDisponible = deteccionStock(e.id, e.eleccion);
         carrito = carrito.map(el => {
@@ -446,35 +445,24 @@ function crearCardCarrito(e){
             // No incrementar por encima del stock
                 if(el.cantidad === stockDisponible){
                     mostrarAlert("Stock máximo alcanzado", "#7ba972");  
-                    return{
-                    ...el,
-                    }
+                    return{...el}
                 }else{
-                    return{
-                    ...el,
-                    cantidad: el.cantidad +1,    
-                    }
-                    }
-            }else{
-                return el;
-            }
+                    mostrarAlert("Producto agregado al carrito", "#75a38b");
+                    return{...el, cantidad: el.cantidad +1} 
+                }
+            }else{return el}
         });
         actualizarCarrito();
     };
-    
     botonMenos.onclick = () => {
         const indice = carrito.findIndex(el => el.id === e.id && el.eleccion === e.eleccion);
         carrito = carrito.map(el => {
             if(el.id === e.id && el.eleccion === e.eleccion){
                 if(el.cantidad > 1){
-                    return{
-                        ...el,
-                        cantidad: el.cantidad -1,  
-                    }
+                    mostrarAlert("Producto quitado del carrito", "#A38A75");
+                    return{...el, cantidad: el.cantidad -1}
                 };
-            }else{
-                return el;
-            }
+            }else{return el}
         });
         if(e.cantidad === 1){
             carrito.splice(indice, 1);  
