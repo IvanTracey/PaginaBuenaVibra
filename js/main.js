@@ -3,7 +3,6 @@
 // JSON no admite comentarios, comas finales y usa comillas dobles 
 
 // Sector de variables --------------------
-//  
 let productos = [];
 let productosAMostrar = [];
 
@@ -146,6 +145,58 @@ borrarCarrito.className = "boton-borrar";
 seccionHeaderCarrito.appendChild(borrarCarrito);
 
 //// sector de funciones ----------------------------------
+// Funcion asincronica correspondiente al boton de registrarse
+async function registrar() {
+    const result = await Swal.fire({
+        title: 'Informacion para contactarte',
+        html: `Nombre y Apellido: <input id="inputNombre" value = "Cody"><br></br>
+        Telefono: <input id="inputTelefono" value = "221454545"><br></br>
+        Email: <input id="inputEmail" value = "cody@gmail.com">`,
+        showCancelButton: true,
+        preConfirm: () => {
+            const nombreCliente = document.getElementById("inputNombre").value;
+            const telefonoCliente = document.getElementById("inputTelefono").value;
+            const emailCliente = document.getElementById("inputEmail").value;
+
+            if (!nombreCliente || !telefonoCliente || !emailCliente){
+                Swal.showValidationMessage("Por favor complete todos los campos");
+                return false; //no cierra la ventana
+            }
+            return { nombreCliente, telefonoCliente, emailCliente
+            }
+        }
+    });
+    if(result.isConfirmed && result.value){
+        localStorage.setItem("cliente", JSON.stringify(result.value.nombreCliente));
+        localStorage.setItem("telefono", JSON.stringify(result.value.telefonoCliente));
+        localStorage.setItem("email", JSON.stringify(result.value.emailCliente));
+        cliente = result.value.nombreCliente;
+    }
+    actualizarRegistro();
+}
+
+function actualizarRegistro() {
+    if (!cliente || cliente.length <= 0) {
+        //Si cliente no existe o esta vacio, boton para registrarse
+        seccionRegistro.innerHTML = `<button class="boton-registro">Registrarse</button>`;
+        // como innerHTML regenera el botón, hay que reasignar el evento
+        document.querySelector('.boton-registro').onclick = registrar;
+    } else {
+        //Si ya dio su nombre, lo saludo y creo un boton
+        seccionRegistro.innerHTML = `
+            <p>Hola, ${cliente}!</p>
+            <button class="boton-borrarRegistro" heigth=auto> X </button>
+        `;
+        // Le doy la funcionalidad de borrar los datos y llamo nuevamente a la funcion para que coloque el boton para registrarse
+        document.querySelector('.boton-borrarRegistro').onclick = () => {
+            localStorage.removeItem("cliente");
+            localStorage.removeItem("telefono");
+            localStorage.removeItem("email");
+            cliente = [];
+            actualizarRegistro();
+        };
+    }
+}
 
 filtro.oninput = () => {
     const texto = filtro.value.toLowerCase().trim();
@@ -343,7 +394,7 @@ function agregarCarrito(idElegido, varElegida){
 }
 
 // Creacion de cards de carrito y funcionalidad de botones ----------------------
-function mostrarCarrito(e){
+function crearCardCarrito(e){
     const cardCarrito = document.createElement("article");
     cardCarrito.className = "card-carrito";
         const divInfo = document.createElement("div");
@@ -447,7 +498,7 @@ function actualizarCarrito(){
     // Limpio lo que habia del carrito
     seccionBodyCarrito.innerHTML= "";
     // Cargo nuevamente el carrito
-    carrito.forEach(e => mostrarCarrito(e));
+    carrito.forEach(e => crearCardCarrito(e));
     const total= carrito.reduce((acc, e) => acc + e.precio * e.cantidad, 0);
     totalCarrito.innerText = `TOTAL: $${total}`;
 
@@ -463,58 +514,6 @@ function actualizarCarrito(){
     }
 };
 
-// Funcion asincronica correspondiente al boton de registrarse
-async function registrar() {
-    const result = await Swal.fire({
-        title: 'Informacion para contactarte',
-        html: `Nombre y Apellido: <input id="inputNombre" value = "Cody"><br></br>
-        Telefono: <input id="inputTelefono" value = "221454545"><br></br>
-        Email: <input id="inputEmail" value = "cody@gmail.com">`,
-        showCancelButton: true,
-        preConfirm: () => {
-            const nombreCliente = document.getElementById("inputNombre").value;
-            const telefonoCliente = document.getElementById("inputTelefono").value;
-            const emailCliente = document.getElementById("inputEmail").value;
-
-            if (!nombreCliente || !telefonoCliente || !emailCliente){
-                Swal.showValidationMessage("Por favor complete todos los campos");
-                return false; //no cierra la ventana
-            }
-            return { nombreCliente, telefonoCliente, emailCliente
-            }
-        }
-    });
-    if(result.isConfirmed && result.value){
-        localStorage.setItem("cliente", JSON.stringify(result.value.nombreCliente));
-        localStorage.setItem("telefono", JSON.stringify(result.value.telefonoCliente));
-        localStorage.setItem("email", JSON.stringify(result.value.emailCliente));
-        cliente = result.value.nombreCliente;
-    }
-    actualizarRegistro();
-}
-
-function actualizarRegistro() {
-    if (!cliente || cliente.length <= 0) {
-        //Si cliente no existe o esta vacio, boton para registrarse
-        seccionRegistro.innerHTML = `<button class="boton-registro">Registrarse</button>`;
-        // como innerHTML regenera el botón, hay que reasignar el evento
-        document.querySelector('.boton-registro').onclick = registrar;
-    } else {
-        //Si ya dio su nombre, lo saludo y creo un boton
-        seccionRegistro.innerHTML = `
-            <p>Hola, ${cliente}!</p>
-            <button class="boton-borrarRegistro" heigth=auto> X </button>
-        `;
-        // Le doy la funcionalidad de borrar los datos y llamo nuevamente a la funcion para que coloque el boton para registrarse
-        document.querySelector('.boton-borrarRegistro').onclick = () => {
-            localStorage.removeItem("cliente");
-            localStorage.removeItem("telefono");
-            localStorage.removeItem("email");
-            cliente = [];
-            actualizarRegistro();
-        };
-    }
-}
 // Funcionalidades OnClick
 borrarCarrito.onclick = () => {
     // Borro el storage y tamb la variable
@@ -524,11 +523,6 @@ borrarCarrito.onclick = () => {
     mostrarAlert("Carrito vacío", "#A38A75");
 }
 
-botonCarrito.onclick = () => {
-    seccionCarrito.classList.add("abierto");
-    overlay.classList.add("visible");
-}
-
 botonTop.onclick = () => {
     window.scrollTo({
             top: 0,
@@ -536,12 +530,18 @@ botonTop.onclick = () => {
         })
 }
 
-overlay.onclick = cerrarCarrito;
+botonCarrito.onclick = () => {
+    seccionCarrito.classList.add("abierto");
+    overlay.classList.add("visible");
+}
 
 function cerrarCarrito() {
     seccionCarrito.classList.remove("abierto");
     overlay.classList.remove("visible");
 }
+
+overlay.onclick = cerrarCarrito;
+
 // Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
     if(cliente.length > 0){

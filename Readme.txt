@@ -16,6 +16,11 @@ Se hace uso de local storage al registrarse alguien y con el estado del carrito.
 
 
 /// Funciones, métodos y manejadores de eventos utilizados:
+
+- registrar() Función asincrónica para el registro del usuario usando la librería Sweetalert y guardando la información en local storage.
+
+- actualizarRegistro() Se encarga de darle valor al boton de registro dependiendo de si el usuario ya cargo su información o no.
+
 - filtro.oninput Realiza el filtrado a partir de ingresar caracteres en el textbox correspondiente a la busqueda.
 
 - categorias.forEach() Creación de botones de las categorías y de la funcionalidad de cada botón. Según cual se elija, define la categoría de los productos que se mostraran en pantalla.
@@ -30,4 +35,19 @@ Se hace uso de local storage al registrarse alguien y con el estado del carrito.
 
 - agregarCarrito() A partir de querer agregar un elemento al carrito contrasta si aún no se llegó al limite de stock, y si no es el caso, aumenta la cantidad en uno. En ambos casos, se muestra una notificación indicando lo hecho. También detecta de que variedad se trata el producto, si es necesario.
 
+- crearCardCarrito() Se crea la estructura de las tarjetas en el carrito, junto con los botones y el manejo del evento al clickearlos.
+
+- actualizarCarrito() Borra y escribe nuevamente la información de la sección del carrito, actualizando el valor del total.
+
+- borrarCarrito.onclick Limpia tanto la variable carrito como el local storage. Muestra una notificación.
+
+-botonTop.onclick Lleva la página al principio, donde está a la vista el header.
+
+- botonCarrito.onclick El botón existe en el responsive para teléfonos donde la sección del carrito no está visible. Al apretar dicho botón la hace visible y a partir de CSS se crea la experiencia.
+
+-cerrarCarrito() Función que hace que la sección del carrito vuelva a estar no visible en el responsive para teléfonos.
+
+- overlay.onclick Al tocar la pantalla por fuera de la sección del carrito en el responsive para teléfonos, llama a la función que oculta el carrito.
+
+- -botonEnviar.onclick Cuando se elige enviar el pedido al apretar dicho botón, se usa sweetalert para gestionar la experiencia: De no estar registrado te pide que lo hagas y lleva la página al inicio para que esté visible el botón de registro. Pide confirmación a la hora de enviarla, y luego de hacerlo, borra el carrito. (La funcionalidad de enviar el pedido no se realiza en este proyecto, solo lo simula). 
 
