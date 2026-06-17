@@ -5,12 +5,13 @@
 // Sector de variables --------------------
 let productos = [];
 let productosAMostrar = [];
-// Cargo los productos en orden alfabetico, por defecto cargo todos en pantalla
+
 fetch ('./data/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data.sort((a, b) => a.nombre.localeCompare(b.nombre));
         productosAMostrar = productos;
+        //throw error;
         actualizarCarrito();
         filtrarPorCategoria(productosAMostrar);
     })
@@ -21,21 +22,22 @@ fetch ('./data/productos.json')
             icon: "error"
         });
     });
-// Adquiero el carrito del storage o lo inicio vacio si no esta. 
+
 let carrito = [];
+// Adquiero el carrito del storage o lo inicio vacio si no esta. Mientras que si existe algun problema CATCH tamb me lo da vacio
 try{
-    carrito = JSON.parse(localStorage.getItem("carrito"));
+    carrito=JSON.parse(localStorage.getItem("carrito"));
+// Si no existe en storage, lo inicio vacio
     if(!carrito){
         carrito = [];
     };
 } catch(e){
-    //Si existe algun problema CATCH tamb me lo da vacio
     carrito = [];
 }
-// Misma lógica para el nombre del cliente
+
 let cliente = [];
 try{
-    cliente = JSON.parse(localStorage.getItem("cliente"));
+    cliente=JSON.parse(localStorage.getItem("cliente"));
     if(!cliente){
         cliente = [];
     };
@@ -45,8 +47,7 @@ try{
 
 /* Variables globales del DOM y conexion de nodos -----------------------
  main -> section-product -> (section-categorias y section-cardproduct)
-      -> section-carrito -> (section- header/body/footer -carrito)
-*/
+      -> section-carrito -> (section- header/body/footer -carrito)*/
 const header = document.querySelector('header');
     const seccionTitulo = document.createElement("section");
     seccionTitulo.className = "section-titulo"
@@ -91,10 +92,10 @@ const main = document.querySelector('main');
     overlay.className = "overlay";
     const botonCarrito = document.createElement("button");
     botonCarrito.className = "boton-carrito-phone"
-    botonCarrito.innerHTML = `<img src="img/carrito.png" alt="Icono de carrito"></img>`;
+    botonCarrito.innerHTML = `<img src="img/carrito.png" alt="Carrito"></img>`;
     const botonTop = document.createElement("button");
     botonTop.className = "boton-top";
-    botonTop.innerHTML = `<img src="img/top.png"alt="Flecha hacia arriba"></img>`;
+    botonTop.innerHTML = `<img src="img/top.png" alt="Flecha hacia arriba"></img>`;
 // Total del carrito ----------------------
 const total = carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
 const totalCarrito = document.createElement("article");
@@ -110,7 +111,6 @@ carritoVacio.innerText = "Carrito vacío";
 const botonEnviar = document.createElement("button");
 botonEnviar.innerText = "Enviar pedido";
 botonEnviar.className = "boton-enviar";
-
 
 header.appendChild(seccionTitulo); 
     seccionTitulo.appendChild(logo);
@@ -136,6 +136,7 @@ main.appendChild(seccionCarrito);
 main.appendChild(overlay);
 main.appendChild(botonCarrito);
 main.appendChild(botonTop);
+
 // VACIAR CARRITO ----------------------
 const borrarCarrito = document.createElement("button");
 borrarCarrito.innerText = "Borrar";
@@ -143,7 +144,6 @@ borrarCarrito.className = "boton-borrar";
 seccionHeaderCarrito.appendChild(borrarCarrito);
 
 //// sector de funciones ----------------------------------
-// Funcion asincronica correspondiente al boton de registrarse
 async function registrar() {
     const result = await Swal.fire({
         title: 'Informacion para contactarte',
@@ -160,7 +160,8 @@ async function registrar() {
                 Swal.showValidationMessage("Por favor complete todos los campos");
                 return false; //no cierra la ventana
             }
-            return { nombreCliente, telefonoCliente, emailCliente}
+            return { nombreCliente, telefonoCliente, emailCliente
+            }
         }
     });
     if(result.isConfirmed && result.value){
@@ -208,6 +209,7 @@ filtro.oninput = () => {
     );
     filtrarPorCategoria(filtrados);
 };
+
 // Seccion categorias - creacion de botones
 const categorias = ["Todos", "Adornos", "Aromas", "Defumación", "Manifestación", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
 categorias.forEach(categoria => {
@@ -238,7 +240,6 @@ categorias.forEach(categoria => {
     };
 });
 
-// actualizar section de productos segun la eleccion de categoria
 function filtrarPorCategoria(prod){
     seccionCardProductos.innerHTML = "";
     if(prod.length > 0){
@@ -251,9 +252,7 @@ function filtrarPorCategoria(prod){
     };
 }
 
-// CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
-// Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
     const cardProducto = document.createElement("article");
     cardProducto.className = "cardProduct";
     const divNombre = document.createElement("div");
@@ -287,17 +286,16 @@ function crearCard (producto){
     const botonAgregarCarrito = document.createElement("button"); 
     botonAgregarCarrito.innerText = "Agregar";
     botonAgregarCarrito.className = "boton-agregarCarrito"; 
-// Conexion de la card con el padre
+    
     seccionCardProductos.appendChild(cardProducto);
-// Conexion de la card (article) con sus hijos
     cardProducto.appendChild(divNombre);
         divNombre.appendChild(nombreProducto);
     cardProducto.appendChild(imgProducto);
     cardProducto.appendChild(divCategoria);
     cardProducto.appendChild(divDescripcion);
         divDescripcion.appendChild(descProducto);
-// SELECT para las variedades de productos - aqui para que aparezca en el orden que quiero
-    let selectVariedades = null;    // La inicio fuera para que sea variable global
+// SELECT para las variedades de productos
+    let selectVariedades = null;    
 // Solo si el producto tiene variedades
     if(producto.variedades) {
         const selectVariedades = document.createElement("select");
@@ -313,12 +311,9 @@ function crearCard (producto){
         cardProducto.appendChild(selectVariedades);
     }
     cardProducto.appendChild(precioProducto);
-    cardProducto.appendChild(botonAgregarCarrito);
-    
+    cardProducto.appendChild(botonAgregarCarrito); 
 // Se crea evento del boton aqui (card individual, se creara en todas), se vincula con el id 
-// del producto elegido 
     botonAgregarCarrito.onclick = () => {
-//si select existe, dame su valor; si no, dame null - así cubrís todos los productos
         const variedadElegida = selectVariedades ? selectVariedades.value : null;
         agregarCarrito(producto.id, variedadElegida);
     }
@@ -390,7 +385,7 @@ function agregarCarrito(idElegido, varElegida){
     actualizarCarrito();
 }
 
-// Creacion de cards de carrito y funcionalidad de botones ----------------------
+// Creacion de cards de carrito y funcionalidad de botones --------------
 function crearCardCarrito(e){
     const cardCarrito = document.createElement("article");
     cardCarrito.className = "card-carrito";
@@ -419,7 +414,6 @@ function crearCardCarrito(e){
     precioProductoCarrito.innerText = `Precio unitario: $${e.precio}`;
     cantProductoCarrito.innerText = `Cantidad: ${e.cantidad}`;
     sumaProductoCarrito.innerText  =`Suma parcial: $${e.precio * e.cantidad}`;
-        
     seccionBodyCarrito.appendChild(cardCarrito);
     cardCarrito.appendChild(divInfo);
         divInfo.appendChild(nameProductoCarrito);
@@ -442,23 +436,16 @@ function crearCardCarrito(e){
         carrito.splice(indice, 1);
         actualizarCarrito();         
         mostrarAlert("Producto eliminado del carrito", "#A38A75"); 
-    }
-    
+    }    
     botonMas.onclick = () => {
         const stockDisponible = deteccionStock(e.id, e.eleccion);
         carrito = carrito.map(el => {
             if(el.id === e.id && el.eleccion === e.eleccion){
-            // No incrementar por encima del stock
                 if(el.cantidad === stockDisponible){
                     mostrarAlert("Stock máximo alcanzado", "#7ba972");  
-                    return{
-                    ...el,
-                    }
+                    return{...el}
                 }else{
-                    return{
-                    ...el,
-                    cantidad: el.cantidad +1,    
-                    }
+                    return{...el,cantidad: el.cantidad +1}
                     }
             }else{
                 return el;
@@ -466,16 +453,12 @@ function crearCardCarrito(e){
         });
         actualizarCarrito();
     };
-    
     botonMenos.onclick = () => {
         const indice = carrito.findIndex(el => el.id === e.id && el.eleccion === e.eleccion);
         carrito = carrito.map(el => {
             if(el.id === e.id && el.eleccion === e.eleccion){
                 if(el.cantidad > 1){
-                    return{
-                        ...el,
-                        cantidad: el.cantidad -1,  
-                    }
+                    return{...el,cantidad: el.cantidad -1}
                 };
             }else{
                 return el;
@@ -488,9 +471,9 @@ function crearCardCarrito(e){
         actualizarCarrito();
     }
 }
-// ACTUALIZACION DE CARRITO ----------------------
+
 function actualizarCarrito(){
-// Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
+// Al agregar al carrito, debo limpiar el DOM y cargar nuevamente
     localStorage.setItem("carrito", JSON.stringify(carrito));
     // Limpio lo que habia del carrito
     seccionBodyCarrito.innerHTML= "";
@@ -511,7 +494,6 @@ function actualizarCarrito(){
     }
 };
 
-// Funcionalidades OnClick
 borrarCarrito.onclick = () => {
     // Borro el storage y tamb la variable
     localStorage.setItem("carrito", JSON.stringify([]));
@@ -519,27 +501,22 @@ borrarCarrito.onclick = () => {
     actualizarCarrito();
     mostrarAlert("Carrito vacío", "#A38A75");
 }
-
 botonTop.onclick = () => {
     window.scrollTo({
             top: 0,
             behavior: "smooth"
         })
 }
-
 botonCarrito.onclick = () => {
     seccionCarrito.classList.add("abierto");
     overlay.classList.add("visible");
 }
-
 function cerrarCarrito() {
     seccionCarrito.classList.remove("abierto");
     overlay.classList.remove("visible");
 }
-
 overlay.onclick = cerrarCarrito;
 
-// Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
     if(cliente.length > 0){
         Swal.fire({
