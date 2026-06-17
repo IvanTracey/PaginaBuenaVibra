@@ -5,13 +5,12 @@
 // Sector de variables --------------------
 let productos = [];
 let productosAMostrar = [];
-
+// Cargo los productos en orden alfabetico
 fetch ('./data/productos.json')
     .then(response => response.json())
     .then(data => {
         productos = data.sort((a, b) => a.nombre.localeCompare(b.nombre));
         productosAMostrar = productos;
-        //throw error;
         actualizarCarrito();
         filtrarPorCategoria(productosAMostrar);
     })
@@ -22,7 +21,6 @@ fetch ('./data/productos.json')
             icon: "error"
         });
     });
-
 let carrito = [];
 // Adquiero el carrito del storage o lo inicio vacio si no esta. Mientras que si existe algun problema CATCH tamb me lo da vacio
 try{
@@ -47,7 +45,8 @@ try{
 
 /* Variables globales del DOM y conexion de nodos -----------------------
  main -> section-product -> (section-categorias y section-cardproduct)
-      -> section-carrito -> (section- header/body/footer -carrito)*/
+      -> section-carrito -> (section- header/body/footer -carrito)
+*/
 const header = document.querySelector('header');
     const seccionTitulo = document.createElement("section");
     seccionTitulo.className = "section-titulo"
@@ -57,7 +56,7 @@ const header = document.querySelector('header');
         const logo = document.createElement("img");
         logo.className = "logo-colibri";
         logo.src = "img/logo_colibri.webp";
-        logo.alt = "Imagen de un colibri. Logo del emprendimiento"
+        logo.alt = "Imagen de un colibri en colores vivos. Logo del emprendimiento"
     const seccionRegistro = document.createElement("section");
     seccionRegistro.className = "seccion-registro";
         const botonRegistro = document.createElement("button");
@@ -92,10 +91,10 @@ const main = document.querySelector('main');
     overlay.className = "overlay";
     const botonCarrito = document.createElement("button");
     botonCarrito.className = "boton-carrito-phone"
-    botonCarrito.innerHTML = `<img src="img/carrito.png" alt="Carrito"></img>`;
+    botonCarrito.innerHTML = `<img src="img/carrito.png"></img>`;
     const botonTop = document.createElement("button");
     botonTop.className = "boton-top";
-    botonTop.innerHTML = `<img src="img/top.png" alt="Flecha hacia arriba"></img>`;
+    botonTop.innerHTML = `<img src="img/top.png"></img>`;
 // Total del carrito ----------------------
 const total = carrito.reduce((acc, e) => acc + e.precio*e.cantidad, 0);
 const totalCarrito = document.createElement("article");
@@ -111,6 +110,7 @@ carritoVacio.innerText = "Carrito vacío";
 const botonEnviar = document.createElement("button");
 botonEnviar.innerText = "Enviar pedido";
 botonEnviar.className = "boton-enviar";
+
 
 header.appendChild(seccionTitulo); 
     seccionTitulo.appendChild(logo);
@@ -136,7 +136,6 @@ main.appendChild(seccionCarrito);
 main.appendChild(overlay);
 main.appendChild(botonCarrito);
 main.appendChild(botonTop);
-
 // VACIAR CARRITO ----------------------
 const borrarCarrito = document.createElement("button");
 borrarCarrito.innerText = "Borrar";
@@ -144,6 +143,7 @@ borrarCarrito.className = "boton-borrar";
 seccionHeaderCarrito.appendChild(borrarCarrito);
 
 //// sector de funciones ----------------------------------
+// Funcion asincronica correspondiente al boton de registrarse
 async function registrar() {
     const result = await Swal.fire({
         title: 'Informacion para contactarte',
@@ -160,8 +160,7 @@ async function registrar() {
                 Swal.showValidationMessage("Por favor complete todos los campos");
                 return false; //no cierra la ventana
             }
-            return { nombreCliente, telefonoCliente, emailCliente
-            }
+            return { nombreCliente, telefonoCliente, emailCliente}
         }
     });
     if(result.isConfirmed && result.value){
@@ -209,7 +208,6 @@ filtro.oninput = () => {
     );
     filtrarPorCategoria(filtrados);
 };
-
 // Seccion categorias - creacion de botones
 const categorias = ["Todos", "Adornos", "Aromas", "Defumación", "Manifestación", "Piedras", "Portasahumerios", "Portavelas", "Velas"];
 categorias.forEach(categoria => {
@@ -240,6 +238,7 @@ categorias.forEach(categoria => {
     };
 });
 
+// actualizar section de productos segun la eleccion de categoria
 function filtrarPorCategoria(prod){
     seccionCardProductos.innerHTML = "";
     if(prod.length > 0){
@@ -252,7 +251,9 @@ function filtrarPorCategoria(prod){
     };
 }
 
+// CREACION PLANTILLA CARD ----------------------
 function crearCard (producto){
+// Creo la estructura y le voy dando la informacion: article/ h2/ img/ p/ p/ boton. Luego le asigno un padre a article y los demas seran hijos de él. Tmb le hago un evento al boton.
     const cardProducto = document.createElement("article");
     cardProducto.className = "cardProduct";
     const divNombre = document.createElement("div");
@@ -285,8 +286,7 @@ function crearCard (producto){
     precioProducto.innerText = `$${producto.precio}`;
     const botonAgregarCarrito = document.createElement("button"); 
     botonAgregarCarrito.innerText = "Agregar";
-    botonAgregarCarrito.className = "boton-agregarCarrito"; 
-    
+    botonAgregarCarrito.className = "boton-agregarCarrito";
     seccionCardProductos.appendChild(cardProducto);
     cardProducto.appendChild(divNombre);
         divNombre.appendChild(nombreProducto);
@@ -298,7 +298,7 @@ function crearCard (producto){
     let selectVariedades = null;    
 // Solo si el producto tiene variedades
     if(producto.variedades) {
-        const selectVariedades = document.createElement("select");
+        selectVariedades = document.createElement("select");
         selectVariedades.className = "variedad-producto";
         selectVariedades.name = "variedades";
         producto.variedades.forEach(variedad => {
@@ -311,8 +311,8 @@ function crearCard (producto){
         cardProducto.appendChild(selectVariedades);
     }
     cardProducto.appendChild(precioProducto);
-    cardProducto.appendChild(botonAgregarCarrito); 
-// Se crea evento del boton aqui (card individual, se creara en todas), se vincula con el id 
+    cardProducto.appendChild(botonAgregarCarrito);
+    
     botonAgregarCarrito.onclick = () => {
         const variedadElegida = selectVariedades ? selectVariedades.value : null;
         agregarCarrito(producto.id, variedadElegida);
@@ -385,7 +385,7 @@ function agregarCarrito(idElegido, varElegida){
     actualizarCarrito();
 }
 
-// Creacion de cards de carrito y funcionalidad de botones --------------
+// Creacion de cards de carrito y funcionalidad de botones ----------------------
 function crearCardCarrito(e){
     const cardCarrito = document.createElement("article");
     cardCarrito.className = "card-carrito";
@@ -414,6 +414,7 @@ function crearCardCarrito(e){
     precioProductoCarrito.innerText = `Precio unitario: $${e.precio}`;
     cantProductoCarrito.innerText = `Cantidad: ${e.cantidad}`;
     sumaProductoCarrito.innerText  =`Suma parcial: $${e.precio * e.cantidad}`;
+        
     seccionBodyCarrito.appendChild(cardCarrito);
     cardCarrito.appendChild(divInfo);
         divInfo.appendChild(nameProductoCarrito);
@@ -436,16 +437,23 @@ function crearCardCarrito(e){
         carrito.splice(indice, 1);
         actualizarCarrito();         
         mostrarAlert("Producto eliminado del carrito", "#A38A75"); 
-    }    
+    }
+    
     botonMas.onclick = () => {
         const stockDisponible = deteccionStock(e.id, e.eleccion);
         carrito = carrito.map(el => {
             if(el.id === e.id && el.eleccion === e.eleccion){
+            // No incrementar por encima del stock
                 if(el.cantidad === stockDisponible){
                     mostrarAlert("Stock máximo alcanzado", "#7ba972");  
-                    return{...el}
+                    return{
+                    ...el,
+                    }
                 }else{
-                    return{...el,cantidad: el.cantidad +1}
+                    return{
+                    ...el,
+                    cantidad: el.cantidad +1,    
+                    }
                     }
             }else{
                 return el;
@@ -453,12 +461,16 @@ function crearCardCarrito(e){
         });
         actualizarCarrito();
     };
+    
     botonMenos.onclick = () => {
         const indice = carrito.findIndex(el => el.id === e.id && el.eleccion === e.eleccion);
         carrito = carrito.map(el => {
             if(el.id === e.id && el.eleccion === e.eleccion){
                 if(el.cantidad > 1){
-                    return{...el,cantidad: el.cantidad -1}
+                    return{
+                        ...el,
+                        cantidad: el.cantidad -1,  
+                    }
                 };
             }else{
                 return el;
@@ -471,9 +483,9 @@ function crearCardCarrito(e){
         actualizarCarrito();
     }
 }
-
+// ACTUALIZACION DE CARRITO ----------------------
 function actualizarCarrito(){
-// Al agregar al carrito, debo limpiar el DOM y cargar nuevamente
+// Cada vez que algo se agregar al carrito, debo actualizar el carrito, se debe limpiar el DOM y cargar nuevamente
     localStorage.setItem("carrito", JSON.stringify(carrito));
     // Limpio lo que habia del carrito
     seccionBodyCarrito.innerHTML= "";
@@ -494,6 +506,7 @@ function actualizarCarrito(){
     }
 };
 
+// Funcionalidades OnClick
 borrarCarrito.onclick = () => {
     // Borro el storage y tamb la variable
     localStorage.setItem("carrito", JSON.stringify([]));
@@ -501,22 +514,27 @@ borrarCarrito.onclick = () => {
     actualizarCarrito();
     mostrarAlert("Carrito vacío", "#A38A75");
 }
+
 botonTop.onclick = () => {
     window.scrollTo({
             top: 0,
             behavior: "smooth"
         })
 }
+
 botonCarrito.onclick = () => {
     seccionCarrito.classList.add("abierto");
     overlay.classList.add("visible");
 }
+
 function cerrarCarrito() {
     seccionCarrito.classList.remove("abierto");
     overlay.classList.remove("visible");
 }
+
 overlay.onclick = cerrarCarrito;
 
+// Uso de libreria - Envio de pedido
 botonEnviar.onclick = () => {
     if(cliente.length > 0){
         Swal.fire({
