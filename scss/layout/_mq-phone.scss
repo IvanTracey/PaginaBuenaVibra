@@ -1,6 +1,6 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixin" as *;
-@media (max-width:600px){  
+@media (max-width:768px){  
     h1{
         font-size: 34px;
     }
