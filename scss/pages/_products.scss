@@ -47,7 +47,7 @@ main{
                 background-color: $color-bg-terceario;
                 font-weight: bold;
                 }
-            }
+            }        
         }
         .section-cardproduct{
             display: grid;
@@ -65,7 +65,7 @@ main{
                 .div-nombre{
                     height: 50px;
                     align-content: center;
-                    margin: 1px 0px;
+                    margin: 1px 0px; 
                 }
                 .imagen-producto{
                     @include dimensionar(100%, auto, 2px);

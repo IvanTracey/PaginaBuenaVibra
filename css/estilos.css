@@ -389,7 +389,7 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
   transform: translateY(-2px);
 }
 
-@media (max-width: 1024px) and (min-width: 480px) {
+@media (max-width: 1024px) and (min-width: 600px) {
   h3 {
     font-size: 18px;
   }
@@ -416,7 +416,7 @@ main .section-carrito .footer-carrito .boton-enviar:hover {
     grid-template-rows: 1;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   h1 {
     font-size: 34px;
   }
