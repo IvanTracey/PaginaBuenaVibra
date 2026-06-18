@@ -1,18 +1,8 @@
-/*
-Verde salvia: #A8B8A5
-Arena: #D9CDBF
-Marrón suave: #A38A75
-Crema: #F3EDE4
-Texto oscuro: #2B2B2B
-
-*/
-
 $color-bg-principal: #D9CDBF;
 $color-bg-secundario: #bbd9b6;  
 $color-bg-terceario: #A38A75;
 $color-bg-boton: #A8B8A5;
 $color-tipografia:#052b20;
-
 $tamano-titulo:40px;
 $tamano-subtitulo:30px;
 $tamano-nombre:22px;
@@ -23,22 +13,19 @@ h1{
 // titulo de la pagina (Productos)
     font-size: $tamano-titulo;
     justify-self: center;
-    font-weight: bold;
-}
+    font-weight: bold;}
 h2{
 // titulo secundario (Carrito)
     font-size: $tamano-subtitulo;  
-    font-weight: bold;  
-}
+    font-weight: bold;}
 h3{
 // (Nombres productos)
-    font-size: $tamano-nombre; 
-}
+    font-size: $tamano-nombre;}
 h4{
 // (Nombre de productos en carrito
     font-size: $tamano-nombre-carrito;
-    font-weight: bold;
-}
+    font-weight: bold;}
+
 // Creo la estetica de las tarjetas para mis cardproducts
 .card{
     justify-items: center;

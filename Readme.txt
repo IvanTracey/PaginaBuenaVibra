@@ -37,7 +37,7 @@ Se hace uso de local storage al registrarse alguien y con el estado del carrito.
 
 - crearCardCarrito() Se crea la estructura de las tarjetas en el carrito, junto con los botones y el manejo del evento al clickearlos.
 
-- actualizarCarrito() Borra y escribe nuevamente la información de la sección del carrito, actualizando el valor del total.
+- actualizarCarrito() Borra y escribe nuevamente la información de la sección del carrito. También mantiene actualizado el valor del total.
 
 - borrarCarrito.onclick Limpia tanto la variable carrito como el local storage. Muestra una notificación.
 
@@ -49,5 +49,5 @@ Se hace uso de local storage al registrarse alguien y con el estado del carrito.
 
 - overlay.onclick Al tocar la pantalla por fuera de la sección del carrito en el responsive para teléfonos, llama a la función que oculta el carrito.
 
-- -botonEnviar.onclick Cuando se elige enviar el pedido al apretar dicho botón, se usa sweetalert para gestionar la experiencia: De no estar registrado te pide que lo hagas y lleva la página al inicio para que esté visible el botón de registro. Pide confirmación a la hora de enviarla, y luego de hacerlo, borra el carrito. (La funcionalidad de enviar el pedido no se realiza en este proyecto, solo lo simula). 
+-botonEnviar.onclick Cuando se elige enviar el pedido al apretar dicho botón, se usa sweetalert para gestionar la experiencia: De no estar registrado te pide que lo hagas y lleva la página al inicio para que esté visible el botón de registro. Pide confirmación a la hora de enviarla, y luego de hacerlo, borra el carrito. (La funcionalidad de enviar el pedido no se realiza en este proyecto, solo lo simula). 
 

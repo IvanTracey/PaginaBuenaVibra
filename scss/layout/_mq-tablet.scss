@@ -1,15 +1,10 @@
-
 @use "../utilities/variables" as *;
 @use "../utilities/mixin" as *;
 
 // QUERYES para tablets ------------------ 
 @media (max-width: 1024px) and (min-width: 600px) { 
-    h3{
-        font-size: 18px;
-    }
-    h4{
-        font-size: 16px;
-    }
+    h3{font-size: 18px;}
+    h4{font-size: 16px;}
     main{
         @include grid(75% 25%, 1); 
         .section-product{
@@ -33,7 +28,6 @@
                 }
             }
         }
-        
     }
 
 }

@@ -1,7 +1,5 @@
-
 @use "../utilities/variables" as *;
 @use "../utilities/mixin" as *;
-
 header{
     background-color: $color-bg-secundario;
     display: flex;
@@ -11,7 +9,7 @@ header{
         display: flex;
         align-items: center;
         .logo-colibri{
-            @include dimensionar (auto, 4.5rem, 0px);        margin: 4px 8px;
+            @include dimensionar (auto, 4.5rem, 0px);
         }
         .titulo{
             font-size: $tamano-titulo;
@@ -32,9 +30,7 @@ header{
             font-size: 18px;
             background-color: $color-bg-terceario;
             box-shadow: none;
-            &:hover{
-                transform: scale(1.05);
-            }
+            &:hover{transform: scale(1.05);}
         }  
         //boton x al estar registrado
         .boton-borrarRegistro{
@@ -46,7 +42,6 @@ header{
             background-color: $color-bg-principal;
         }
     }
-    .nav-link:hover{
-        text-decoration: underline;
-    }
 }
+
+

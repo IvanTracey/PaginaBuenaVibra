@@ -1,25 +1,13 @@
-
 @use "../utilities/variables" as *;
 @use "../utilities/mixin" as *;
-
 @media (max-width:600px){  
-    h1{
-        font-size: 34px;
-    }
-    h3{
-        font-size: 20px;
-    }
-    h4{
-        font-size: 16px;
-    }
+    h1{font-size: 34px;}
+    h3{font-size: 20px;}
+    h4{font-size: 16px;}
     header{
         .section-titulo{
-            .titulo{
-                font-size: 36px;
-            }
-            .logo-colibri{
-                height: 3rem;
-            }                
+            .titulo{font-size: 36px;}
+            .logo-colibri{height: 3rem;}                
         }
         .seccion-registro{
             margin: 0px 10px;
@@ -66,17 +54,14 @@
                         height: auto;
                         margin: 8px;
                     }
-                    .variedad-producto{
-                        font-size: 14px;
-                    }
+                    .variedad-producto{font-size: 14px;}
                 }
             }  
         }
-        
         .overlay {
             position: fixed;
             inset: 0;                      // cubre toda la pantalla
-            background: rgba(0, 0, 0, 0.5); // negro semitransparente
+            background: rgba(0, 0, 0, 0.5); 
             z-index: 200;
             opacity: 0;
             pointer-events: none;          // invisible = no bloquea clicks
@@ -86,24 +71,24 @@
                 pointer-events: all;       // visible = bloquea clicks
             }
         }
-
         .section-carrito{
             z-index: 300; // encima del overlay
             background-color: $color-bg-principal;   
-            position: fixed;        // 1. sale del flujo y se superpone
-            top: 0;                 // 2. empieza desde arriba
-            right: 0;               // 3. pegado a la derecha
+            position: fixed;        
+            top: 0;                
+            right: 0;               
             height: 100vh;          // ocupa toda la altura de la pantalla
             transform: translateX(100%);  // empieza fuera de pantalla
-            transition: transform 0.3s ease; // animación al deslizar            
-            &.abierto{
-                transform: translateX(0%);  // ← se desliza adentro
-            }
-            .body-carrito{
-                .card-carrito{
-                    @include grid(80% 20%, 1);
-                }
-            }
+            transition: transform 0.3s ease;           
+            &.abierto{transform: translateX(0%);}
+            .body-carrito{ .card-carrito{@include grid(80% 20%, 1);} }
         }
     }
 }
+
+
+
+
+
+
+

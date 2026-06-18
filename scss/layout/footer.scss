@@ -1,7 +1,5 @@
-
 @use "../utilities/variables" as *;
 @use "../utilities/mixin" as *;
-
 footer{
     background-color: $color-bg-secundario;
     display: flex;
@@ -10,9 +8,7 @@ footer{
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
     div{
         padding: 1rem;
-        p{
-            margin: 0;
-        }
+        p{margin: 0;}
     }
     nav {
         ul{
@@ -25,7 +21,7 @@ footer{
         @include dimensionar(45px, 45px, 2px);
         margin-right: 15px;
     }
-    .social-icon:hover{
-        scale: 1.1;
-    }
+    .social-icon:hover{scale: 1.1;}
 }
+
+

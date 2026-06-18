@@ -1,17 +1,11 @@
-
 @use "../utilities/variables" as *;
 @use "../utilities/mixin" as *;
-
-
-// ----------- Pagina Productos
 main{
     background-color: $color-bg-principal;
     display: grid;
     @include grid(80% 20%, 1); 
     min-height: 100vh;  // mínimo toda la pantalla 
-    .boton-carrito-phone{
-        display: none;
-    }
+    .boton-carrito-phone{display: none;}
     .boton-top{
             @include boton(auto, 0px);
             background-color: $color-bg-secundario;
@@ -48,9 +42,7 @@ main{
                 @include boton(auto, 4px 6px);
                 padding: 6px;
                 font-size: 18px;
-                &:hover{
-                    transform: scale(1.05);
-                }
+                &:hover{transform: scale(1.05);}
                 &.activo {
                 background-color: $color-bg-terceario;
                 font-weight: bold;
@@ -76,8 +68,7 @@ main{
                     margin: 1px 0px;
                 }
                 .imagen-producto{
-                    @include dimensionar(100%, auto, 2px);
-                    aspect-ratio: 1/1; // Relacion de 1:1 en la imagen
+                    aspect-ratio: 1/1; 
                     object-fit: cover;
                 }
                 .div-categoria{
@@ -107,23 +98,17 @@ main{
                 .variedad-producto{
                     width: 100%;
                     margin: 10px auto; // lo centra horizontalmente 
-                    display: block; // necesario para que margin auto funcione
+                    display: block;
                     font-size: 20px;
                     background-color: $color-bg-boton;
                 }
-                .precio-producto{
-                    font-size: 30px;
-                }
-                &:hover{
-                    transform: scale(1.05);
-                }
+                .precio-producto{font-size: 30px;}
+                &:hover{transform: scale(1.05);}
                 .boton-agregarCarrito{
                     @include boton(50%, 15px 0px);
                     padding: 4px 2px;
                     font-size: 16px;
-                    &:hover{
-                        transform: scale(1.05);
-                    }
+                    &:hover{transform: scale(1.05);}
                 };
             }
         } 
@@ -145,11 +130,11 @@ main{
         grid-column: 2;
         padding: 8px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-        // Fijar carrito para que siempre este visible
-        position: sticky;
-        top: 0;          /* a qué distancia del tope queda fijo */
-        height: 100vh;   /* ocupa toda la altura de la pantalla */
-        overflow-y: auto; /* si el carrito tiene mucho contenido, scrollea internamente */
+        
+        position: sticky; // Fijar carrito para que siempre este visible
+        top: 0;          // a qué distancia del tope queda fijo 
+        height: 100vh;   // ocupa toda la altura de la pantalla 
+        overflow-y: auto; // scrollea internamente 
         .header-carrito{
             display: flex;
             justify-content:space-between;
@@ -158,9 +143,7 @@ main{
             .boton-borrar{
                 @include boton(auto, 2px 8px); 
                 padding: 5px 8px;  
-                &:hover{
-                    transform: translateY(-2px);
-                }
+                &:hover{transform: translateY(-2px);}
             }
         }
         .body-carrito{
@@ -182,17 +165,13 @@ main{
                         height: 20px;
                         border-radius: 6px;
                         background-color: $color-bg-boton;
-                        &:hover{
-                            transform: scale(1.05);
-                        }
+                        &:hover{transform: scale(1.05);}
                     }
                     .boton-carrito{
                         width: 30px;
                         height: 25px;
                         border-radius: 6px;
-                        &:hover{
-                            transform: scale(1.05);
-                        }
+                        &:hover{transform: scale(1.05);}
                     }
                     
                 }
@@ -204,9 +183,7 @@ main{
                 @include boton(auto, 20px 8px); 
                 padding: 5px 8px; 
                 font-size: 18px;
-                &:hover{
-                    transform: translateY(-2px);
-                }
+                &:hover{transform: translateY(-2px);}
             }
         }
     }

@@ -13,19 +13,15 @@
     // Transicion suave en sus movimientos
     transition: transform 0.4s ease;
 }
-// Le doy tamaño y padding a las imagenes
-@mixin dimensionar($ancho, $alto, $padding){
-    width: $ancho;
-    height: $alto;
-    padding: $padding;
-}
-// Modo flex para media query
-@mixin modo-flex{
-        display: flex;
-        flex-direction: column;
-}
 // Creacion de grid 
 @mixin grid($column, $row){
     grid-template-columns: $column;
     grid-template-rows: $row;
 }
+
+
+
+
+
+
+
