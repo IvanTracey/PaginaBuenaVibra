@@ -380,6 +380,7 @@ function agregarCarrito(idElegido, varElegida){
             });     
         }else{
             carrito.push({...productoConVariedad, cantidad: 1});
+            mostrarAlert("Producto agregado al carrito", "#75a38b"); 
         };
     }
     actualizarCarrito();

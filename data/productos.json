@@ -83,7 +83,7 @@
     {
     "id":10,
     "nombre":"Velas 7 chackras",
-    "img": "",
+    "img": "img/vela.webp",
     "descricion": "Velas de hornillo aromaticas ",
     "precio": 4500,
     "stock": 5,
