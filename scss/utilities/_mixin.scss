@@ -13,6 +13,11 @@
     // Transicion suave en sus movimientos
     transition: transform 0.4s ease;
 }
+@mixin dimensionar($ancho, $alto, $padding){
+    width: $ancho;
+    height: $alto;
+    padding: $padding;
+}
 // Creacion de grid 
 @mixin grid($column, $row){
     grid-template-columns: $column;

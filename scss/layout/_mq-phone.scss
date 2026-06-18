@@ -1,13 +1,23 @@
 @use "../utilities/variables" as *;
 @use "../utilities/mixin" as *;
-@media (max-width:600px){  
-    h1{font-size: 34px;}
-    h3{font-size: 20px;}
-    h4{font-size: 16px;}
+@media (max-width:480px){  
+    h1{
+        font-size: 34px;
+    }
+    h3{
+        font-size: 20px;
+    }
+    h4{
+        font-size: 16px;
+    }
     header{
         .section-titulo{
-            .titulo{font-size: 36px;}
-            .logo-colibri{height: 3rem;}                
+            .titulo{
+                font-size: 36px;
+            }
+            .logo-colibri{
+                height: 3rem;
+            }                
         }
         .seccion-registro{
             margin: 0px 10px;
@@ -54,7 +64,9 @@
                         height: auto;
                         margin: 8px;
                     }
-                    .variedad-producto{font-size: 14px;}
+                    .variedad-producto{
+                        font-size: 14px;
+                    }
                 }
             }  
         }
@@ -81,7 +93,11 @@
             transform: translateX(100%);  // empieza fuera de pantalla
             transition: transform 0.3s ease;           
             &.abierto{transform: translateX(0%);}
-            .body-carrito{ .card-carrito{@include grid(80% 20%, 1);} }
+            .body-carrito{ 
+                .card-carrito{
+                    @include grid(80% 20%, 1);
+                } 
+            }
         }
     }
 }

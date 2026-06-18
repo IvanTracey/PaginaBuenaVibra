@@ -68,6 +68,7 @@ main{
                     margin: 1px 0px;
                 }
                 .imagen-producto{
+                    @include dimensionar(100%, auto, 2px);
                     aspect-ratio: 1/1; 
                     object-fit: cover;
                 }

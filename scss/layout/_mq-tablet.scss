@@ -2,7 +2,7 @@
 @use "../utilities/mixin" as *;
 
 // QUERYES para tablets ------------------ 
-@media (max-width: 1024px) and (min-width: 600px) { 
+@media (max-width: 1024px) and (min-width: 480px) { 
     h3{font-size: 18px;}
     h4{font-size: 16px;}
     main{
